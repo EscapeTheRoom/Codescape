@@ -4,7 +4,8 @@ import {withRouter, Route, Switch} from 'react-router-dom'
 import PropTypes from 'prop-types'
 import {Login, Signup, UserHome} from './components'
 import {me} from './store'
-import Problem from './components/problem'
+import Problem from './components/popup/Problem'
+import Main from './components/popup/Main'
 
 /**
  * COMPONENT
@@ -22,7 +23,8 @@ class Routes extends Component {
         {/* Routes placed here are available to all visitors */}
         <Route path="/login" component={Login} />
         <Route path="/signup" component={Signup} />
-        <Route path="/problem" component={Problem} />
+        <Route path="/problem/:problemId" component={Problem} />
+        <Route path="/main" component={Main} />
         {isLoggedIn && (
           <Switch>
             {/* Routes placed here are only available after logging in */}

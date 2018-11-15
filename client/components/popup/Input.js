@@ -9,24 +9,30 @@ import 'brace/mode/javascript';
 
 // Import a Theme (okadia, github, xcode etc)
 import 'brace/theme/monokai';
-import {fetchProblem} from '../store/problem'
-import {connect} from 'react-redux'
 
-
-class Problem extends Component {
+export default class Input extends Component {
 
     constructor(props, context) {
         super(props, context);
+        this.state = {
+            code: ""
+        }
 
         this.onChange = this.onChange.bind(this);
+        this.handleSubmit = this.handleSubmit.bind(this)
     }
 
-    componentDidMount(){
-        this.props.fetchProblem()
+    onChange(value) {
+        this.setState({
+            code: value
+        })
+        console.log(this.state.code)
     }
 
-    onChange(newValue) {
-        console.log('change', newValue);
+    handleSubmit (e) {
+        e.preventDefault()
+        // POST request to Docker API
+        console.log(e)
     }
 
     render() {
@@ -35,14 +41,14 @@ class Problem extends Component {
                 <AceEditor
                     mode="javascript"
                     theme="monokai"
-                    name="blah2"
+                    name="code"
                     onLoad={this.onLoad}
                     onChange={this.onChange}
                     fontSize={14}
                     showPrintMargin={true}
                     showGutter={true}
                     highlightActiveLine={true}
-                    value={`${this.props.problem}`}
+                    value={this.state.code}
                     setOptions={{
                     enableBasicAutocompletion: false,
                     enableLiveAutocompletion: false,
@@ -50,22 +56,9 @@ class Problem extends Component {
                     showLineNumbers: true,
                     tabSize: 1,
                 }}/>
-                        
+                
+                <button type="submit" onSubmit={this.handleSubmit}>Run</button>
             </div>
         );
     }
 }
-
-const mapStateToProps = state => {
-    return {
-      problem: state.problem,
-    };
-};
-
-const mapDispatchToProps = dispatch => {
-    return {
-        fetchProblem: () => dispatch(fetchProblem())
-    };
-};
-
-export default connect(mapStateToProps, mapDispatchToProps)(Problem)

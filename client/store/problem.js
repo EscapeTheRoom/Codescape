@@ -8,31 +8,34 @@ const GET_PROBLEM = 'GET_PROBLEM'
 /**
  * INITIAL STATE
  */
-const defaultProblem= {}
+const defaultProblem = {}
 
 /**
  * ACTION CREATORS
  */
-const getProblem = (problem) => ({type: GET_PROBLEM, problem})
+const getProblem = (problem) => ({
+    type: GET_PROBLEM,
+    problem
+})
 
 
 /**
  * THUNK CREATORS
  */
 
-export const fetchProblem = () => async dispatch => {
-    const { data } = await axios.get('/api/problem');
+export const fetchAProblem = (problemId) => async dispatch => {
+    const { data } = await axios.get(`/api/problems/${problemId}`);
     dispatch(getProblem(data));
 }
 
 
-const problem = (state = defaultProblem, action) => {
+const problemsReducer = (state = defaultProblem, action) => {
     switch (action.type) {
         case GET_PROBLEM:
-            return action.problem;
+            return action.problem
         default:
             return state;
     }
 };
 
-export default problem
+export default problemsReducer;

@@ -2,8 +2,7 @@ const router = require('express').Router()
 const {Problem} = require('../db/models')
 
 
-// GET /api/ all problem
-// exact route: GET /api/problems
+// GET /api/problems
 router.get('/', async(req, res, next) => {
     try{
         const problems = await Problem.findAll()
@@ -13,8 +12,7 @@ router.get('/', async(req, res, next) => {
     }
 })
 
-
-// GET/api/problem/problemid
+// GET /api/problems/:id
 router.get('/:id', async (req, res, next) => {
     try {
         const problem = await Problem.findById(req.params.id)
@@ -22,6 +20,6 @@ router.get('/:id', async (req, res, next) => {
     } catch (err) {
         next(err)
     }
-})
+});
 
 module.exports = router
