@@ -1,38 +1,33 @@
-import React, {Component} from 'react';
+import React, {Component} from 'react'
 import {fetchAProblem} from '../../store/problem'
 import {connect} from 'react-redux'
 import Input from './Input'
 
-
 class Problem extends Component {
+  async componentDidMount() {
+    await this.props.getAProblem(this.props.match.params.problemId)
+  }
 
-    async componentDidMount () {
-        await this.props.getAProblem(this.props.match.params.problemId)
-    }
+  render() {
+    return (
+      <div className="problem-container">
+        <ul>
+          <li>{this.props.problem.id}</li>
+          <li>{this.props.problem.title}</li>
+        </ul>
 
-    render () {
-        
-        return (
-            <div className="problem-container">
-                <ul>
-                    <li>{this.props.problem.id}</li>
-                    <li>{this.props.problem.title}</li>
-                </ul>
-
-                <Input problem={this.props.problem} />
-                
-            </div>
-
-        )
-    }
+        <Input problem={this.props.problem} />
+      </div>
+    )
+  }
 }
 
 const mapStateToProps = state => ({
-    problem: state.problemsReducer
+  problem: state.problemsReducer.problem
 })
 
 const mapDispatchToProps = dispatch => ({
-    getAProblem: (problemId) => dispatch(fetchAProblem(problemId))
+  getAProblem: problemId => dispatch(fetchAProblem(problemId))
 })
 
 export default connect(mapStateToProps, mapDispatchToProps)(Problem)
