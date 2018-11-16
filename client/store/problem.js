@@ -4,12 +4,15 @@ import axios from 'axios'
  * ACTION TYPES
  */
 const GET_PROBLEM = 'GET_PROBLEM'
-const SEND_INPUT = 'SEND_INPUT'
+const RECEIVE_INPUT = 'RECEIVE_INPUT'
 
 /**
  * INITIAL STATE
  */
-const defaultProblem = {}
+const defaultProblem = {
+    problem:{},
+    spec:''
+}
 
 /**
  * ACTION CREATORS
@@ -19,9 +22,9 @@ const getProblem = (problem) => ({
     problem
 })
 
-const sendToDocker = (input) =>({
-    type: SEND_INPUT,
-    input
+const receiveInput = (spec) => ({
+    type: RECEIVE_INPUT,
+    spec
 })
 
 
@@ -37,6 +40,8 @@ export const fetchAProblem = (problemId) => async dispatch => {
 export const sendInput = (input) => async dispatch => {
     try{
     const { data } =await axios.post(`/api/docker`, input) //this will be our test result
+        console.log('dataThunk', data)
+    dispatch(receiveInput(data))
 } catch(err){
         console.error(err)
     }
@@ -45,9 +50,9 @@ export const sendInput = (input) => async dispatch => {
 const problemsReducer = (state = defaultProblem, action) => {
     switch (action.type) {
         case GET_PROBLEM:
-            return action.problem
-        case SEND_INPUT:
-            return action.input
+            return {...this.state, problem: action.problem}
+        case RECEIVE_INPUT:
+            return {...this.state, spec: action.spec}
         default:
             return state;
     }

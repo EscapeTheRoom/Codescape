@@ -67,7 +67,7 @@ class Input extends Component {
                     enableBasicAutocompletion: false,
                     enableLiveAutocompletion: false,
                     enableSnippets: false,
-                    showLineNumbers: false,
+                    showLineNumbers: true,
                     tabSize: 1,
                 }}/>
                 <button onClick={this.handleSubmit} type="submit">Run Code</button>
@@ -75,10 +75,6 @@ class Input extends Component {
         );
     }
 }
-
-// const mapStateToProps = dispatch => ({
-//     problem: 
-// })
 
 const mapDispatchToProps = dispatch => ({
     sendInput: (input) => dispatch(sendInput(input))
