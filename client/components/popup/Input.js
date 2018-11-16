@@ -1,4 +1,6 @@
 import React, {Component} from 'react';
+import axios from 'axios'
+import {connect} from 'react-redux'
 
 // Import Brace and the AceEditor Component
 import brace from 'brace';
@@ -9,30 +11,33 @@ import 'brace/mode/javascript';
 
 // Import a Theme (okadia, github, xcode etc)
 import 'brace/theme/monokai';
+import { sendInputWithSpec } from '../../store/problem';
 
-export default class Input extends Component {
+class Input extends Component {
 
     constructor(props, context) {
         super(props, context);
         this.state = {
-            code: ""
+            code: {}
         }
 
         this.onChange = this.onChange.bind(this);
         this.handleSubmit = this.handleSubmit.bind(this)
     }
 
-    onChange(value) {
+    onChange (value) {
         this.setState({
             code: value
         })
-        console.log(this.state.code)
     }
 
     handleSubmit (e) {
         e.preventDefault()
         // POST request to Docker API
-        console.log(e)
+
+        
+        this.props.sendToDocker(this.state.code, spec)
+        
     }
 
     render() {
@@ -57,8 +62,14 @@ export default class Input extends Component {
                     tabSize: 1,
                 }}/>
                 
-                <button type="submit" onSubmit={this.handleSubmit}>Run</button>
+                <button type="submit" onSubmit={this.handleSubmit}>Run Code</button>
             </div>
         );
     }
 }
+
+const mapDispatchToProps = dispatch => ({
+    sendToDocker: (input, spec) => dispatch(sendInputWithSpec(input, spec))
+})
+
+export default connect(null, mapDispatchToProps)(Input)

@@ -2,20 +2,20 @@ const db = require('../db');
 const Sequelize = require('sequelize');
 
 const Problem = db.define('problem', {
-    title : {
+    title: {
         type: Sequelize.STRING,
         validate: {
             notEmpty: true,
         }
     },
-    prompt:{
+    prompt: {
         type: Sequelize.STRING,
         validate: {
             notEmpty: true,
         }
     },
-    solution:{
-        type: Sequelize.STRING,
+    spec: {
+        type: Sequelize.BLOB('long'),
         validate: {
             notEmpty: true,
         }
