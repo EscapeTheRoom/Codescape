@@ -18,30 +18,39 @@ class Input extends Component {
     constructor(props, context) {
         super(props, context);
         this.state = {
-            code: ""
+            code: "",
+            id: 0
         }
 
         this.onChange = this.onChange.bind(this);
         this.handleSubmit = this.handleSubmit.bind(this)
     }
-
-    onChange (value) {
+    // componentDidMount(){
+    //     this.setState({
+    //         id: this.props.problem.id
+    //     })
+    // }
+    onChange(value){
+        const {id} = this.props.problem
+       
         this.setState({
-            code: value
+            code: value,
+            id
         })
     }
 
     handleSubmit (e) {
         e.preventDefault()
-
+        
         // POST request to Docker API
         // console.log('code', this.state.code, 'problemId', this.props.problem.id)
-        this.props.sendToDockerAPI(this.state.code, this.props.problem.id)
+        this.props.sendInput(this.state)
     }
 
     render() {
-        console.log('code', this.state.code, 'problemId', this.props.problem.id)
+        
         return (
+           
             <div className='editor'>
                 <AceEditor
                     mode="javascript"
@@ -58,12 +67,11 @@ class Input extends Component {
                     enableBasicAutocompletion: false,
                     enableLiveAutocompletion: false,
                     enableSnippets: false,
-                    showLineNumbers: true,
+                    showLineNumbers: false,
                     tabSize: 1,
                 }}/>
-                
-                <button type="submit" onSubmit={this.handleSubmit}>Run Code</button>
-            </div>
+                <button onClick={this.handleSubmit} type="submit">Run Code</button>
+                </div>
         );
     }
 }
@@ -73,7 +81,7 @@ class Input extends Component {
 // })
 
 const mapDispatchToProps = dispatch => ({
-    sendToDockerAPI: (input, spec) => dispatch(sendInput(input))
+    sendInput: (input) => dispatch(sendInput(input))
 })
 
 export default connect(null, mapDispatchToProps)(Input)

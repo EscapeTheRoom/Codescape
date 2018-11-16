@@ -20,6 +20,7 @@ class Problem extends Component {
                 </ul>
 
                 <Input problem={this.props.problem} />
+                
             </div>
 
         )
