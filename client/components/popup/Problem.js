@@ -1,6 +1,7 @@
 import React, {Component} from 'react';
 import {fetchAProblem} from '../../store/problem'
 import {connect} from 'react-redux'
+import Input from './Input'
 
 
 class Problem extends Component {
@@ -14,10 +15,14 @@ class Problem extends Component {
         return (
             <div className="problem-container">
                 <ul>
+                    <li>{this.props.problem.id}</li>
                     <li>{this.props.problem.title}</li>
-                    <li>{this.props.problem.prompt}</li>
                 </ul>
+
+                <Input problem={this.props.problem} />
+                
             </div>
+
         )
     }
 }

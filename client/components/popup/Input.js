@@ -11,37 +11,46 @@ import 'brace/mode/javascript';
 
 // Import a Theme (okadia, github, xcode etc)
 import 'brace/theme/monokai';
-import { sendInputWithSpec } from '../../store/problem';
+import { sendInput } from '../../store/problem';
 
 class Input extends Component {
 
     constructor(props, context) {
         super(props, context);
         this.state = {
-            code: {}
+            code: "",
+            id: 0
         }
 
         this.onChange = this.onChange.bind(this);
         this.handleSubmit = this.handleSubmit.bind(this)
     }
-
-    onChange (value) {
+    // componentDidMount(){
+    //     this.setState({
+    //         id: this.props.problem.id
+    //     })
+    // }
+    onChange(value){
+        const {id} = this.props.problem
+       
         this.setState({
-            code: value
+            code: value,
+            id
         })
     }
 
     handleSubmit (e) {
         e.preventDefault()
+        
         // POST request to Docker API
-
-        
-        this.props.sendToDocker(this.state.code, spec)
-        
+        // console.log('code', this.state.code, 'problemId', this.props.problem.id)
+        this.props.sendInput(this.state)
     }
 
     render() {
+        
         return (
+           
             <div className='editor'>
                 <AceEditor
                     mode="javascript"
@@ -58,18 +67,21 @@ class Input extends Component {
                     enableBasicAutocompletion: false,
                     enableLiveAutocompletion: false,
                     enableSnippets: false,
-                    showLineNumbers: true,
+                    showLineNumbers: false,
                     tabSize: 1,
                 }}/>
-                
-                <button type="submit" onSubmit={this.handleSubmit}>Run Code</button>
-            </div>
+                <button onClick={this.handleSubmit} type="submit">Run Code</button>
+                </div>
         );
     }
 }
 
+// const mapStateToProps = dispatch => ({
+//     problem: 
+// })
+
 const mapDispatchToProps = dispatch => ({
-    sendToDocker: (input, spec) => dispatch(sendInputWithSpec(input, spec))
+    sendInput: (input) => dispatch(sendInput(input))
 })
 
 export default connect(null, mapDispatchToProps)(Input)
