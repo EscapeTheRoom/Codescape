@@ -11,14 +11,14 @@ import 'brace/mode/javascript';
 
 // Import a Theme (okadia, github, xcode etc)
 import 'brace/theme/monokai';
-import { sendInputWithSpec } from '../../store/problem';
+import { sendInput } from '../../store/problem';
 
 class Input extends Component {
 
     constructor(props, context) {
         super(props, context);
         this.state = {
-            code: {}
+            code: ""
         }
 
         this.onChange = this.onChange.bind(this);
@@ -33,14 +33,14 @@ class Input extends Component {
 
     handleSubmit (e) {
         e.preventDefault()
-        // POST request to Docker API
 
-        
-        this.props.sendToDocker(this.state.code, spec)
-        
+        // POST request to Docker API
+        // console.log('code', this.state.code, 'problemId', this.props.problem.id)
+        this.props.sendToDockerAPI(this.state.code, this.props.problem.id)
     }
 
     render() {
+        console.log('code', this.state.code, 'problemId', this.props.problem.id)
         return (
             <div className='editor'>
                 <AceEditor
@@ -68,8 +68,12 @@ class Input extends Component {
     }
 }
 
+// const mapStateToProps = dispatch => ({
+//     problem: 
+// })
+
 const mapDispatchToProps = dispatch => ({
-    sendToDocker: (input, spec) => dispatch(sendInputWithSpec(input, spec))
+    sendToDockerAPI: (input, spec) => dispatch(sendInput(input))
 })
 
 export default connect(null, mapDispatchToProps)(Input)

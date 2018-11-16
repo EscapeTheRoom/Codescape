@@ -28,10 +28,9 @@ export const fetchAProblem = (problemId) => async dispatch => {
     dispatch(getProblem(data));
 }
 
-// export const sendInputWithSpec = (input) => async dispatch => {
-//     const { data } = await axios.post('/api/docker', input)
-//     dispatch()
-// }
+export const sendInput = (input, problemId) => async dispatch => {
+    await axios.post('/api/docker', input, problemId)
+}
 
 const problemsReducer = (state = defaultProblem, action) => {
     switch (action.type) {
