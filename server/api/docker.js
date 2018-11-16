@@ -14,7 +14,7 @@ router.post('/', async (req, res,  next) => {
         }
         const { data } = await axios.post('http://172.16.27.212:8000', outputData)
         console.log('data', data)
-        res.send(data)
+        res.json(data)
     } catch (err){
         console.error(err)
         next(err)
