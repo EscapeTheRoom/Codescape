@@ -5,20 +5,27 @@ import Input from './Input'
 
 class Problem extends Component {
   async componentDidMount() {
-    console.log('ididididi', this.props)
     await this.props.getAProblem(this.props.id)
   }
 
   render() {
-    console.log('ididididi', this.props)
     return (
-      <div className="problem-container">
-        <ul>
-          <li>{this.props.problem.id}</li>
-          <li>{this.props.problem.title}</li>
-        </ul>
+      <div className="outer">
 
+      <div className="problem-container">
+        <div>
+          <h1>{this.props.problem.title}</h1>
+        </div>
+        
+        <div>
+          <p>{this.props.problem.prompt}</p>
+        </div>
+      </div>
+
+      <div className="input-container">
         <Input problem={this.props.problem} />
+      </div>
+
       </div>
     )
   }

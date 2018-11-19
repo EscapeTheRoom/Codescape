@@ -11,8 +11,8 @@ class TestResult extends Component {
  
   render() {
     return (
-      <div>
-        <h1>Test Results</h1>
+      <div className="bottom-container">
+        <h3>Test Specs</h3>
         <div>
           {this.props.spec
             .split('\n')
