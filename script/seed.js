@@ -3,7 +3,7 @@ const fs = require('fs')
 const db = require('../server/db')
 const {User, Problem} = require('../server/db/models')
 const spec1File = fs.readFileSync(__dirname + '/specFiles/spec1.js' )
-const spec2File = fs.readFileSync(__dirname + './specFiles/spec2.js')
+const spec2File = fs.readFileSync(__dirname + '/specFiles/spec2.js')
 
 async function seed() {
   await db.sync({force: true})
