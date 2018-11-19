@@ -3,6 +3,7 @@ const fs = require('fs')
 const db = require('../server/db')
 const {User, Problem} = require('../server/db/models')
 const spec1File = fs.readFileSync(__dirname + '/specFiles/spec1.js' )
+const spec2File = fs.readFileSync(__dirname + './specFiles/spec2.js')
 
 async function seed() {
   await db.sync({force: true})
@@ -13,7 +14,8 @@ async function seed() {
     User.create({email: 'murphy@email.com', password: '123'})
   ])
   const problems = await Promise.all([
-    Problem.create({title: 'spec1', prompt:"lala spec 1\nhey", spec: spec1File})
+    Problem.create({title: 'spec1', prompt:"lala spec 1\nhey", spec: spec1File}),
+    Problem.create({title: 'spec2', prompt:"im spec2", spec: spec2File})
   ])
   
   console.log(`seeded ${users.length} users`)
