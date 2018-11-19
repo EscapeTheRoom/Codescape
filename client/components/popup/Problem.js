@@ -5,11 +5,12 @@ import Input from './Input'
 
 class Problem extends Component {
   async componentDidMount() {
+    console.log('ididididi', this.props)
     await this.props.getAProblem(this.props.id)
   }
 
   render() {
-    // console.log('ididididi', this.props)
+    console.log('ididididi', this.props)
     return (
       <div className="problem-container">
         <ul>
