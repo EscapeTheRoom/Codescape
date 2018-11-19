@@ -6,6 +6,7 @@ import {Login, Signup, UserHome} from './components'
 import {me} from './store'
 
 import Instruction from './components/popup/Instruction'
+import Level1 from './components/rooms/level1'
 
 /**
  * COMPONENT
@@ -24,7 +25,7 @@ class Routes extends Component {
         <Route path="/login" component={Login} />
         <Route path="/signup" component={Signup} />
         <Route path="/problem/:problemId" component={Instruction} />
-      
+        <Route path="/game" component={Level1}/>
         {isLoggedIn && (
           <Switch>
             {/* Routes placed here are only available after logging in */}
