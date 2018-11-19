@@ -1,11 +1,20 @@
 import React, {Component} from 'react'
 import {withRouter} from 'react-router-dom'
 import {connect} from 'react-redux'
-import {sendInput} from '../../store/problem'
 
 class TestResult extends Component {
   render() {
-    return <h1>Test Results</h1>
+    console.log('fasdlfkjSPEC', this.props.spec)
+    return (
+      <div>
+        <h1>Test Results</h1>
+        <div>
+          {this.props.spec
+            .split('\n')
+            .map((line, idx) => <p key={idx}>{line}</p>)}
+        </div>
+      </div>
+    )
   }
 }
 
@@ -13,10 +22,4 @@ const mapStateToProps = state => ({
   spec: state.problemsReducer.spec
 })
 
-const mapDispatchToProps = dispatch => ({
-  sendInput: () => dispatch(sendInput())
-})
-
-export default withRouter(
-  connect(mapStateToProps, mapDispatchToProps)(TestResult)
-)
+export default withRouter(connect(mapStateToProps)(TestResult))

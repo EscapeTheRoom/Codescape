@@ -10,7 +10,7 @@ import AceEditor from 'react-ace'
 import 'brace/mode/javascript'
 
 // Import a Theme (okadia, github, xcode etc)
-import 'brace/theme/monokai'
+import 'brace/theme/twilight'
 import {sendInput} from '../../store/problem'
 
 class Input extends Component {
@@ -51,7 +51,7 @@ class Input extends Component {
       <div className="editor">
         <AceEditor
           mode="javascript"
-          theme="monokai"
+          theme="twilight"
           name="code"
           onLoad={this.onLoad}
           onChange={this.onChange}
