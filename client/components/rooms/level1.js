@@ -25,8 +25,8 @@ class Level1 extends Component {
     render(){
         return(
             <div>
-            <div onClick={this.handleClick} >
-                <img  id={1} src="https://www.freeiconspng.com/uploads/beds-bedroom-icon-25.png"></img>
+            <div  >
+                <img  onClick={this.handleClick} id={1} src="https://www.freeiconspng.com/uploads/beds-bedroom-icon-25.png"></img>
             <Instruction problemId={this.state.problemId} hidden={this.state.hidden} />    
             </div> 
             </div>                                                         

@@ -2,6 +2,7 @@ import React, {Component} from 'react'
 import axios from 'axios'
 import {connect} from 'react-redux'
 
+
 // Import Brace and the AceEditor Component
 import brace from 'brace'
 import AceEditor from 'react-ace'
@@ -44,6 +45,8 @@ class Input extends Component {
     // POST request to Docker API
     // console.log('code', this.state.code, 'problemId', this.props.problem.id)
     this.props.sendInput(this.state)
+    
+             
   }
 
   render() {
@@ -77,7 +80,8 @@ class Input extends Component {
 }
 
 const mapDispatchToProps = dispatch => ({
-  sendInput: input => dispatch(sendInput(input))
+  sendInput: input => dispatch(sendInput(input)),
+ 
 })
 
 export default connect(null, mapDispatchToProps)(Input)
