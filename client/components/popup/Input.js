@@ -41,8 +41,6 @@ class Input extends Component {
   handleSubmit(e) {
     e.preventDefault()
 
-    // POST request to Docker API
-    // console.log('code', this.state.code, 'problemId', this.props.problem.id)
     this.props.sendInput(this.state)
   }
 
@@ -68,7 +66,7 @@ class Input extends Component {
             tabSize: 1
           }}
         />
-        <button onClick={this.handleSubmit} type="submit">
+        <button className="button" type="submit" onClick={this.handleSubmit}>
           Run Code
         </button>
       </div>

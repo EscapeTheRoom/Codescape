@@ -4,10 +4,9 @@ import {connect} from 'react-redux'
 
 class TestResult extends Component {
   render() {
-    console.log('fasdlfkjSPEC', this.props.spec)
     return (
-      <div>
-        <h1>Test Results</h1>
+      <div className="bottom-container">
+        <h3>Test Specs</h3>
         <div>
           {this.props.spec
             .split('\n')

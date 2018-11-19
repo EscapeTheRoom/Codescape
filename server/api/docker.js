@@ -12,7 +12,7 @@ router.post('/', async (req, res, next) => {
       spec,
       code: req.body.code
     }
-    const {data} = await axios.post('http://172.16.25.72:8000', outputData)
+    const {data} = await axios.post('https://codescape-api.herokuapp.com', outputData)
     console.log('data', data)
     res.json(data)
   } catch (err) {

@@ -14,8 +14,8 @@ async function seed() {
     User.create({email: 'murphy@email.com', password: '123'})
   ])
   const problems = await Promise.all([
-    Problem.create({title: 'spec1', prompt:"lala spec 1\nhey", spec: spec1File}),
-    Problem.create({title: 'spec2', prompt:"im spec2", spec: spec2File})
+    Problem.create({title: 'Get Initials', prompt: "Write a function that takes a string and returns the initials in uppercase.", spec: spec1File}),
+    Problem.create({title: 'Reverse String', prompt: "Write a function that takes a string as input and returns the string reversed.", spec: spec2File})
   ])
   
   console.log(`seeded ${users.length} users`)
