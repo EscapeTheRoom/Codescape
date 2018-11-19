@@ -8,11 +8,12 @@ class Instruction extends Component {
         super(props) // props will be passed down including id for problem
 
     }
-    render(){
+
+    render() {
         return (
           <div className={this.props.hidden}>
             <Problem id={this.props.problemId} />
-            <TestResult />
+            <TestResult id={this.props.problemId} />
           </div>
         )
     }
