@@ -5,7 +5,7 @@ import axios from 'axios'
  */
 const GET_PROBLEM = 'GET_PROBLEM'
 const RECEIVE_INPUT = 'RECEIVE_INPUT'
-
+const GET_SPEC_RESULT = 'GET_SPEC_RESULT'
 /**
  * INITIAL STATE
  */
@@ -24,6 +24,11 @@ const getProblem = problem => ({
 
 const receiveInput = spec => ({
   type: RECEIVE_INPUT,
+  spec
+})
+
+const specReciever = spec => ({
+  type: GET_SPEC_RESULT,
   spec
 })
 
