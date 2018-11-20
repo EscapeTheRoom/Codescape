@@ -42,4 +42,19 @@ router.get('/me', (req, res) => {
   res.json(req.user)
 })
 
+router.put('/update', async (req, res) => {
+  try{
+    const updatedUser = await User.update(
+      {isSolved: req.body.isSolved},
+      {where: {id: req.body.id}},
+      {returning: true}
+    )
+    // const editUser= await User.findById(req.body.id)
+    // editUser.isSolved = req.body.isSolved
+  }
+  catch(err){
+    console.error(err)
+  }
+})
+
 router.use('/google', require('./google'))

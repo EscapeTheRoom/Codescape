@@ -26,6 +26,16 @@ const User = db.define('user', {
   },
   googleId: {
     type: Sequelize.STRING
+  }, 
+  isSolved: {
+    type: Sequelize.JSON,
+    defaultValue: {
+      "1":"false"
+    }
+  }, 
+  isWon:{
+    type:Sequelize.BOOLEAN,
+    defaultValue: false
   }
 })
 

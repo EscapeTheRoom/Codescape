@@ -6,29 +6,28 @@ class Level1 extends Component {
     constructor() {
         super()
         this.state = {
-            problemId: 1,
+            problemId: 0,
             hidden: 'hidden'
         }
 
         this.handleClick = this.handleClick.bind(this)
     }
+   
 
     handleClick(e){
         console.log("event Target", e.currentTarget)
-        this.setState({
+        
+        this.setState({ 
             problemId: e.target.id,
             hidden: "notHidden"
         })
-
-
-        // this.props.history.push(`/problem/${e.target.id}`)
     }
     render(){
         return(
             <div>
             <div>
                 <img id={1} src="https://www.freeiconspng.com/uploads/beds-bedroom-icon-25.png" onClick={this.handleClick} />
-            <Instruction problemId={this.state.problemId} hidden={this.state.hidden} />    
+                <Instruction problemId={this.state.problemId} hidden={this.state.hidden} />    
             </div> 
             </div>                                                         
         )

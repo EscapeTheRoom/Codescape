@@ -2,6 +2,9 @@ import React, {Component} from 'react'
 import Problem from './Problem'
 import TestResult from './TestResult'
 import { RenderLoop } from 'brace';
+import {withRouter} from 'react-router-dom'
+import {connect} from 'react-redux'
+
 
 class Instruction extends Component {
     constructor(props){
@@ -10,6 +13,7 @@ class Instruction extends Component {
     }
 
     render() {
+        console.log(this.props)
         return (
           <div className={this.props.hidden}>
             <Problem id={this.props.problemId} />
@@ -18,5 +22,11 @@ class Instruction extends Component {
         )
     }
 }
+const mapStateToProps = state => ({
+    spec: state.problemsReducer.spec,
+   
+  
+  })
+ 
 
-export default Instruction
+export default withRouter(connect(mapStateToProps)(Instruction))
