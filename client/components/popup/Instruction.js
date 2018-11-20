@@ -11,28 +11,20 @@ class Instruction extends Component {
         super(props) // props will be passed down including id for problem
 
     }
-<<<<<<< HEAD
-    
-    render(){
-        return (
-          <div className={this.props.hidden}>
-            <Problem id={this.props.problemId} />
-            <TestResult id={this.props.problemId}/>
-=======
 
     render() {
+        console.log(this.props)
         return (
           <div className={this.props.hidden}>
             <Problem id={this.props.problemId} />
             <TestResult id={this.props.problemId} />
->>>>>>> master
           </div>
         )
     }
 }
 const mapStateToProps = state => ({
     spec: state.problemsReducer.spec,
-    isSolved: state.isSolved,
+   
   
   })
  

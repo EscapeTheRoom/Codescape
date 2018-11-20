@@ -4,11 +4,17 @@ import {connect} from 'react-redux'
 import Input from './Input'
 
 class Problem extends Component {
-  async componentDidMount() {
-    await this.props.getAProblem(this.props.id)
+  async componentDidUpdate(prevProps) {
+    console.log("PREVPROPS!",prevProps)
+   if(prevProps.id !== this.props.id){
+    await this.props.getAProblem(Number(this.props.id))
+   }
+    
   }
 
   render() {
+    console.log("ProblemProps",this.props)
+    if(this.props.problem){
     return (
       <div className="outer">
 
@@ -29,6 +35,7 @@ class Problem extends Component {
       </div>
     )
   }
+}
 }
 
 const mapStateToProps = state => ({
