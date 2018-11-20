@@ -11,6 +11,13 @@ class Instruction extends Component {
   }
 
   render() {
+    if(this.props.user.isSolved[this.props.problemId]==="true"){
+      return(
+        <div className="solved">
+        <h1>You already solved this problem!</h1>
+        </div>
+      )
+    }
     return (
       <div className={this.props.hidden}>
         <Problem id={this.props.problemId} handleExit={this.props.handleExit} />
@@ -20,7 +27,8 @@ class Instruction extends Component {
   }
 }
 const mapStateToProps = state => ({
-  spec: state.problemsReducer.spec
+  spec: state.problemsReducer.spec,
+  user: state.user
 })
 
 export default withRouter(connect(mapStateToProps)(Instruction))
