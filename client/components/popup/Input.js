@@ -2,6 +2,7 @@ import React, {Component} from 'react'
 import axios from 'axios'
 import {connect} from 'react-redux'
 
+
 // Import Brace and the AceEditor Component
 import brace from 'brace'
 import AceEditor from 'react-ace'
@@ -40,6 +41,8 @@ class Input extends Component {
     e.preventDefault()
 
     this.props.sendInput(this.state)
+    
+             
   }
 
   async handleClick(e) {
@@ -89,7 +92,8 @@ class Input extends Component {
 }
 
 const mapDispatchToProps = dispatch => ({
-  sendInput: input => dispatch(sendInput(input))
+  sendInput: input => dispatch(sendInput(input)),
+ 
 })
 
 export default connect(null, mapDispatchToProps)(Input)
