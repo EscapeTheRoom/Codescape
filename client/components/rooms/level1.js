@@ -5,7 +5,7 @@ class Level1 extends Component {
   constructor() {
     super()
     this.state = {
-      problemId: 1,
+      problemId: 0,
       hidden: 'hidden'
     }
 
