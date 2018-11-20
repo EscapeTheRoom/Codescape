@@ -2,7 +2,7 @@
 const fs = require('fs')
 const db = require('../server/db')
 const {User, Problem} = require('../server/db/models')
-const spec1File = fs.readFileSync(__dirname + '/specFiles/spec1.js' )
+const spec1File = fs.readFileSync(__dirname + '/specFiles/spec1.js')
 const spec2File = fs.readFileSync(__dirname + '/specFiles/spec2.js')
 
 async function seed() {
@@ -14,14 +14,25 @@ async function seed() {
     User.create({email: 'murphy@email.com', password: '123'})
   ])
   const problems = await Promise.all([
-    Problem.create({title: 'Get Initials', prompt: "Write a function that takes a string and returns the initials in uppercase.", spec: spec1File}),
-    Problem.create({title: 'Reverse String', prompt: "Write a function that takes a string as input and returns the string reversed.", spec: spec2File})
+    Problem.create({
+      title: 'Get Initials',
+      prompt:
+        'Write a function that takes a string and returns the initials in uppercase.',
+      functionSetup:
+        'const utils = {} \nfunction utils.getInitials() {\n// YOUR CODE HERE\n}',
+      spec: spec1File
+    }),
+    Problem.create({
+      title: 'Reverse String',
+      prompt:
+        'Write a function that takes a string as input and returns the string reversed.',
+      spec: spec2File
+    })
   ])
-  
+
   console.log(`seeded ${users.length} users`)
   console.log(`seeded successfully`)
 }
-
 
 // We've separated the `seed` function from the `runSeed` function.
 // This way we can isolate the error handling and exit trapping.

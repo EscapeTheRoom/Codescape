@@ -23,14 +23,12 @@ class Input extends Component {
 
     this.onChange = this.onChange.bind(this)
     this.handleSubmit = this.handleSubmit.bind(this)
+    this.handleClick = this.handleClick.bind(this)
   }
-  // componentDidMount(){
-  //     this.setState({
-  //         id: this.props.problem.id
-  //     })
-  // }
+
   onChange(value) {
     const {id} = this.props.problem
+    //const {code} = this.props.problem.functionSetup
 
     this.setState({
       code: value,
@@ -44,7 +42,20 @@ class Input extends Component {
     this.props.sendInput(this.state)
   }
 
+  async handleClick(e) {
+    e.preventDefault()
+    const {id} = this.props.problem
+
+    await this.setState({
+      code: '',
+      id
+    })
+
+    this.props.handleExit()
+  }
+
   render() {
+    const {functionSetup} = this.props.problem
     return (
       <div className="editor">
         <AceEditor
@@ -68,6 +79,9 @@ class Input extends Component {
         />
         <button className="button" type="submit" onClick={this.handleSubmit}>
           Run Code
+        </button>
+        <button className="button" type="submit" onClick={this.handleClick}>
+          Exit
         </button>
       </div>
     )
