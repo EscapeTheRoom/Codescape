@@ -1,19 +1,19 @@
 import axios from 'axios'
-import { bindActionCreators } from 'redux';
+import {bindActionCreators} from 'redux'
 
 /**
  * ACTION TYPES
  */
 const GET_PROBLEM = 'GET_PROBLEM'
 const RECEIVE_INPUT = 'RECEIVE_INPUT'
+const CLEAR_SPEC = 'CLEAR_SPEC'
 
 /**
  * INITIAL STATE
  */
 const defaultProblem = {
   problem: {},
-  spec: '',
-
+  spec: ''
 }
 
 /**
@@ -29,6 +29,10 @@ const receiveInput = spec => ({
   spec
 })
 
+const clearSpecs = spec => ({
+  type: CLEAR_SPEC,
+  spec: spec
+})
 
 /**
  * THUNK CREATORS
@@ -42,7 +46,7 @@ export const fetchAProblem = problemId => async dispatch => {
 
 export const sendInput = input => async dispatch => {
   try {
-    console.log("INPUT", input)
+    console.log('INPUT', input)
     const {data} = await axios.post(`/api/docker`, input) //this will be our test result
     console.log('dataThunk', data)
     dispatch(receiveInput(data))
@@ -51,13 +55,22 @@ export const sendInput = input => async dispatch => {
   }
 }
 
+export const clearSpec = () => dispatch => {
+  try {
+    dispatch(clearSpecs(''))
+  } catch (err) {
+    console.error(err)
+  }
+}
 
 const problemsReducer = (state = defaultProblem, action) => {
   switch (action.type) {
     case GET_PROBLEM:
       return {...state, problem: action.problem}
     case RECEIVE_INPUT:
-      return {...state, spec: action.spec }
+      return {...state, spec: action.spec}
+    case CLEAR_SPEC:
+      return {...state, spec: action.spec}
     default:
       return state
   }
