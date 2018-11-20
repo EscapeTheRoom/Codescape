@@ -14,13 +14,6 @@ class Instruction extends Component {
     return (
       <div className={this.props.hidden}>
         <Problem id={this.props.problemId} handleExit={this.props.handleExit} />
-        {/* <button
-          className="button"
-          type="submit"
-          onClick={this.props.handleExit}
-        >
-          Exit
-        </button> */}
         <TestResult id={this.props.problemId} />
       </div>
     )
