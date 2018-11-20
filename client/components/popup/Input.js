@@ -2,7 +2,6 @@ import React, {Component} from 'react'
 import axios from 'axios'
 import {connect} from 'react-redux'
 
-
 // Import Brace and the AceEditor Component
 import brace from 'brace'
 import AceEditor from 'react-ace'
@@ -12,7 +11,7 @@ import 'brace/mode/javascript'
 
 // Import a Theme (okadia, github, xcode etc)
 import 'brace/theme/twilight'
-import {sendInput} from '../../store/problem'
+import {sendInput, clearSpec} from '../../store/problem'
 
 class Input extends Component {
   constructor(props, context) {
@@ -41,8 +40,6 @@ class Input extends Component {
     e.preventDefault()
 
     this.props.sendInput(this.state)
-    
-             
   }
 
   async handleClick(e) {
@@ -53,8 +50,8 @@ class Input extends Component {
       code: '',
       id
     })
-
-    this.props.handleExit()
+    await this.props.clearSpec()
+    await this.props.handleExit()
   }
 
   render() {
@@ -93,7 +90,7 @@ class Input extends Component {
 
 const mapDispatchToProps = dispatch => ({
   sendInput: input => dispatch(sendInput(input)),
- 
+  clearSpec: () => dispatch(clearSpec())
 })
 
 export default connect(null, mapDispatchToProps)(Input)
