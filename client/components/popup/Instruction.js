@@ -1,32 +1,26 @@
 import React, {Component} from 'react'
 import Problem from './Problem'
 import TestResult from './TestResult'
-import { RenderLoop } from 'brace';
+import {RenderLoop} from 'brace'
 import {withRouter} from 'react-router-dom'
 import {connect} from 'react-redux'
 
-
 class Instruction extends Component {
-    constructor(props){
-        super(props) // props will be passed down including id for problem
+  constructor(props) {
+    super(props) // props will be passed down including id for problem
+  }
 
-    }
-
-    render() {
-        console.log(this.props)
-        return (
-          <div className={this.props.hidden}>
-            <Problem id={this.props.problemId} />
-            <TestResult id={this.props.problemId} />
-          </div>
-        )
-    }
+  render() {
+    return (
+      <div className={this.props.hidden}>
+        <Problem id={this.props.problemId} handleExit={this.props.handleExit} />
+        <TestResult id={this.props.problemId} />
+      </div>
+    )
+  }
 }
 const mapStateToProps = state => ({
-    spec: state.problemsReducer.spec,
-   
-  
-  })
- 
+  spec: state.problemsReducer.spec
+})
 
 export default withRouter(connect(mapStateToProps)(Instruction))
