@@ -4,6 +4,8 @@ import TestResult from './TestResult'
 import {RenderLoop} from 'brace'
 import {withRouter} from 'react-router-dom'
 import {connect} from 'react-redux'
+import {getItemSolved} from '../../store/guest'
+import {clearSpec} from '../../store/problem'
 
 class Instruction extends Component {
   constructor(props) {
@@ -11,10 +13,13 @@ class Instruction extends Component {
   }
 
   render() {
-    if(this.props.user.isSolved[this.props.problemId]==="true"){
-      return(
+    const {isSolved} = this.props.guest
+    if (isSolved[this.props.problemId] === 'true') {
+      //this.props.clearSpec()
+      //if (this.props.user.isSolved[this.props.problemId] === 'true') {
+      return (
         <div className="solved">
-        <h1>You already solved this problem!</h1>
+          <h1>You already solved this problem!</h1>
         </div>
       )
     }
@@ -28,7 +33,14 @@ class Instruction extends Component {
 }
 const mapStateToProps = state => ({
   spec: state.problemsReducer.spec,
-  user: state.user
+  user: state.user,
+  guest: state.guest
 })
 
-export default withRouter(connect(mapStateToProps)(Instruction))
+const mapDispatchToProps = dispatch => ({
+  clearSpec: () => dispatch(clearSpec())
+})
+
+export default withRouter(
+  connect(mapStateToProps, mapDispatchToProps)(Instruction)
+)

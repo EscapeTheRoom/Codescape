@@ -1,7 +1,7 @@
 import React, {Component} from 'react'
 import axios from 'axios'
 import {connect} from 'react-redux'
-import {clearCode, setCode} from '../../store/problem'
+import {clearCode, setCode, sendInput, clearSpec} from '../../store/problem'
 
 // Import Brace and the AceEditor Component
 import brace from 'brace'
@@ -12,7 +12,6 @@ import 'brace/mode/javascript'
 
 // Import a Theme (okadia, github, xcode etc)
 import 'brace/theme/twilight'
-import {sendInput, clearSpec} from '../../store/problem'
 
 class Input extends Component {
   constructor(props, context) {
@@ -29,7 +28,6 @@ class Input extends Component {
 
   onChange(value) {
     const {id} = this.props.problem
-    //const {code} = this.props.problem.functionSetup
 
     this.setState({
       code: value,
@@ -37,11 +35,15 @@ class Input extends Component {
     })
   }
 
-  handleSubmit(e) {
+  async handleSubmit(e) {
     e.preventDefault()
 
-    this.props.setCode(this.state)
-    this.props.sendInput(this.state)
+    // this.props.setCode(this.state)
+    await this.props.sendInput(this.state)
+    const {spec} = this.props.problemState
+    if (!spec.includes('failing')) {
+      await this.props.clearSpec()
+    }
   }
 
   async handleClick(e) {
@@ -52,15 +54,15 @@ class Input extends Component {
       code: '',
       id
     })
-    
-    await this.props.handleExit()
+
+    //await this.props.clearInput()
     await this.props.clearSpec()
-    // await this.props.clearInput()
+    await this.props.handleExit()
   }
 
   render() {
     const {functionSetup} = this.props.problem
-    
+
     return (
       <div className="editor">
         <AceEditor
@@ -93,11 +95,15 @@ class Input extends Component {
   }
 }
 
-const mapDispatchToProps = dispatch => ({
-  sendInput: input => dispatch(sendInput(input)),
-  clearSpec: () => dispatch(clearSpec()),
-  clearInput: (code) => dispatch(clearCode(code)),
-  setCode: (code) => dispatch(setCode(code))
+const mapStateToProps = state => ({
+  problemState: state.problemsReducer
 })
 
-export default connect(null, mapDispatchToProps)(Input)
+const mapDispatchToProps = dispatch => ({
+  sendInput: input => dispatch(sendInput(input)),
+  clearSpec: () => dispatch(clearSpec())
+  //clearInput: code => dispatch(clearCode(code)),
+  // setCode: code => dispatch(setCode(code))
+})
+
+export default connect(mapStateToProps, mapDispatchToProps)(Input)
