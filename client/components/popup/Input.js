@@ -1,6 +1,7 @@
 import React, {Component} from 'react'
 import axios from 'axios'
 import {connect} from 'react-redux'
+import {clearCode, setCode} from '../../store/problem'
 
 // Import Brace and the AceEditor Component
 import brace from 'brace'
@@ -39,6 +40,7 @@ class Input extends Component {
   handleSubmit(e) {
     e.preventDefault()
 
+    this.props.setCode(this.state)
     this.props.sendInput(this.state)
   }
 
@@ -46,12 +48,14 @@ class Input extends Component {
     e.preventDefault()
     const {id} = this.props.problem
 
-    await this.setState({
+    this.setState({
       code: '',
       id
     })
-    await this.props.clearSpec()
+    
     await this.props.handleExit()
+    await this.props.clearSpec()
+    // await this.props.clearInput()
   }
 
   render() {
@@ -90,7 +94,9 @@ class Input extends Component {
 
 const mapDispatchToProps = dispatch => ({
   sendInput: input => dispatch(sendInput(input)),
-  clearSpec: () => dispatch(clearSpec())
+  clearSpec: () => dispatch(clearSpec()),
+  clearInput: (code) => dispatch(clearCode(code)),
+  setCode: (code) => dispatch(setCode(code))
 })
 
 export default connect(null, mapDispatchToProps)(Input)

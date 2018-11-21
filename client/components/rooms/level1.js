@@ -1,5 +1,6 @@
 import React, {Component} from 'react'
 import Instruction from '../popup/Instruction'
+import {connect} from 'react-redux'
 
 class Level1 extends Component {
   constructor() {
@@ -25,6 +26,7 @@ class Level1 extends Component {
   }
 
   handleExit() {
+
     this.setState({
       hidden: 'hidden'
     })
@@ -39,6 +41,11 @@ class Level1 extends Component {
             src="https://www.freeiconspng.com/uploads/beds-bedroom-icon-25.png"
             onClick={this.handleClick}
           />
+          <img
+            id={2}
+            src="https://image.ibb.co/cGAHpq/alarm-clock.png"
+            onClick={this.handleClick}
+          />
           <Instruction
             problemId={this.state.problemId}
             hidden={this.state.hidden}
@@ -49,4 +56,5 @@ class Level1 extends Component {
     )
   }
 }
+
 export default Level1
