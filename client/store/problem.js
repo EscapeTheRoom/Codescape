@@ -37,9 +37,9 @@ const clearSpecs = spec => ({
   spec: spec
 })
 
-const clearCode = clear => ({
+const clearCode = code => ({
   type: CLEAR_CODE,
-  clear
+  code
 })
 
 const setInput = code => ({
@@ -53,15 +53,12 @@ const setInput = code => ({
 
 export const fetchAProblem = problemId => async dispatch => {
   const {data} = await axios.get(`/api/problems/${problemId}`)
-  console.log('ProblemData', data)
   dispatch(getProblem(data))
 }
 
 export const sendInput = input => async dispatch => {
   try {
-    console.log('INPUT', input)
     const {data} = await axios.post(`/api/docker`, input) //this will be our test result
-    console.log('dataThunk', data)
     dispatch(receiveInput(data))
   } catch (err) {
     console.error(err)
@@ -79,8 +76,7 @@ export const clearSpec = () => dispatch => {
 export const clearInput = () => dispatch => {
   try {
     dispatch(clearCode(''))
-  }
-  catch (err) {
+  } catch (err) {
     console.error(err)
   }
 }
@@ -88,8 +84,7 @@ export const clearInput = () => dispatch => {
 export const setCode = code => dispatch => {
   try {
     dispatch(setInput(code))
-  }
-  catch (err) {
+  } catch (err) {
     console.error(err)
   }
 }
@@ -103,7 +98,7 @@ const problemsReducer = (state = defaultProblem, action) => {
     case CLEAR_SPEC:
       return {...state, spec: action.spec}
     case CLEAR_CODE:
-      return {...state, code: action.clear}
+      return {...state, code: action.code}
     case CODE_INPUT:
       return {...state, code: action.code}
     default:

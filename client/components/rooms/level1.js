@@ -1,6 +1,9 @@
 import React, {Component} from 'react'
 import Instruction from '../popup/Instruction'
 import {connect} from 'react-redux'
+import {withRouter} from 'react-router-dom'
+import {getItemSolved} from '../../store/guest'
+import {fetchAProblem} from '../../store/problem'
 
 class Level1 extends Component {
   constructor() {
@@ -14,25 +17,29 @@ class Level1 extends Component {
     this.handleExit = this.handleExit.bind(this)
   }
 
-  handleClick(e) {
+  async handleClick(e) {
     e.preventDefault()
-
-    this.setState({
-      problemId: e.target.id,
-      hidden: 'notHidden'
-    })
+    const id = e.target.id
+    const {items} = this.props.guest
+    await this.props.fetchAProblem(id)
+    if (items[id] === 'true') {
+      this.setState({
+        problemId: id,
+        hidden: 'notHidden'
+      })
+    }
 
     // this.props.history.push(`/problem/${e.target.id}`)
   }
 
   handleExit() {
-
     this.setState({
       hidden: 'hidden'
     })
   }
 
   render() {
+    const {problem} = this.props.problem
     return (
       <div>
         <div>
@@ -62,4 +69,14 @@ class Level1 extends Component {
   }
 }
 
-export default Level1
+const mapStateToProps = state => ({
+  guest: state.guest,
+  problem: state.problemsReducer
+})
+
+const mapDispatchToProps = dispatch => ({
+  getItemSolved: problemId => dispatch(getItemSolved(problemId)),
+  fetchAProblem: problemId => dispatch(fetchAProblem(problemId))
+})
+
+export default withRouter(connect(mapStateToProps, mapDispatchToProps)(Level1))
