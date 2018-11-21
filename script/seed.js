@@ -26,6 +26,8 @@ async function seed() {
       title: 'Reverse String',
       prompt:
         'Write a function that takes a string as input and returns the string reversed.',
+      functionSetup: 
+        'function reverseStr(str) { \n // YOUR CODE HERE \n}',
       spec: spec2File
     })
   ])

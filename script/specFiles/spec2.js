@@ -6,10 +6,12 @@ const chaiThings = require('chai-things');
 
 describe('reverseStr', function() {
     it('takes a string and reverses it', function() {
-      expect('hello').to.equal('olleh');
+      const reverse = reverseStr('hello')
+      expect(reverse).to.equal('olleh');
     });
 
     it('takes a string and reverses it', function() {
-      expect('codescape').to.equal('epacsedoc')
+      const reverse = reverseStr('codescape')
+      expect(reverse).to.equal('epacsedoc')
     });
 })
