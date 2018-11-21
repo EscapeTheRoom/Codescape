@@ -12,9 +12,12 @@ const SOLVED = "SOLVED"
  * INITIAL STATE
  */
 const defaultUser = {
+  user: {},
   isWon: false, 
   isSolved:{
-    1: "false"
+    1: "false",
+    2: "false",
+    3: "false"
     //add keys if there were more problems
     //keys correspond to problem ID
   }
@@ -92,7 +95,7 @@ export const updateIsSolved = isSolvedObj => async dispatch => {
 export default function(state = defaultUser, action) {
   switch (action.type) {
     case GET_USER:
-      return {...action.user}
+      return {...state, user: action.user}
     case REMOVE_USER:
       return defaultUser
     case GAME_WON: 

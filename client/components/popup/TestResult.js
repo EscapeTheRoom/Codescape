@@ -5,27 +5,28 @@ import {isSolved, gameWon, updateIsSolved} from '../../store/user'
 
 
 class TestResult extends Component {
-    constructor(props){
-        super(props)
+    constructor(props) {
+        super(props) 
         
     }
-    async componentDidUpdate(prevProps){
-      console.log("here!")
-      if(prevProps.spec !== this.props.spec){
-      if(this.props.spec && !this.props.spec.includes('failing')){
-        await this.props.isSolved(this.props.id)
-        if(this.props.user.id){
-          this.props.updateIsSolved(this.props.user.isSolved)
-          //send the updated isSolved to the store 
-          // which will update the db for the user
+    async componentDidUpdate(prevProps) {
+      const {user} = this.props.user
+
+      if (user.id && prevProps.spec !== this.props.spec) {
+        if(this.props.spec && !this.props.spec.includes('failing')) {
+          await this.props.isSolved(this.props.id)
+          if(this.props.user.id){
+            this.props.updateIsSolved(this.props.user.isSolved)
+            //send the updated isSolved to the store 
+            // which will update the db for the user
+          }
+          else{
+            //if not logged in 
+            // send new isSolved to sessionStorage
+          }
         }
-        else{
-          //if not logged in 
-          // send new isSolved to sessionStorage
-        }
-      }
       // this.props.gameWon()
-    }
+      }
     }
  
   render() {

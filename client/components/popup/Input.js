@@ -60,6 +60,7 @@ class Input extends Component {
 
   render() {
     const {functionSetup} = this.props.problem
+    
     return (
       <div className="editor">
         <AceEditor
