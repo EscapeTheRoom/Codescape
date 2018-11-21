@@ -46,6 +46,11 @@ class Level1 extends Component {
             src="https://image.ibb.co/cGAHpq/alarm-clock.png"
             onClick={this.handleClick}
           />
+          <img
+            id={3}
+            src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRCsguIkFdirKBtM-xBxv2lGtj09ZswAosa5T9NYFKqjeRTKPZ8zQ"
+            onClick={this.handleClick}
+          />
           <Instruction
             problemId={this.state.problemId}
             hidden={this.state.hidden}

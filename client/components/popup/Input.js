@@ -72,7 +72,7 @@ class Input extends Component {
           showPrintMargin={true}
           showGutter={true}
           highlightActiveLine={true}
-          value={this.state.code}
+          value={this.state.code || functionSetup}
           setOptions={{
             enableBasicAutocompletion: false,
             enableLiveAutocompletion: false,
