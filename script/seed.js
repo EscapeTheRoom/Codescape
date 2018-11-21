@@ -4,6 +4,10 @@ const db = require('../server/db')
 const {User, Problem} = require('../server/db/models')
 const spec1File = fs.readFileSync(__dirname + '/specFiles/spec1.js')
 const spec2File = fs.readFileSync(__dirname + '/specFiles/spec2.js')
+const spec3File = fs.readFileSync(__dirname + '/specFiles/spec3.js')
+const spec4File = fs.readFileSync(__dirname + '/specFiles/spec4.js')
+const spec5File = fs.readFileSync(__dirname + '/specFiles/spec5.js')
+const spec6File = fs.readFileSync(__dirname + '/specFiles/spec6.js')
 
 async function seed() {
   await db.sync({force: true})
@@ -19,15 +23,49 @@ async function seed() {
       prompt:
         'Write a function that takes a string and returns the initials in uppercase.',
       functionSetup:
-        'const utils = {} \nfunction utils.getInitials() {\n// YOUR CODE HERE\n}',
+        'function getInitials(str) {\n// YOUR CODE HERE\n}',
       spec: spec1File
     }),
     Problem.create({
       title: 'Reverse String',
       prompt:
         'Write a function that takes a string as input and returns the string reversed.',
+      functionSetup:
+        'function reverseStr(str){\n// YOUR CODE HERE\n}',
       spec: spec2File
-    })
+    }),
+    Problem.create({
+      title: 'All Caps',
+      prompt:
+        'Write a function that takes a string as input and returns the string it in all caps.',
+      functionSetup:
+        'function shout(string) {\n// YOUR CODE HERE\n}',
+      spec: spec3File
+    }),
+    Problem.create({
+      title: 'Even or Odd',
+      prompt:
+      'Create a function that takes an integer as an argument and returns “Even” for even numbers or “Odd” for odd numbers.',
+      functionSetup:
+        'function evenOrOdd(integer) {\n// YOUR CODE HERE\n}',
+      spec: spec4File
+    }),
+    Problem.create({
+      title: 'Capitals First',
+      prompt:
+      'Create a function that takes an input String and returns a String, where all the uppercase words of the input String are in front and all the lowercase words at the end. The order of the uppercase and lowercase words should be the order in which they occur.',
+      functionSetup:
+        'function capitalsFirst(string) {\n// YOUR CODE HERE\n}',
+      spec: spec5File
+    }),
+    Problem.create({
+      title: 'Get Count',
+      prompt:
+      'Return the number (count) of vowels (a, e, i, o, u) in the given string.The input string will only consist of lower case letters and or spaces.',
+      functionSetup:
+        'function getCount(string) {\n// YOUR CODE HERE\n}',
+      spec: spec6File
+    }),
   ])
 
   console.log(`seeded ${users.length} users`)
