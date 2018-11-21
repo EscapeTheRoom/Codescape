@@ -10,6 +10,6 @@ describe('reverseStr', function() {
     });
 
     it('takes a string and reverses it', function() {
-      expect('codescape').to.equal('codescape')
+      expect('codescape').to.equal('epacsedoc')
     });
 })

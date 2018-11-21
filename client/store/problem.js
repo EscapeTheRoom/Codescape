@@ -7,13 +7,16 @@ import {bindActionCreators} from 'redux'
 const GET_PROBLEM = 'GET_PROBLEM'
 const RECEIVE_INPUT = 'RECEIVE_INPUT'
 const CLEAR_SPEC = 'CLEAR_SPEC'
+const CODE_INPUT = 'CODE_INPUT'
+const CLEAR_CODE = 'CLEAR_CODE'
 
 /**
  * INITIAL STATE
  */
 const defaultProblem = {
   problem: {},
-  spec: ''
+  spec: '',
+  code: ''
 }
 
 /**
@@ -32,6 +35,16 @@ const receiveInput = spec => ({
 const clearSpecs = spec => ({
   type: CLEAR_SPEC,
   spec: spec
+})
+
+const clearCode = clear => ({
+  type: CLEAR_CODE,
+  clear
+})
+
+const setInput = code => ({
+  type: CODE_INPUT,
+  code
 })
 
 /**
@@ -63,6 +76,24 @@ export const clearSpec = () => dispatch => {
   }
 }
 
+export const clearInput = () => dispatch => {
+  try {
+    dispatch(clearCode(''))
+  }
+  catch (err) {
+    console.error(err)
+  }
+}
+
+export const setCode = code => dispatch => {
+  try {
+    dispatch(setInput(code))
+  }
+  catch (err) {
+    console.error(err)
+  }
+}
+
 const problemsReducer = (state = defaultProblem, action) => {
   switch (action.type) {
     case GET_PROBLEM:
@@ -71,6 +102,10 @@ const problemsReducer = (state = defaultProblem, action) => {
       return {...state, spec: action.spec}
     case CLEAR_SPEC:
       return {...state, spec: action.spec}
+    case CLEAR_CODE:
+      return {...state, code: action.clear}
+    case CODE_INPUT:
+      return {...state, code: action.code}
     default:
       return state
   }
