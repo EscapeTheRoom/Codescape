@@ -9,7 +9,7 @@ const Problem = db.define('problem', {
     }
   },
   prompt: {
-    type: Sequelize.STRING,
+    type: Sequelize.TEXT,
     validate: {
       notEmpty: true
     }
