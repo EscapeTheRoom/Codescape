@@ -116,7 +116,23 @@ form div {
   box-shadow: 1px 1px 1px rgba(0, 0, 0, 0.29),
     inset 0px 0px 2px rgba(0, 0, 0, 0.5);
 }
-#unicorn{
-  width:60%;
+.game{
+  display:flex;
+  justify-content:flex-start;
+  padding-top:2%;
+  margin:auto;
+  background-color: black;
 }
 
+.backpack{
+  margin-top:10%;
+  margin-left:7%;
+  margin-right:7%;
+  height:20%;
+  width:5%;
+  background-color: gray;
+}
+.backpackImg{
+  height:2em;
+  margin: 20%;
+}

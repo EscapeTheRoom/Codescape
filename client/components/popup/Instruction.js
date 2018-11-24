@@ -15,6 +15,7 @@ class Instruction extends Component {
   render() {
     const {isSolved} = this.props.guest
     if (isSolved[this.props.problemId] === 'true') {
+      //add clue to backpack
       //this.props.clearSpec()
       //if (this.props.user.isSolved[this.props.problemId] === 'true') {
       return (
