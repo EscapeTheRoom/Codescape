@@ -87,8 +87,8 @@ class Level1 extends Component {
   }
 
   async handleWin(e) {
-    e.preventDefault()
-    let {item} = this.props.guest
+   
+    let {items} = this.props.guest
     let {isSolved} = this.props.guest
     let probId = e.id
     console.log('geust??????????????', isSolved)
@@ -105,6 +105,7 @@ class Level1 extends Component {
       if(this.props.guest.isWon){
       this.setState({
         problemId: probId,
+        hidden:'hidden',
         winner: 'notHidden'
       })
     }
@@ -127,7 +128,13 @@ class Level1 extends Component {
           <ImageMapper id="unicorn" fillColor="transparent" 
           strokeColor="transparent"
           src={source} map={MAP} width={this.state.width*.6} height={(this.state.width/1.3)*.6} imgWidth={5167} 
-          onClick={area => this.handleClick(area)}
+          onClick={area => {
+            if (area.id < 4) {
+              this.handleClick(area)
+            } else if (area.id === 4) {
+              this.handleWin(area)
+            }
+          }}
           />
           <img
             className={this.state.winner}
