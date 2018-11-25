@@ -10,12 +10,14 @@ class Level1 extends Component {
     super()
     this.state = {
       problemId: 0,
-      hidden: 'hidden',
+      hidden: 'hidden', 
+      solved: 'solved',
       winner: 'hidden'
     }
 
     this.handleClick = this.handleClick.bind(this)
     this.handleExit = this.handleExit.bind(this)
+    this.handleClose = this.handleClose.bind(this)
     this.handleWin = this.handleWin.bind(this)
   }
 
@@ -23,40 +25,72 @@ class Level1 extends Component {
     e.preventDefault()
     const id = e.target.id
     const {items} = this.props.guest
+    const {isSolved} = this.props.guest
     await this.props.fetchAProblem(id)
+
     if (items[id] === 'true') {
       this.setState({
         problemId: id,
         hidden: 'notHidden'
       })
     }
+    if (isSolved[id] === 'true') {
+      this.setState({
+        problemId: id,
+        hidden: 'hidden',
+        solved: 'solved'
+      })
+    }
+    if (items[id] === 'false') {
+      this.setState({
+        problemId: id,
+        hidden: 'hidden',
+        solved: 'solved'
+      })
+    }
+  }
 
-    // this.props.history.push(`/problem/${e.target.id}`)
+  handleClose () {
+    this.setState({
+      solved: 'closeSolved'
+    })
   }
 
   async handleWin(e) {
     e.preventDefault()
     let {isSolved} = this.props.guest
-    console.log('geust??????????????', isSolved)
+    let {items} = this.props.guest
+    let probId = e.target.id
+
+    if (items[4] === 'false') {
+      this.setState({
+        problemId: probId,
+        hidden: 'hidden',
+        solved: 'solved',
+        winner: 'hidden'
+      })
+    }
     if (isSolved[3] === 'true') {
       await this.props.guestGameWon()
-      this.setState({winner: 'notHidden'})
+      this.setState({
+        problemId: probId,
+        winner: 'notHidden'
+      })
     }
   }
 
   handleExit() {
     this.setState({
-      hidden: 'hidden'
+      hidden: 'hidden',
+      solved: 'solved',
+      winner: 'hidden'
     })
   }
 
   render() {
-    const {problem} = this.props.problem
-    let {isSolved} = this.props.guest
-    console.log('geust???', isSolved[3])
+
     return (
       <div>
-        <div>
           <img
             id={1}
             src="https://www.freeiconspng.com/uploads/beds-bedroom-icon-25.png"
@@ -80,13 +114,16 @@ class Level1 extends Component {
           <img
             className={this.state.winner}
             src="http://943thepoint.com/files/2013/09/my-little-resume.png?w=980&q=75"
+            onClick={this.handleExit}
           />
+
           <Instruction
             problemId={this.state.problemId}
             hidden={this.state.hidden}
             handleExit={this.handleExit}
+            solved={this.state.solved}
+            handleClose={this.handleClose}
           />
-        </div>
       </div>
     )
   }
