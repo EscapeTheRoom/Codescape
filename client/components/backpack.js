@@ -33,8 +33,7 @@ class Backpack extends Component {
             <div className="backpack">
             {
                 Object.keys(items).map( (key, idx) => (
-                    
-                    (items[idx+2]==="true")? <img className="backpackImg"id={key} src={`img/${this.state.room}_${idx+2}.png`}/> :<img className="backpackImg" src="https://vignette.wikia.nocookie.net/badcreepypasta/images/6/6a/Back-x-clip-art.png/revision/latest?cb=20170409172915"/>
+                    (items[idx+1]==="true")? <img className="backpackImg"id={key} src={`img/${this.state.room}_${idx+1}.png`}/> :<img className="backpackImg" src="https://vignette.wikia.nocookie.net/badcreepypasta/images/6/6a/Back-x-clip-art.png/revision/latest?cb=20170409172915"/>
             ))
             }
             </div>
