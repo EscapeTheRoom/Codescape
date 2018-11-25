@@ -37,7 +37,7 @@ class Level1 extends Component {
   async handleWin(e) {
     e.preventDefault()
     let {isSolved} = this.props.guest
-    console.log('geust??????????????', isSolved)
+
     if (isSolved[3] === 'true') {
       await this.props.guestGameWon()
       this.setState({winner: 'notHidden'})
@@ -53,7 +53,7 @@ class Level1 extends Component {
   render() {
     const {problem} = this.props.problem
     let {isSolved} = this.props.guest
-    console.log('geust???', isSolved[3])
+
     return (
       <div>
         <div>
