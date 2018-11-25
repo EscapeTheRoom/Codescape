@@ -29,11 +29,14 @@ class Level1 extends Component {
       hidden: 'hidden',
       winner: 'hidden',
       width: window.innerWidth,
-      height: window.innerHeight
+      height: window.innerHeight,
+      solved: 'solved',
+     
     }
 
     this.handleClick = this.handleClick.bind(this)
     this.handleExit = this.handleExit.bind(this)
+    this.handleClose = this.handleClose.bind(this)
     this.handleWin = this.handleWin.bind(this)
     this.updateDimensions=this.updateDimensions.bind(this)
    
@@ -41,6 +44,7 @@ class Level1 extends Component {
   updateDimensions(){
     this.setState({width: window.innerWidth, height: window.innerHeight})
   }
+ 
   componentDidMount(){
     this.updateDimensions()
     window.addEventListener('resize', this.updateDimensions)
@@ -48,38 +52,74 @@ class Level1 extends Component {
   async handleClick(e) {
     // e.preventDefault()
     const id = e.id
+    console.log(id)
     const {items} = this.props.guest
+    const {isSolved} = this.props.guest
     await this.props.fetchAProblem(id)
-    if (items[id-1] === 'true') {
+
+    if (items[id] === 'true') {
+      console.log("yes!")
       this.setState({
         problemId: id,
         hidden: 'notHidden'
       })
     }
+    if (isSolved[id] === 'true') {
+      this.setState({
+        problemId: id,
+        hidden: 'hidden',
+        solved: 'solved'
+      })
+    }
+    if (items[id] === 'false') {
+      this.setState({
+        problemId: id,
+        hidden: 'hidden',
+        solved: 'solved'
+      })
+    }
+  }
 
-    // this.props.history.push(`/problem/${e.target.id}`)
+  handleClose () {
+    this.setState({
+      solved: 'closeSolved'
+    })
   }
 
   async handleWin(e) {
     e.preventDefault()
     let {item} = this.props.guest
+    let {isSolved} = this.props.guest
+    let probId = e.id
     console.log('geust??????????????', isSolved)
-    if (item[4] === "true") {
+    if (items[4] === 'false') {
+      this.setState({
+        problemId: probId,
+        hidden: 'hidden',
+        solved: 'solved',
+        winner: 'hidden'
+      })
+    }
+    if (isSolved[3] === 'true') {
       await this.props.guestGameWon()
-      this.setState({winner: 'notHidden'})
+      if(this.props.guest.isWon){
+      this.setState({
+        problemId: probId,
+        winner: 'notHidden'
+      })
+    }
     }
   }
 
   handleExit() {
     this.setState({
-      hidden: 'hidden'
+      hidden: 'hidden',
+      solved: 'solved',
+      winner: 'hidden'
     })
   }
 
   render() {
-    const {problem} = this.props.problem
-    let {isSolved} = this.props.guest
-    console.log('geust???', isSolved[3])
     return (
       <div >
         <div className="game">
@@ -89,12 +129,20 @@ class Level1 extends Component {
           src={source} map={MAP} width={this.state.width*.6} height={(this.state.width/1.3)*.6} imgWidth={5167} 
           onClick={area => this.handleClick(area)}
           />
+          <img
+            className={this.state.winner}
+            src="http://943thepoint.com/files/2013/09/my-little-resume.png?w=980&q=75"
+            onClick={this.handleExit}
+          />
+
           <Instruction
             problemId={this.state.problemId}
             hidden={this.state.hidden}
             handleExit={this.handleExit}
+            solved={this.state.solved}
+            handleClose={this.handleClose}
           />
-        </div>
+      </div>
       </div>
     )
   }

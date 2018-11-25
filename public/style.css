@@ -136,3 +136,21 @@ form div {
   height:2em;
   margin: 20%;
 }
+
+.closeSolved {
+  display: none
+}
+
+.solved {
+  position: absolute;
+  font-family: Arial, Helvetica, sans-serif;
+  left: 25%;
+  top: 10em;
+  margin-left: 1em;
+  margin-right: 1em;
+  margin-bottom: 1em;
+  padding: 1em;
+  z-index: 3;
+  background-color: #000000d9;
+  color: #ffffff;
+}

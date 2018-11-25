@@ -14,7 +14,7 @@ class Backpack extends Component {
 
     componentDidUpdate(prevProps){
         console.log("PREVPROPS",prevProps)
-        if (prevProps.guest.items !== this.props.guest.items){
+        if (prevProps.guest.items !== this.props.guest.items && !this.props.guest.isWon){
 
             this.setState({
                 items: this.props.guest.items
@@ -25,16 +25,20 @@ class Backpack extends Component {
     }
 
     render(){
-        console.log(this.state)
+        console.log("backPack")
         const {items} = this.props.guest
-        console.log("items", items)
-        console.log(Object.keys(items))
+       
         return (
             <div className="backpack">
             {
-                Object.keys(items).map( (key, idx) => (
-                    (items[idx+1]==="true")? <img className="backpackImg"id={key} src={`img/${this.state.room}_${idx+1}.png`}/> :<img className="backpackImg" src="https://vignette.wikia.nocookie.net/badcreepypasta/images/6/6a/Back-x-clip-art.png/revision/latest?cb=20170409172915"/>
-            ))
+                Object.keys(items)
+                .slice(1)
+                .map((key)=> (
+                    (items[+key]==="true") ?<img className="backpackImg"id={key} src={`img/${this.state.room}_${key}.png`}/> :<img className="backpackImg" src="https://vignette.wikia.nocookie.net/badcreepypasta/images/6/6a/Back-x-clip-art.png/revision/latest?cb=20170409172915"/>
+                ))
+            //     Object.keys(items).map( (key, idx) => (
+            //         (items[idx+2]==="true")? <img className="backpackImg"id={key} src={`img/${this.state.room}_${idx+1}.png`}/> :<img className="backpackImg" src="https://vignette.wikia.nocookie.net/badcreepypasta/images/6/6a/Back-x-clip-art.png/revision/latest?cb=20170409172915"/>
+            // ))
             }
             </div>
         )
