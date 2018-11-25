@@ -10,19 +10,33 @@ import {clearSpec} from '../../store/problem'
 class Instruction extends Component {
   constructor(props) {
     super(props) // props will be passed down including id for problem
+
   }
 
   render() {
     const {isSolved} = this.props.guest
-    if (isSolved[this.props.problemId] === 'true') {
-      //this.props.clearSpec()
-      //if (this.props.user.isSolved[this.props.problemId] === 'true') {
+    const {items} = this.props.guest
+  
+    // if (isSolved[this.props.problemId] === 'true') {
+    //   //this.props.clearSpec()
+    //   //if (this.props.user.isSolved[this.props.problemId] === 'true') {
+    //   return (
+    //     <div className={this.props.solved}>
+    //       <button className="button" type="button" onClick={this.props.handleClose}>Close</button>
+    //       <p>You solved this problem!</p>
+    //     </div>
+    //   )
+    // }
+
+    if (items[this.props.problemId] === 'false') {
       return (
-        <div className="solved">
-          <h1>You already solved this problem!</h1>
+        <div className={this.props.solved}>
+            <button className="button" type="button" onClick={this.props.handleClose}>Close</button>
+            <p>You don't have enough items to unlock this problem just yet</p>
         </div>
       )
     }
+    
     return (
       <div className={this.props.hidden}>
         <Problem id={this.props.problemId} handleExit={this.props.handleExit} />
@@ -31,6 +45,7 @@ class Instruction extends Component {
     )
   }
 }
+
 const mapStateToProps = state => ({
   spec: state.problemsReducer.spec,
   user: state.user,

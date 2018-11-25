@@ -10,39 +10,57 @@ class Level1 extends Component {
     super()
     this.state = {
       problemId: 0,
-      hidden: 'hidden'
+      hidden: 'hidden', 
+      solved: 'closeSolved'
     }
 
     this.handleClick = this.handleClick.bind(this)
     this.handleExit = this.handleExit.bind(this)
+    this.handleClose = this.handleClose.bind(this)
   }
 
   async handleClick(e) {
     e.preventDefault()
     const id = e.target.id
     const {items} = this.props.guest
+    const {isSolved} = this.props.guest
     await this.props.fetchAProblem(id)
-    if (items[id] === 'true') {
+
+    console.log('is solved', isSolved)
+    if (isSolved[id] === 'true') {
+      console.log('IS SOLVED TRUE')
       this.setState({
         problemId: id,
-        hidden: 'notHidden'
+        hidden: 'hidden',
+        solved: 'solved'
       })
     }
+    else {
+      this.setState({
+        problemId: id,
+        hidden: 'notHidden',
+        solved: 'closeSolved'
+      })
+    }
+    console.log('HITTING heRE')
+  }
 
-    // this.props.history.push(`/problem/${e.target.id}`)
+  handleClose () {
+    this.setState({
+      solved: 'closeSolved'
+    })
   }
 
   handleExit() {
     this.setState({
-      hidden: 'hidden'
+      hidden: 'hidden',
+      solved: 'solved'
     })
   }
 
   render() {
-    const {problem} = this.props.problem
     return (
       <div>
-        <div>
           <img
             id={1}
             src="https://www.freeiconspng.com/uploads/beds-bedroom-icon-25.png"
@@ -58,12 +76,19 @@ class Level1 extends Component {
             src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRCsguIkFdirKBtM-xBxv2lGtj09ZswAosa5T9NYFKqjeRTKPZ8zQ"
             onClick={this.handleClick}
           />
+
+        <div className={this.state.solved}>
+          <button className="button" type="button" onClick={this.handleClose}>Close</button>
+          <p>You already solved this problem!</p>
+        </div>
+      
           <Instruction
             problemId={this.state.problemId}
             hidden={this.state.hidden}
             handleExit={this.handleExit}
+            solved={this.state.solved}
+            handleClose={this.handleClose}
           />
-        </div>
       </div>
     )
   }
