@@ -46,17 +46,14 @@ class Instruction extends Component {
     )
   }
 }
-
 const mapStateToProps = state => ({
   spec: state.problemsReducer.spec,
   user: state.user,
   guest: state.guest
 })
-
 const mapDispatchToProps = dispatch => ({
   clearSpec: () => dispatch(clearSpec())
 })
-
 export default withRouter(
   connect(mapStateToProps, mapDispatchToProps)(Instruction)
 )

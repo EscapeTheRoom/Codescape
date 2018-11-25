@@ -8,6 +8,7 @@ import history from '../history'
 const GAME_WON = 'GAME_WON'
 const SOLVED = 'SOLVED'
 const GET_ITEM = 'GET_ITEM'
+const GET_ROOM = "GET_ROOM"
 /**
  * INITIAL STATE
  */
@@ -50,6 +51,7 @@ export const guestIsSolved = problemId => dispatch => {
 export const getItemSolved = problemId => dispatch => {
   dispatch(getItemTruthy(problemId))
 }
+
 // export const guestUpdateIsSolved = isSolvedObj => async dispatch => {
 //   try {
 //     // const updatedUser = await axios.put('/auth/update', {id: data.id, isSolved: isSolvedObj})
@@ -78,7 +80,7 @@ export default function(state = defaultGuest, action) {
       newIsSolved[action.problemId] = 'true'
       const newItemIsUnlocked = {...newState.items}
       if (+action.problemId < 4) {
-        newItemIsUnlocked[+action.problemId + 1] = 'true'
+        newItemIsUnlocked[+action.problemId+1] = 'true'
         return {...newState, isSolved: newIsSolved, items: newItemIsUnlocked}
       } else {
         return {...newState, isSolved: newIsSolved}
