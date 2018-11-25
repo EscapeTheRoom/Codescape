@@ -23,7 +23,8 @@ const defaultGuest = {
   items: {
     1: 'true',
     2: 'false',
-    3: 'false'
+    3: 'false',
+    4: 'false'
   }
 }
 
@@ -76,7 +77,7 @@ export default function(state = defaultGuest, action) {
       const newIsSolved = {...newState.isSolved}
       newIsSolved[action.problemId] = 'true'
       const newItemIsUnlocked = {...newState.items}
-      if (+action.problemId < 3) {
+      if (+action.problemId < 4) {
         newItemIsUnlocked[+action.problemId + 1] = 'true'
         return {...newState, isSolved: newIsSolved, items: newItemIsUnlocked}
       } else {

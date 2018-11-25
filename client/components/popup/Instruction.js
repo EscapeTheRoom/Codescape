@@ -10,23 +10,24 @@ import {clearSpec} from '../../store/problem'
 class Instruction extends Component {
   constructor(props) {
     super(props) // props will be passed down including id for problem
-
   }
 
   render() {
     const {isSolved} = this.props.guest
     const {items} = this.props.guest
-  
-    // if (isSolved[this.props.problemId] === 'true') {
-    //   //this.props.clearSpec()
-    //   //if (this.props.user.isSolved[this.props.problemId] === 'true') {
-    //   return (
-    //     <div className={this.props.solved}>
-    //       <button className="button" type="button" onClick={this.props.handleClose}>Close</button>
-    //       <p>You solved this problem!</p>
-    //     </div>
-    //   )
-    // }
+    
+    if (isSolved[this.props.problemId] === 'true') {
+      if (this.props.problemId < 4) {
+        //this.props.clearSpec()
+        //if (this.props.user.isSolved[this.props.problemId] === 'true') {
+        return (
+          <div className={this.props.solved}>
+            <button className="button" type="button" onClick={this.props.handleClose}>Close</button>
+            <p>You already solved this problem!</p>
+          </div>
+        )
+      }
+    }
 
     if (items[this.props.problemId] === 'false') {
       return (

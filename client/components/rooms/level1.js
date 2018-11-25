@@ -2,7 +2,7 @@ import React, {Component} from 'react'
 import Instruction from '../popup/Instruction'
 import {connect} from 'react-redux'
 import {withRouter} from 'react-router-dom'
-import {getItemSolved} from '../../store/guest'
+import {getItemSolved, guestGameWon} from '../../store/guest'
 import {fetchAProblem} from '../../store/problem'
 
 class Level1 extends Component {
@@ -11,12 +11,14 @@ class Level1 extends Component {
     this.state = {
       problemId: 0,
       hidden: 'hidden', 
-      solved: 'closeSolved'
+      solved: 'solved',
+      winner: 'hidden'
     }
 
     this.handleClick = this.handleClick.bind(this)
     this.handleExit = this.handleExit.bind(this)
     this.handleClose = this.handleClose.bind(this)
+    this.handleWin = this.handleWin.bind(this)
   }
 
   async handleClick(e) {
@@ -26,23 +28,26 @@ class Level1 extends Component {
     const {isSolved} = this.props.guest
     await this.props.fetchAProblem(id)
 
-    console.log('is solved', isSolved)
+    if (items[id] === 'true') {
+      this.setState({
+        problemId: id,
+        hidden: 'notHidden'
+      })
+    }
     if (isSolved[id] === 'true') {
-      console.log('IS SOLVED TRUE')
       this.setState({
         problemId: id,
         hidden: 'hidden',
         solved: 'solved'
       })
     }
-    else {
+    if (items[id] === 'false') {
       this.setState({
         problemId: id,
-        hidden: 'notHidden',
-        solved: 'closeSolved'
+        hidden: 'hidden',
+        solved: 'solved'
       })
     }
-    console.log('HITTING heRE')
   }
 
   handleClose () {
@@ -51,14 +56,39 @@ class Level1 extends Component {
     })
   }
 
+  async handleWin(e) {
+    e.preventDefault()
+    let {isSolved} = this.props.guest
+    let {items} = this.props.guest
+    let probId = e.target.id
+
+    if (items[4] === 'false') {
+      this.setState({
+        problemId: probId,
+        hidden: 'hidden',
+        solved: 'solved',
+        winner: 'hidden'
+      })
+    }
+    if (isSolved[3] === 'true') {
+      await this.props.guestGameWon()
+      this.setState({
+        problemId: probId,
+        winner: 'notHidden'
+      })
+    }
+  }
+
   handleExit() {
     this.setState({
       hidden: 'hidden',
-      solved: 'solved'
+      solved: 'solved',
+      winner: 'hidden'
     })
   }
 
   render() {
+
     return (
       <div>
           <img
@@ -76,12 +106,17 @@ class Level1 extends Component {
             src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRCsguIkFdirKBtM-xBxv2lGtj09ZswAosa5T9NYFKqjeRTKPZ8zQ"
             onClick={this.handleClick}
           />
+          <img
+            id={4}
+            src="http://www.217onmain.com/wp-content/uploads/2015/10/Screen-Shot-2015-10-06-at-4.22.16-PM-e1444763709261-747x498.png"
+            onClick={this.handleWin}
+          />
+          <img
+            className={this.state.winner}
+            src="http://943thepoint.com/files/2013/09/my-little-resume.png?w=980&q=75"
+            onClick={this.handleExit}
+          />
 
-        <div className={this.state.solved}>
-          <button className="button" type="button" onClick={this.handleClose}>Close</button>
-          <p>You already solved this problem!</p>
-        </div>
-      
           <Instruction
             problemId={this.state.problemId}
             hidden={this.state.hidden}
@@ -101,7 +136,8 @@ const mapStateToProps = state => ({
 
 const mapDispatchToProps = dispatch => ({
   getItemSolved: problemId => dispatch(getItemSolved(problemId)),
-  fetchAProblem: problemId => dispatch(fetchAProblem(problemId))
+  fetchAProblem: problemId => dispatch(fetchAProblem(problemId)),
+  guestGameWon: () => dispatch(guestGameWon())
 })
 
 export default withRouter(connect(mapStateToProps, mapDispatchToProps)(Level1))
