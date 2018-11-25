@@ -8,7 +8,7 @@ import history from '../history'
 const GAME_WON = 'GAME_WON'
 const SOLVED = 'SOLVED'
 const GET_ITEM = 'GET_ITEM'
-const GET_ROOM = "GET_ROOM"
+
 /**
  * INITIAL STATE
  */
