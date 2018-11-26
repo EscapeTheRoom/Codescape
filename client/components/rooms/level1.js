@@ -1,4 +1,5 @@
 import React, {Component} from 'react'
+import {Link} from 'react-router-dom'
 import Instruction from '../popup/Instruction'
 import {connect} from 'react-redux'
 import {withRouter} from 'react-router-dom'
@@ -21,6 +22,7 @@ const MAP = {
      {name:"bed",  shape:"poly", className:"notclue", coords:[1157,2680,2599,2684,2777,2401,2791,2945,2618,3187,1148,3145]}
   ]
 }
+
 class Level1 extends Component {
   constructor() {
     super()
@@ -31,8 +33,8 @@ class Level1 extends Component {
       width: window.innerWidth,
       height: window.innerHeight,
       solved: 'solved',
-      notClue:'hidden'
-     
+      notClue:'hidden',
+      storyLine: 'storyline'
     }
 
     this.handleClick = this.handleClick.bind(this)
@@ -42,6 +44,7 @@ class Level1 extends Component {
     this.updateDimensions = this.updateDimensions.bind(this)
     this.handleReset = this.handleReset.bind(this)
   }
+
   updateDimensions() {
     this.setState({width: window.innerWidth, height: window.innerHeight})
   }
@@ -50,10 +53,10 @@ class Level1 extends Component {
     this.updateDimensions()
     window.addEventListener('resize', this.updateDimensions)
   }
+
   async handleClick(e) {
     // e.preventDefault()
-    const id = e.id 
-    console.log(id)
+    const id = e.id
     const {items} = this.props.guest
     const {isSolved} = this.props.guest
     await this.props.fetchAProblem(id)
@@ -82,8 +85,9 @@ class Level1 extends Component {
 
   handleClose() {
     this.setState({
-      solved: 'closeSolved',
-      notClue: "hidden"
+      solved: 'hidden',
+      notClue: "hidden",
+      storyLine: 'hidden'
     })
   }
 
@@ -91,7 +95,6 @@ class Level1 extends Component {
     let {items} = this.props.guest
     let {isSolved} = this.props.guest
     let probId = e.id
-    console.log('geust??????????????', isSolved)
     if (items[4] === 'false') {
       this.setState({
         problemId: probId,
@@ -139,6 +142,13 @@ class Level1 extends Component {
   render() {
     return (
       <div>
+        <div className="storyline-container">
+          <div className={this.state.storyLine}>
+              <span>Oh no! You have a job interview today, but you can't find your resume. Find it to escape the room.</span>
+              <button id="storybutton" type="button" onClick={this.handleClose}>Start</button>
+          </div>
+        </div>
+
        
         <div className="game">
           <Backpack room="level1"/>
@@ -172,6 +182,11 @@ class Level1 extends Component {
             solved={this.state.solved}
             handleClose={this.handleClose}
           />
+
+          <Link to="/medium" className="nextlevel">
+              Next Level
+          </Link>
+         
         </div>
         <button type="button" className="buttonstart" onClick={this.handleReset}>Reset</button>
       </div>

@@ -3,7 +3,6 @@ import React, { Component } from 'react'
 import {connect} from 'react-redux'
 import {Link} from 'react-router-dom'
 import {logout} from '../store'
-import { Home } from './home'
 
 class Navbar extends Component {
   render() {
@@ -12,9 +11,7 @@ class Navbar extends Component {
     <h1>CODESCAPE</h1>
     <nav>
     <Link to="/">Home</Link>
-    <Link to="/login">Login</Link>
     </nav>
-    {/* <Home /> */}
     </div>
     )
   }

@@ -11,15 +11,15 @@ class Home extends Component {
             <img src="unicornRoom.png" />
             <p>
               <Link to="/easy" className="buttonstart">
-                Start
+                Easy
               </Link>
             </p>
           </div>
           <div>
-            <img src="unicornRoom.png" />
+            <img src="garage.png" />
             <p>
               <Link to="/medium" className="buttonstart">
-                Start
+                Medium
               </Link>
             </p>
           </div>

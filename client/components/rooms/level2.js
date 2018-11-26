@@ -1,4 +1,5 @@
 import React, {Component} from 'react'
+import {Link} from 'react-router-dom'
 import Instruction2 from '../popup/Instruction2'
 import {connect} from 'react-redux'
 import {withRouter} from 'react-router-dom'
@@ -31,7 +32,8 @@ class Level2 extends Component {
       width: window.innerWidth,
       height: window.innerHeight,
       solved: 'solved',
-      notClue:'hidden'
+      notClue:'hidden',
+      storyLine: 'storyline'
     }
 
     this.handleClick = this.handleClick.bind(this)
@@ -52,13 +54,11 @@ class Level2 extends Component {
   async handleClick(e) {
     // e.preventDefault()
     const id = e.id
-    console.log(id)
     const {items} = this.props.guest
     const {isSolved} = this.props.guest
     await this.props.fetchAProblem(id)
 
     if (items[id] === 'true') {
-      console.log('yes!')
       this.setState({
         problemId: id,
         hidden: 'notHidden'
@@ -83,7 +83,8 @@ class Level2 extends Component {
   handleClose() {
     this.setState({
       solved: 'closeSolved',
-      notClue: "hidden"
+      notClue: "hidden",
+      storyLine: 'hidden'
     })
   }
 
@@ -91,7 +92,6 @@ class Level2 extends Component {
     let {items} = this.props.guest
     let {isSolved} = this.props.guest
     let probId = e.id
-    console.log('geust??????????????', isSolved)
     if (items[7] === 'false') {
       this.setState({
         problemId: probId,
@@ -138,6 +138,13 @@ class Level2 extends Component {
   render() {
     return (
       <div>
+        <div className="storyline-container">
+          <div className={this.state.storyLine}>
+              <span>Now you have your resume, your dad offers you a ride to take you to the interview, but he misplaced his key. Can you help him find it?</span>
+              <button id="storybutton" type="button" onClick={this.handleClose}>Start</button>
+          </div>
+        </div>
+
         <div className="game">
           <Level2backpack room="level1" />
           <ImageMapper
@@ -175,6 +182,10 @@ class Level2 extends Component {
             solved={this.state.solved}
             handleClose={this.handleClose}
           />
+
+          <Link to="/hard" className="nextlevel">
+                Next Level
+          </Link>
         </div>
         <button type="button" className="buttonstart" onClick={this.handleReset}>Reset</button>
       </div>
