@@ -216,7 +216,7 @@ p {
 .game {
   display:flex;
   justify-content:flex-start;
-  padding-top:15%;
+  padding-top:10%;
   margin:auto;
   background-color: black;
 }
@@ -251,9 +251,61 @@ p {
   border-radius: 30px;
 }
 
-/* .editor{
-  border: 1px solid lightgray;
-  margin: auto;
-  height: 200px;
-  width: 80%;
+/* StoryLine Component */
+
+.storyline-container {
+  position: relative;
+  background-image: repeating-linear-gradient(135deg, #eb5f5f 0px, #eb5f5f 10px, #fffbf0 10px, #fffbf0 15px, #8ac26d 15px, #8ac26d 25px, #fffbf0 25px, #fffbf0 30px);
+  padding: 5px 0;
+}
+
+.storyline {
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  background: #fffbf0;
+  padding: 10px 15px;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-wrap: nowrap;
+  -ms-flex-wrap: nowrap;
+  flex-wrap: nowrap;
+  z-index: 2;
+  font-family: 'Amatic SC', cursive;
+  font-size: 20pt;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+}
+
+/* .storyline {
+  position: absolute;
+  color: #222222;
+  background-color: #ffffff;
+  margin-left: 36%;
+  margin-right: 30%;
+  margin-top: 25%;
+  z-index: 2;
+  padding: 1em;
+  font-family: 'Amatic SC', cursive;
+  font-size: 20pt;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+}
+
+.storyline-container {
+  position: absolute;
+  background-image: repeating-linear-gradient(135deg, #eb5f5f 0px, #eb5f5f 10px, #fffbf0 10px, #fffbf0 15px, #8ac26d 15px, #8ac26d 25px, #fffbf0 25px, #fffbf0 30px);
+  padding: 5px 0;
 } */
+
+.nostoryline {
+  display: none
+}
+
+.storybutton {
+  color: #beb2b2;
+  background-color: #222222;
+  margin-left: 350px;
+}

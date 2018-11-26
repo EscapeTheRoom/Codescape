@@ -6,6 +6,7 @@ import {getItemSolved, guestGameWon} from '../../store/guest.js'
 import {fetchAProblem} from '../../store/problem'
 import ImageMapper from 'react-image-mapper'
 import Backpack from '../backpack'
+import StoryLineLevel1 from './StoryLineLevel1';
 const source = 'img/unicornRoomCapstoneIMG.png'
 const MAP = {
   name: 'unicornMap',
@@ -145,6 +146,7 @@ const MAP = {
     }
   ]
 }
+
 class Level1 extends Component {
   constructor() {
     super()
@@ -163,6 +165,7 @@ class Level1 extends Component {
     this.handleWin = this.handleWin.bind(this)
     this.updateDimensions = this.updateDimensions.bind(this)
   }
+
   updateDimensions() {
     this.setState({width: window.innerWidth, height: window.innerHeight})
   }
@@ -174,13 +177,11 @@ class Level1 extends Component {
   async handleClick(e) {
     // e.preventDefault()
     const id = e.id
-    console.log(id)
     const {items} = this.props.guest
     const {isSolved} = this.props.guest
     await this.props.fetchAProblem(id)
 
     if (items[id] === 'true') {
-      console.log('yes!')
       this.setState({
         problemId: id,
         hidden: 'notHidden'
@@ -212,7 +213,6 @@ class Level1 extends Component {
     let {items} = this.props.guest
     let {isSolved} = this.props.guest
     let probId = e.id
-    console.log('geust??????????????', isSolved)
     if (items[4] === 'false') {
       this.setState({
         problemId: probId,
@@ -244,6 +244,8 @@ class Level1 extends Component {
   render() {
     return (
       <div>
+        <StoryLineLevel1 />
+
         <div className="game">
           <Backpack room="level1" />
           <ImageMapper

@@ -10,7 +10,7 @@ class Home extends Component {
           <div>
             <img src="unicornRoom.png" />
             <p>
-              <Link to="/easy" className="buttonstart">
+              <Link to="/easy" id="buttonstart">
                 Start
               </Link>
             </p>
@@ -18,7 +18,7 @@ class Home extends Component {
           <div>
             <img src="unicornRoom.png" />
             <p>
-              <Link to="/medium" className="buttonstart">
+              <Link to="/medium" id="buttonstart">
                 Start
               </Link>
             </p>
