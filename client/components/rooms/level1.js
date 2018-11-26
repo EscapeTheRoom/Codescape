@@ -1,4 +1,5 @@
 import React, {Component} from 'react'
+import {Link} from 'react-router-dom'
 import Instruction from '../popup/Instruction'
 import {connect} from 'react-redux'
 import {withRouter} from 'react-router-dom'
@@ -6,7 +7,6 @@ import {getItemSolved, guestGameWon} from '../../store/guest.js'
 import {fetchAProblem} from '../../store/problem'
 import ImageMapper from 'react-image-mapper'
 import Backpack from '../backpack'
-import StoryLineLevel1 from './StoryLineLevel1';
 const source = 'img/unicornRoomCapstoneIMG.png'
 const MAP = {
   name: 'unicornMap',
@@ -33,8 +33,8 @@ class Level1 extends Component {
       width: window.innerWidth,
       height: window.innerHeight,
       solved: 'solved',
-      notClue:'hidden'
-     
+      notClue:'hidden',
+      storyLine: 'storyline'
     }
 
     this.handleClick = this.handleClick.bind(this)
@@ -52,6 +52,7 @@ class Level1 extends Component {
     this.updateDimensions()
     window.addEventListener('resize', this.updateDimensions)
   }
+
   async handleClick(e) {
     // e.preventDefault()
     const id = e.id
@@ -83,8 +84,9 @@ class Level1 extends Component {
 
   handleClose() {
     this.setState({
-      solved: 'closeSolved',
-      notClue: "hidden"
+      solved: 'hidden',
+      notClue: "hidden",
+      storyLine: 'hidden'
     })
   }
 
@@ -129,7 +131,12 @@ class Level1 extends Component {
   render() {
     return (
       <div>
-        <StoryLineLevel1 />
+        <div className="storyline-container">
+          <div className={this.state.storyLine}>
+              <span>Oh no! You have a job interview today, but you can't find your resume. Find it to escape the room.</span>
+              <button id="storybutton" type="button" onClick={this.handleClose}>Start</button>
+          </div>
+        </div>
 
         <div className="game">
           <Backpack room="level1"/>
@@ -163,6 +170,11 @@ class Level1 extends Component {
             solved={this.state.solved}
             handleClose={this.handleClose}
           />
+
+          <Link to="/medium" className="nextlevel">
+              Next Level
+          </Link>
+         
         </div>
       </div>
     )
