@@ -21,7 +21,7 @@ class Backpack extends Component {
                 Object.keys(items)
                 .slice(1)
                 .map((key,idx)=> (
-                    (items[+key]==="true") ?<img className="backpackImg"id={key} key={idx} src={`img/${this.state.room}_${key}.png`}/> :<img className="backpackImg" src="https://vignette.wikia.nocookie.net/badcreepypasta/images/6/6a/Back-x-clip-art.png/revision/latest?cb=20170409172915"/>
+                    (items[+key]==="true") ?<img className="backpackImg"id={key} key={idx} src={`img/${this.state.room}_${key}.png`}/> :<img className="backpackImg" src="/img/unicornBackPack.png"/>
                 ))
             //     Object.keys(items).map( (key, idx) => (
             //         (items[idx+2]==="true")? <img className="backpackImg"id={key} src={`img/${this.state.room}_${idx+1}.png`}/> :<img className="backpackImg" src="https://vignette.wikia.nocookie.net/badcreepypasta/images/6/6a/Back-x-clip-art.png/revision/latest?cb=20170409172915"/>

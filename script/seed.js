@@ -19,11 +19,11 @@ async function seed() {
   ])
   const problems = await Promise.all([
     Problem.create({
-      title: 'Get Initials',
+      title: 'Hello World',
       prompt:
-        'Write a function that takes a string and returns the initials in uppercase.',
+        'Write a function that returns a greeting with an inputted name: Hello Anna!',
       functionSetup:
-        'function getInitials(str) {\n// YOUR CODE HERE\n}',
+        'function greet(name) {\n// YOUR CODE HERE\n}',
       spec: spec1File
     }),
     Problem.create({
@@ -51,11 +51,11 @@ async function seed() {
       spec: spec4File
     }),
     Problem.create({
-      title: 'Capitals First',
+      title: 'Get Initials',
       prompt:
-      'Create a function that takes an input String and returns a String, where all the uppercase words of the input String are in front and all the lowercase words at the end. The order of the uppercase and lowercase words should be the order in which they occur.',
+        'Write a function that takes a string and returns the initials in uppercase.',
       functionSetup:
-        'function capitalsFirst(string) {\n// YOUR CODE HERE\n}',
+        'function getInitials(str) {\n// YOUR CODE HERE\n}',
       spec: spec5File
     }),
     Problem.create({

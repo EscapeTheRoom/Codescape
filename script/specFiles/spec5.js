@@ -1,32 +1,21 @@
-'use strict';
+'use strict'
 
-const chai = require('chai');
-const expect = chai.expect;
-const chaiThings = require('chai-things');
+const chai = require('chai')
+const expect = chai.expect
+const chaiThings = require('chai-things')
 
-describe('capitalsFirst', function() {
-    it('receives a string and returns the string', function() {
-      expect(capitalsFirst('hello World')).to.be.a('string');
-    })
-    it('places all capital letters in the front of the string ', function() {
-        expect(capitalsFirst('hey World')).to.equal('World hey');
-        expect(capitalsFirst('I love Cats')).to.equal('I Cats love');
-      }) 
+describe('getInitials', () => {
+  it('takes a string and returns a string', () => {
+    const initials = getInitials('Corey Greenwald')
+    expect(initials).to.be.a('string')
+  })
+
+  it('returns the first letter of each word in the input string, capitalized', () => {
+    const initialsGHA = getInitials('Grace Hopper Academy')
+    expect(initialsGHA).to.equal('GHA')
+    const initialsHATEOAS = getInitials(
+      'hypermedia as the engine of application state'
+    )
+    expect(initialsHATEOAS).to.equal('HATEOAS')
+  })
 })
-
-/*
-function capitalsFirst(str){
-    var a = [], b = [], 
-        words = str.split(' ');
-    
-    words.map(function(w) {
-        if(w.match(/^[A-Z]/)) {
-            a.push(w);
-        } else if (w.match(/^[a-z]/)) {
-            b.push(w);
-        }
-    });
-    
-    return a.concat(b).join(' ');
-}
-*/

@@ -6,7 +6,7 @@ class Level2backpack extends Component {
     super(props)
     this.state = {
       items: {},
-      room: this.props.room
+      room: "level2"
     }
     //pass down the room name in props
     // pass down the items state in props
@@ -16,7 +16,7 @@ class Level2backpack extends Component {
     const {items} = this.props.guest
 
     return (
-      <div className="backpack">
+      <div className="backpack2">
         {Object.keys(items)
           .slice(1)
           .map(
@@ -26,12 +26,12 @@ class Level2backpack extends Component {
                   className="backpackImg"
                   id={key}
                   key={idx}
-                  src={`img/${this.state.room}_${key}.png`}
+                  src={`img/level2_${key}.png`}
                 />
               ) : (
                 <img
                   className="backpackImg"
-                  src="https://vignette.wikia.nocookie.net/badcreepypasta/images/6/6a/Back-x-clip-art.png/revision/latest?cb=20170409172915"
+                  src="/img/carImg.png"
                 />
               )
           )}
