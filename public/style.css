@@ -53,7 +53,7 @@ p {
   padding-bottom: 28px;
 }
 
-.buttonstart {
+#buttonstart {
   font-family: 'Lato', sans-serif;
   font-style: normal;
   font-weight: 400;
@@ -73,7 +73,7 @@ p {
   margin-left: 39px;
 }
 
-.buttonstart:hover {
+#buttonstart:hover {
   background-color: #008CBA;
   color: white;
 }
@@ -97,7 +97,7 @@ p {
 .notHidden {
   display: flex;
   position: absolute;
-  left: 15%;
+  left: 30%;
   top: 10em;
   z-index: 2;
   opacity: 0.9;
@@ -107,12 +107,10 @@ p {
 }
 
 .outer {
-  display: flex;
   flex-grow: 1;
 }
 
 .problem-container {
-  flex-direction: column;
   margin: 1em;
 }
 
