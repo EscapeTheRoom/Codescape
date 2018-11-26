@@ -4,18 +4,18 @@ const chai = require('chai')
 const expect = chai.expect
 const chaiThings = require('chai-things')
 
-describe('getInitials', () => {
+describe('greet', () => {
   it('takes a string and returns a string', () => {
-    const initials = getInitials('Corey Greenwald')
-    expect(initials).to.be.a('string')
+    const greeting = greet('Corey')
+    expect(greeting).to.be.a('string')
   })
 
-  it('returns the first letter of each word in the input string, capitalized', () => {
-    const initialsGHA = getInitials('Grace Hopper Academy')
-    expect(initialsGHA).to.equal('GHA')
-    const initialsHATEOAS = getInitials(
-      'hypermedia as the engine of application state'
+  it('returns the name with hello beforehand', () => {
+    const stacyGreet = greet('Stacy')
+    expect(stacyGreet).to.equal('Hello Stacy!')
+    const stanGreet = greet(
+      'Stan'
     )
-    expect(initialsHATEOAS).to.equal('HATEOAS')
+    expect(stanGreet).to.equal('Hello Stan!')
   })
 })
