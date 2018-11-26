@@ -14,9 +14,7 @@ class Navbar extends Component {
     <Link to="/">Home</Link>
     <Link to="/login">Login</Link>
     </nav>
-    {/* <div>
-    <Home />
-    </div> */}
+    {/* <Home /> */}
     </div>
     )
   }

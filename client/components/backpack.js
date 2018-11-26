@@ -11,19 +11,6 @@ class Backpack extends Component {
         //pass down the room name in props
         // pass down the items state in props
     }
-
-    // componentDidUpdate(prevProps){
-    //     console.log("PREVPROPS",prevProps)
-    //     if (prevProps.guest.items !== this.props.guest.items && !this.props.guest.isWon){
-
-    //         this.setState({
-    //             items: this.props.guest.items
-    //         })
-            
-
-    //     }
-    // }
-
     render(){
         console.log("backPack")
         const {items} = this.props.guest

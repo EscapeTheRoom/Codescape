@@ -12,7 +12,7 @@ const AuthForm = props => {
   return (
     <div>
       <form onSubmit={handleSubmit} name={name}>
-        <div>
+        <div className='login'>
           <label htmlFor="email">
             <small>Email</small>
           </label>
@@ -29,7 +29,7 @@ const AuthForm = props => {
         </div>
         {error && error.response && <div> {error.response.data} </div>}
       </form>
-      <a href="/auth/google">{displayName} with Google</a>
+      <a id='google' href="/auth/google">{displayName} with Google</a>
     </div>
   )
 }

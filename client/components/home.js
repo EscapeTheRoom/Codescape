@@ -5,20 +5,18 @@ import { Carousel } from 'react-responsive-carousel';
 class Home extends Component {
     render(){
         return (
-            <Carousel showArrows={true} showThumbs={false}>
+            <div className="carousel-container">
+            <Carousel showArrows={true} showThumbs={false} showStatus={false}>
                 <div>
                     <img src="unicornRoom.png" />
                     <p><Link to ='/easy' id='button'>Start</Link></p>
                 </div>
-                {/* <div>
-                    <img src="////" />
+               <div>
+                    <img src="unicornRoom.png" />
                     <p><Link to ='/easy' id='button'>Start</Link></p>
                 </div>
-                <div>
-                    <img src="////" />
-                    <p><Link to ='/easy' id='button'>Start</Link></p>
-                </div> */}
             </Carousel>
+            </div>
         );
     }
 
