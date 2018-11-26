@@ -1,20 +1,20 @@
 import React, {Component} from 'react'
-import Instruction from '../popup/Instruction'
+import Instruction2 from '../popup/Instruction2'
 import {connect} from 'react-redux'
 import {withRouter} from 'react-router-dom'
-import {getItemSolved, guestGameWon} from '../../store/guest.js'
+import {getItemSolved2, guestGameWon2} from '../../store/guest2'
 import {fetchAProblem} from '../../store/problem'
 import ImageMapper from 'react-image-mapper'
-import Backpack from '../backpack'
+import Level2backpack from '../level2backpack'
 const source = 'img/unicornRoomCapstoneIMG.png'
 const MAP = {
   name: 'unicornMap',
   areas: [
-    {name: 'poster', shape: 'rect', id: 2, coords: [1267, 1953, 1630, 1374]},
+    {name: 'poster', shape: 'rect', id: 5, coords: [1267, 1953, 1630, 1374]},
     {
       name: 'figurine',
       shape: 'poly',
-      id: 1,
+      id: 4,
       coords: [
         4501,
         2232,
@@ -45,7 +45,7 @@ const MAP = {
     {
       name: 'door',
       shape: 'poly',
-      id: 4,
+      id: 7,
       coords: [
         3501,
         831,
@@ -64,7 +64,7 @@ const MAP = {
     {
       name: 'chest',
       shape: 'poly',
-      id: 3,
+      id: 6,
       coords: [18, 2041, 388, 2018, 488, 2141, 488, 2269, 183, 2342, 0, 2310]
     },
     {
@@ -145,7 +145,7 @@ const MAP = {
     }
   ]
 }
-class Level1 extends Component {
+class Level2 extends Component {
   constructor() {
     super()
     this.state = {
@@ -213,7 +213,7 @@ class Level1 extends Component {
     let {isSolved} = this.props.guest
     let probId = e.id
     console.log('geust??????????????', isSolved)
-    if (items[4] === 'false') {
+    if (items[7] === 'false') {
       this.setState({
         problemId: probId,
         hidden: 'hidden',
@@ -221,7 +221,7 @@ class Level1 extends Component {
         winner: 'hidden'
       })
     }
-    if (isSolved[3] === 'true') {
+    if (isSolved[6] === 'true') {
       await this.props.guestGameWon()
       if (this.props.guest.isWon) {
         this.setState({
@@ -245,7 +245,7 @@ class Level1 extends Component {
     return (
       <div>
         <div className="game">
-          <Backpack room="level1" />
+          <Level2backpack room="level1" />
           <ImageMapper
             id="unicorn"
             fillColor="transparent"
@@ -256,9 +256,9 @@ class Level1 extends Component {
             height={this.state.width / 1.3 * 0.6}
             imgWidth={5167}
             onClick={area => {
-              if (area.id < 4) {
+              if (area.id < 7) {
                 this.handleClick(area)
-              } else if (area.id === 4) {
+              } else if (area.id === 7) {
                 this.handleWin(area)
               }
             }}
@@ -269,7 +269,7 @@ class Level1 extends Component {
             onClick={this.handleExit}
           />
 
-          <Instruction
+          <Instruction2
             problemId={this.state.problemId}
             hidden={this.state.hidden}
             handleExit={this.handleExit}
@@ -283,14 +283,14 @@ class Level1 extends Component {
 }
 
 const mapStateToProps = state => ({
-  guest: state.guest,
+  guest: state.guest2,
   problem: state.problemsReducer
 })
 
 const mapDispatchToProps = dispatch => ({
-  getItemSolved: problemId => dispatch(getItemSolved(problemId)),
+  getItemSolved: problemId => dispatch(getItemSolved2(problemId)),
   fetchAProblem: problemId => dispatch(fetchAProblem(problemId)),
-  guestGameWon: () => dispatch(guestGameWon())
+  guestGameWon: () => dispatch(guestGameWon2())
 })
 
-export default withRouter(connect(mapStateToProps, mapDispatchToProps)(Level1))
+export default withRouter(connect(mapStateToProps, mapDispatchToProps)(Level2))

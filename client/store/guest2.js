@@ -15,17 +15,17 @@ const GET_ITEM = 'GET_ITEM'
 const defaultGuest = {
   isWon: false,
   isSolved: {
-    1: 'false',
-    2: 'false',
-    3: 'false'
+    4: 'false',
+    5: 'false',
+    6: 'false'
     //add keys if there were more problems
     //keys correspond to problem ID
   },
   items: {
-    1: 'true',
-    2: 'false',
-    3: 'false',
-    4: 'false'
+    4: 'true',
+    5: 'false',
+    6: 'false',
+    7: 'false'
   }
 }
 
@@ -41,14 +41,14 @@ const getItemTruthy = problemId => ({type: GET_ITEM, problemId})
  * THUNK CREATORS
  */
 
-export const guestGameWon = () => dispatch => {
+export const guestGameWon2 = () => dispatch => {
   dispatch(gameIsWonGuest())
 }
-export const guestIsSolved = problemId => dispatch => {
+export const guestIsSolved2 = problemId => dispatch => {
   dispatch(problemSolvedGuest(problemId))
 }
 
-export const getItemSolved = problemId => dispatch => {
+export const getItemSolved2 = problemId => dispatch => {
   dispatch(getItemTruthy(problemId))
 }
 
@@ -79,7 +79,7 @@ export default function(state = defaultGuest, action) {
       const newIsSolved = {...newState.isSolved}
       newIsSolved[action.problemId] = 'true'
       const newItemIsUnlocked = {...newState.items}
-      if (+action.problemId < 4) {
+      if (+action.problemId < 7) {
         newItemIsUnlocked[+action.problemId + 1] = 'true'
         return {...newState, isSolved: newIsSolved, items: newItemIsUnlocked}
       } else {
