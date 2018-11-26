@@ -70,11 +70,13 @@ const MAP = {
     {
       name: 'lightSwitch',
       shape: 'poly',
+      className:"notclue",
       coords: [3282, 1762, 3369, 1771, 3359, 1895, 3282, 1913]
     },
     {
       name: 'lamp',
       shape: 'poly',
+      className:"notclue",
       coords: [
         1543,
         2315,
@@ -105,6 +107,7 @@ const MAP = {
     {
       name: 'backpack',
       shape: 'poly',
+      className:"notclue",
       coords: [
         4761,
         3072,
@@ -123,11 +126,13 @@ const MAP = {
     {
       name: 'rug',
       shape: 'poly',
+      className:"notclue",
       coords: [2971, 2963, 3688, 2945, 4049, 3520, 3017, 3552]
     },
     {
       name: 'bed',
       shape: 'poly',
+      className:"notclue",
       coords: [
         1157,
         2680,
@@ -154,7 +159,8 @@ class Level2 extends Component {
       winner: 'hidden',
       width: window.innerWidth,
       height: window.innerHeight,
-      solved: 'solved'
+      solved: 'solved',
+      notClue:'hidden'
     }
 
     this.handleClick = this.handleClick.bind(this)
@@ -204,7 +210,8 @@ class Level2 extends Component {
 
   handleClose() {
     this.setState({
-      solved: 'closeSolved'
+      solved: 'closeSolved',
+      notClue: "hidden"
     })
   }
 
@@ -240,6 +247,11 @@ class Level2 extends Component {
       winner: 'hidden'
     })
   }
+  handleNotClue(){
+    this.setState({
+      notClue:"solved"
+    })
+  }
 
   render() {
     return (
@@ -260,6 +272,8 @@ class Level2 extends Component {
                 this.handleClick(area)
               } else if (area.id === 7) {
                 this.handleWin(area)
+              } else if (area.className==="notclue"){
+                this.handleNotClue(area)
               }
             }}
           />
@@ -268,7 +282,10 @@ class Level2 extends Component {
             src="http://943thepoint.com/files/2013/09/my-little-resume.png?w=980&q=75"
             onClick={this.handleExit}
           />
-
+             <div className={this.state.notClue}>
+            <button className="button" type="button" onClick={this.handleClose}>Close</button>
+            <p>Clue locked, or this is not a clue!</p>
+          </div>
           <Instruction2
             problemId={this.state.problemId}
             hidden={this.state.hidden}
