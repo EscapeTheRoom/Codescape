@@ -2,7 +2,7 @@ import React, {Component} from 'react'
 import Instruction2 from '../popup/Instruction2'
 import {connect} from 'react-redux'
 import {withRouter} from 'react-router-dom'
-import {getItemSolved2, guestGameWon2} from '../../store/guest2'
+import {getItemSolved2, guestGameWon2, resetState2} from '../../store/guest2'
 import {fetchAProblem} from '../../store/problem'
 import ImageMapper from 'react-image-mapper'
 import Level2backpack from '../level2backpack'
@@ -39,6 +39,7 @@ class Level2 extends Component {
     this.handleClose = this.handleClose.bind(this)
     this.handleWin = this.handleWin.bind(this)
     this.updateDimensions = this.updateDimensions.bind(this)
+    this.handleReset = this.handleReset.bind(this)
   }
   updateDimensions() {
     this.setState({width: window.innerWidth, height: window.innerHeight})
@@ -124,6 +125,16 @@ class Level2 extends Component {
     })
   }
 
+  handleReset(){
+    this.setState({
+      problemId: 0,
+      hidden: 'hidden',
+      winner: 'hidden',
+      solved: 'solved',
+      notClue:'hidden'
+    })
+    this.props.resetState()
+  }
   render() {
     return (
       <div>
@@ -143,7 +154,7 @@ class Level2 extends Component {
                 this.handleClick(area)
               } else if (area.id === 7) {
                 this.handleWin(area)
-              } else if (area.className==="notclue"){
+              } else if (area.className==="notClue"){
                 this.handleNotClue(area)
               }
             }}
@@ -165,6 +176,7 @@ class Level2 extends Component {
             handleClose={this.handleClose}
           />
         </div>
+        <button type="button" className="buttonstart" onClick={this.handleReset}>Reset</button>
       </div>
     )
   }
@@ -178,7 +190,8 @@ const mapStateToProps = state => ({
 const mapDispatchToProps = dispatch => ({
   getItemSolved: problemId => dispatch(getItemSolved2(problemId)),
   fetchAProblem: problemId => dispatch(fetchAProblem(problemId)),
-  guestGameWon: () => dispatch(guestGameWon2())
+  guestGameWon: () => dispatch(guestGameWon2()),
+  resetState: () => dispatch(resetState2())
 })
 
 export default withRouter(connect(mapStateToProps, mapDispatchToProps)(Level2))

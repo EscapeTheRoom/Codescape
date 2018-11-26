@@ -2,7 +2,7 @@ import React, {Component} from 'react'
 import Instruction from '../popup/Instruction'
 import {connect} from 'react-redux'
 import {withRouter} from 'react-router-dom'
-import {getItemSolved, guestGameWon} from '../../store/guest.js'
+import {getItemSolved, guestGameWon, resetState} from '../../store/guest.js'
 import {fetchAProblem} from '../../store/problem'
 import ImageMapper from 'react-image-mapper'
 import Backpack from '../backpack'
@@ -40,6 +40,7 @@ class Level1 extends Component {
     this.handleClose = this.handleClose.bind(this)
     this.handleWin = this.handleWin.bind(this)
     this.updateDimensions = this.updateDimensions.bind(this)
+    this.handleReset = this.handleReset.bind(this)
   }
   updateDimensions() {
     this.setState({width: window.innerWidth, height: window.innerHeight})
@@ -124,10 +125,21 @@ class Level1 extends Component {
       notClue:"solved"
     })
   }
+  handleReset(){
+    this.setState({
+      problemId: 0,
+      hidden: 'hidden',
+      winner: 'hidden',
+      solved: 'solved',
+      notClue:'hidden'
+    })
+    this.props.resetState()
+  }
 
   render() {
     return (
       <div>
+       
         <div className="game">
           <Backpack room="level1"/>
           <ImageMapper id="unicorn" fillColor="transparent" 
@@ -161,6 +173,7 @@ class Level1 extends Component {
             handleClose={this.handleClose}
           />
         </div>
+        <button type="button" className="buttonstart" onClick={this.handleReset}>Reset</button>
       </div>
     )
   }
@@ -174,7 +187,8 @@ const mapStateToProps = state => ({
 const mapDispatchToProps = dispatch => ({
   getItemSolved: problemId => dispatch(getItemSolved(problemId)),
   fetchAProblem: problemId => dispatch(fetchAProblem(problemId)),
-  guestGameWon: () => dispatch(guestGameWon())
+  guestGameWon: () => dispatch(guestGameWon()),
+  resetState: () => dispatch(resetState())
 })
 
 export default withRouter(connect(mapStateToProps, mapDispatchToProps)(Level1))
