@@ -20,11 +20,12 @@ class Level2backpack extends Component {
         {Object.keys(items)
           .slice(1)
           .map(
-            key =>
+            (key, idx) =>
               items[+key] === 'true' ? (
                 <img
                   className="backpackImg"
                   id={key}
+                  key={idx}
                   src={`img/${this.state.room}_${key}.png`}
                 />
               ) : (

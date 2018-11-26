@@ -29,7 +29,7 @@ class Instruction extends Component {
             >
               Close
             </button>
-            <p>You already solved this problem!</p>
+            <p>Problem solved!</p>
           </div>
         )
       }
@@ -45,7 +45,7 @@ class Instruction extends Component {
           >
             Close
           </button>
-          <p>You don't have enough items to unlock this problem just yet</p>
+          <p>Clue locked, or this is not a clue!</p>
         </div>
       )
     }
