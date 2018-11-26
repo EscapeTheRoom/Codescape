@@ -1,6 +1,7 @@
 body {
   font-family: sans-serif;
   background: black;
+
   /* position:fixed; */
   top:0;
   bottom:0;
@@ -13,7 +14,7 @@ a {
   color: white;
   background: transparent;
   border: 3px solid white;
-  border-radius: 6px; 
+  border-radius: 6px;
   padding: 8px 17px;
   text-align: center;
   display: inline-block;
@@ -53,16 +54,18 @@ p {
   padding-bottom: 28px;
 }
 
-#button {
+.buttonstart {
   font-family: 'Lato', sans-serif;
   font-style: normal;
   font-weight: 400;
   letter-spacing: 0.083em;
+
   color: #0099CC;
   background: transparent;  
   border: 3px solid #0099CC;
   border-radius: 6px; 
   padding: -1px 32px;
+
   text-align: center;
   display: inline-block;
   transition-duration: 0.4s;
@@ -73,8 +76,8 @@ p {
   margin-left: 39px;
 }
 
-#button:hover {
-  background-color: #008CBA;
+.buttonstart:hover {
+  background-color: #008cba;
   color: white;
 }
 
@@ -97,8 +100,11 @@ p {
 .notHidden {
   display: flex;
   position: absolute;
-  left: 15%;
-  top: 10em;
+  top: 50%;
+  left: 50%;
+  margin-top: 10em;
+  transform: translate(-50%, -50%);
+  /* //top: 10em; */
   z-index: 2;
   opacity: 0.9;
   flex-direction: column;
@@ -238,7 +244,7 @@ p {
 }
 
 .closeSolved {
-  display: none
+  display: none;
 }
 
 .solved {

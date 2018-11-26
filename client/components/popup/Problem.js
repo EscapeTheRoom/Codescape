@@ -17,7 +17,7 @@ class Problem extends Component {
         <div className="outer">
           <div className="problem-container">
             <div>
-              <h2>{this.props.problem.title}</h2>
+              <h3>{this.props.problem.title}</h3>
             </div>
 
             <div>

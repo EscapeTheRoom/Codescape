@@ -2,9 +2,9 @@ import React, {Component} from 'react'
 import {withRouter} from 'react-router-dom'
 import {connect} from 'react-redux'
 import {isSolved, gameWon, updateIsSolved} from '../../store/user'
-import {guestIsSolved, guestGameWon} from '../../store/guest.js'
+import {guestIsSolved2, guestGameWon2} from '../../store/guest2.js'
 
-class TestResult extends Component {
+class TestRes2 extends Component {
   constructor(props) {
     super(props)
   }
@@ -54,11 +54,11 @@ const mapDispatchToProps = dispatch => {
     isSolved: problemId => dispatch(isSolved(problemId)),
     gameWon: () => dispatch(gameWon()),
     updateIsSolved: isSolvedObj => dispatch(updateIsSolved(isSolvedObj)),
-    guestIsSolved: problemId => dispatch(guestIsSolved(problemId)),
-    guestGameWon: () => dispatch(guestGameWon())
+    guestIsSolved: problemId => dispatch(guestIsSolved2(problemId)),
+    guestGameWon: () => dispatch(guestGameWon2())
   }
 }
 
 export default withRouter(
-  connect(mapStateToProps, mapDispatchToProps)(TestResult)
+  connect(mapStateToProps, mapDispatchToProps)(TestRes2)
 )

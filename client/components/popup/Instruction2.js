@@ -1,10 +1,10 @@
 import React, {Component} from 'react'
 import Problem from './Problem'
-import TestResult2 from './TestResult'
+import TestRes2 from './TestResult'
 import {RenderLoop} from 'brace'
 import {withRouter} from 'react-router-dom'
 import {connect} from 'react-redux'
-import {getItemSolved} from '../../store/guest.js'
+import {getItemSolved2} from '../../store/guest2.js'
 import {clearSpec} from '../../store/problem'
 
 class Instruction extends Component {
@@ -17,7 +17,7 @@ class Instruction extends Component {
     const {items} = this.props.guest
 
     if (isSolved[this.props.problemId] === 'true') {
-      if (this.props.problemId < 4) {
+      if (this.props.problemId < 7) {
         //this.props.clearSpec()
         //if (this.props.user.isSolved[this.props.problemId] === 'true') {
         return (
@@ -53,7 +53,7 @@ class Instruction extends Component {
     return (
       <div className={this.props.hidden}>
         <Problem id={this.props.problemId} handleExit={this.props.handleExit} />
-        <TestResult2 id={this.props.problemId} />
+        <TestRes2 id={this.props.problemId} />
       </div>
     )
   }
@@ -61,7 +61,7 @@ class Instruction extends Component {
 const mapStateToProps = state => ({
   spec: state.problemsReducer.spec,
   user: state.user,
-  guest: state.guest
+  guest: state.guest2
 })
 const mapDispatchToProps = dispatch => ({
   clearSpec: () => dispatch(clearSpec())
