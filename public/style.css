@@ -53,7 +53,7 @@ p {
   padding-bottom: 28px;
 }
 
-#buttonstart {
+.buttonstart {
   font-family: 'Lato', sans-serif;
   font-style: normal;
   font-weight: 400;
@@ -73,7 +73,7 @@ p {
   margin-left: 39px;
 }
 
-#buttonstart:hover {
+.buttonstart:hover {
   background-color: #008CBA;
   color: white;
 }
