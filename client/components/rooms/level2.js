@@ -143,7 +143,7 @@ class Level2 extends Component {
                 this.handleClick(area)
               } else if (area.id === 7) {
                 this.handleWin(area)
-              } else if (area.className==="notclue"){
+              } else if (area.className==="notClue"){
                 this.handleNotClue(area)
               }
             }}
