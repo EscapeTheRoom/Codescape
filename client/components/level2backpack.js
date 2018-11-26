@@ -16,7 +16,7 @@ class Level2backpack extends Component {
     const {items} = this.props.guest
 
     return (
-      <div className="backpack">
+      <div className="backpack2">
         {Object.keys(items)
           .slice(1)
           .map(
