@@ -263,7 +263,7 @@ class Level1 extends Component {
               }
             }}
           />
-          <img
+          <img id='resume'
             className={this.state.winner}
             src="http://943thepoint.com/files/2013/09/my-little-resume.png?w=980&q=75"
             onClick={this.handleExit}

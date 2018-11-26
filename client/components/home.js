@@ -3,6 +3,7 @@ import {Link} from 'react-router-dom'
 import {Carousel} from 'react-responsive-carousel'
 
 class Home extends Component {
+
   render() {
     return (
       <Carousel showArrows={true} showThumbs={false}>
@@ -32,6 +33,7 @@ class Home extends Component {
                 </div> */}
       </Carousel>
     )
+
   }
 }
 

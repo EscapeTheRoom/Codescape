@@ -72,6 +72,8 @@ class Input extends Component {
           onLoad={this.onLoad}
           onChange={this.onChange}
           fontSize={14}
+          // width='100%'
+          // height="100%"
           showPrintMargin={true}
           showGutter={true}
           highlightActiveLine={true}
