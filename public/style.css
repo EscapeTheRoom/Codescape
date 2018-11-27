@@ -28,7 +28,8 @@ h1 {
 }
 
 h2 {
-  font-size: 40px
+  font-family: 'Gloria Hallelujah', cursive;
+  font-size: 40px;
 }
 
 label {
@@ -260,6 +261,10 @@ span {
   background-color: #000000d9;
   color: #ffffff;
   border-radius: 30px;
+}
+
+.solved li {
+  list-style-type: none;
 }
 
 /* StoryLine Component */
