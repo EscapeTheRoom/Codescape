@@ -2,7 +2,7 @@ import React, {Component} from 'react'
 import {withRouter} from 'react-router-dom'
 import {connect} from 'react-redux'
 import {isSolved, gameWon, updateIsSolved} from '../../store/user'
-import {guestIsSolved2, guestGameWon2} from '../../store/guest2.js'
+import {guestIsSolved2, guestGameWon2} from '../../store/level2guest.js'
 
 class TestRes2 extends Component {
   constructor(props) {

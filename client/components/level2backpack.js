@@ -6,22 +6,22 @@ class Level2backpack extends Component {
     super(props)
     this.state = {
       items: {},
-      room: "level2"
+      room: 'level2'
     }
     //pass down the room name in props
     // pass down the items state in props
   }
 
   render() {
-    const {items} = this.props.guest
+    const {items2} = this.props.guest
 
     return (
       <div className="backpack2">
-        {Object.keys(items)
+        {Object.keys(items2)
           .slice(1)
           .map(
             (key, idx) =>
-              items[+key] === 'true' ? (
+              items2[+key] === 'true' ? (
                 <img
                   className="backpackImg"
                   id={key}
@@ -29,10 +29,7 @@ class Level2backpack extends Component {
                   src={`img/level2_${key}.png`}
                 />
               ) : (
-                <img
-                  className="backpackImg"
-                  src="/img/carImg.png"
-                />
+                <img className="backpackImg" src="/img/carImg.png" />
               )
           )}
       </div>
@@ -41,7 +38,7 @@ class Level2backpack extends Component {
 }
 
 const mapStateToProps = state => ({
-  guest: state.guest2
+  guest: state.level2guest
 })
 
 export default connect(mapStateToProps)(Level2backpack)

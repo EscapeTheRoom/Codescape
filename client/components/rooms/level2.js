@@ -2,7 +2,11 @@ import React, {Component} from 'react'
 import {Link, withRouter} from 'react-router-dom'
 import Instruction2 from '../popup/Instruction2'
 import {connect} from 'react-redux'
-import {getItemSolved2, guestGameWon2, resetState2} from '../../store/guest2'
+import {
+  getItemSolved2,
+  guestGameWon2,
+  resetState2
+} from '../../store/level2guest'
 import {fetchAProblem} from '../../store/problem'
 import ImageMapper from 'react-image-mapper'
 import Level2backpack from '../level2backpack'
@@ -164,24 +168,24 @@ class Level2 extends Component {
   async handleClick(e) {
     // e.preventDefault()
     const id = e.id
-    const {items} = this.props.guest
-    const {isSolved} = this.props.guest
+    const {items2} = this.props.guest
+    const {isSolved2} = this.props.guest
     await this.props.fetchAProblem(id)
 
-    if (items[id] === 'true') {
+    if (items2[id] === 'true') {
       this.setState({
         problemId: id,
         hidden: 'notHidden'
       })
     }
-    if (isSolved[id] === 'true') {
+    if (isSolved2[id] === 'true') {
       this.setState({
         problemId: id,
         hidden: 'hidden',
         solved: 'solved'
       })
     }
-    if (items[id] === 'false') {
+    if (items2[id] === 'false') {
       this.setState({
         problemId: id,
         hidden: 'hidden',
@@ -199,10 +203,10 @@ class Level2 extends Component {
   }
 
   async handleWin(e) {
-    let {items} = this.props.guest
-    let {isSolved} = this.props.guest
+    let {items2} = this.props.guest
+    let {isSolved2} = this.props.guest
     let probId = e.id
-    if (items[7] === 'false') {
+    if (items2[7] === 'false') {
       this.setState({
         problemId: probId,
         hidden: 'hidden',
@@ -210,9 +214,9 @@ class Level2 extends Component {
         winner: 'hidden'
       })
     }
-    if (isSolved[6] === 'true') {
+    if (isSolved2[6] === 'true') {
       await this.props.guestGameWon()
-      if (this.props.guest.isWon) {
+      if (this.props.guest.isWon2) {
         this.setState({
           problemId: probId,
           hidden: 'hidden',
@@ -318,7 +322,7 @@ class Level2 extends Component {
 }
 
 const mapStateToProps = state => ({
-  guest: state.guest2,
+  guest: state.level2guest,
   problem: state.problemsReducer
 })
 
