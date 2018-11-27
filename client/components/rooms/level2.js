@@ -184,6 +184,7 @@ class Level2 extends Component {
         hidden: 'hidden',
         solved: 'solved'
       })
+      this.anError.play()
     }
     if (items2[id] === 'false') {
       this.setState({
@@ -191,6 +192,7 @@ class Level2 extends Component {
         hidden: 'hidden',
         solved: 'solved'
       })
+      this.anError.play()
     }
   }
 
@@ -222,6 +224,7 @@ class Level2 extends Component {
           hidden: 'hidden',
           winner: 'notHidden'
         })
+        this.yay.play()
       }
     }
   }
@@ -237,6 +240,7 @@ class Level2 extends Component {
     this.setState({
       notClue: 'solved'
     })
+    this.anError.play()
   }
 
   handleReset() {
@@ -266,6 +270,12 @@ class Level2 extends Component {
         </div>
 
         <div className="game">
+          <audio ref={(anError) => { this.anError = anError; }}>
+            <source src="/ErrorSound.mp3" type="audio/mpeg"/>
+          </audio>
+          <audio ref={(yay) => { this.yay = yay; }}>
+            <source src="/YaySound.mp3" type="audio/mpeg"/>
+          </audio>
           <Level2backpack room="level1" />
           <ImageMapper
             id="garage"
