@@ -201,6 +201,7 @@ class Level1 extends Component {
         hidden: 'hidden',
         solved: 'solved'
       })
+      this.anError.play()
     }
     if (items[id] === 'false') {
       this.setState({
@@ -208,6 +209,7 @@ class Level1 extends Component {
         hidden: 'hidden',
         solved: 'solved'
       })
+      this.anError.play()
     }
   }
 
@@ -230,6 +232,7 @@ class Level1 extends Component {
         solved: 'solved',
         winner: 'hidden'
       })
+      
     }
     if (isSolved[3] === 'true') {
       await this.props.guestGameWon()
@@ -239,6 +242,7 @@ class Level1 extends Component {
           hidden: 'hidden',
           winner: 'notHidden'
         })
+        this.yay.play()
       }
     }
   }
@@ -254,6 +258,7 @@ class Level1 extends Component {
     this.setState({
       notClue: 'solved'
     })
+    this.anError.play()
   }
   handleReset() {
     this.setState({
@@ -283,6 +288,12 @@ class Level1 extends Component {
         </div>
 
         <div className="game">
+          <audio ref={(anError) => { this.anError = anError; }}>
+            <source src="/ErrorSound.mp3" type="audio/mpeg"/>
+          </audio>
+          <audio ref={(yay) => { this.yay = yay; }}>
+            <source src="/YaySound.mp3" type="audio/mpeg"/>
+          </audio>
           <Backpack room="level1" />
           <ImageMapper
             id="unicorn"
