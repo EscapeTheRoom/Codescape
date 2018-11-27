@@ -14,15 +14,15 @@ const RESET = 'RESET'
  * INITIAL STATE
  */
 const defaultGuest = {
-  isWon: false,
-  isSolved: {
+  isWon2: false,
+  isSolved2: {
     4: 'false',
     5: 'false',
     6: 'false'
     //add keys if there were more problems
     //keys correspond to problem ID
   },
-  items: {
+  items2: {
     4: 'true',
     5: 'false',
     6: 'false',
@@ -37,7 +37,7 @@ const defaultGuest = {
 const gameIsWonGuest = () => ({type: GAME_WON})
 const problemSolvedGuest = problemId => ({type: SOLVED, problemId})
 const getItemTruthy = problemId => ({type: GET_ITEM, problemId})
-const resetGame = () => ({type:RESET})
+const resetGame = () => ({type: RESET})
 
 /**
  * THUNK CREATORS
@@ -72,30 +72,30 @@ export const resetState2 = () => dispatch => {
 export default function(state = defaultGuest, action) {
   switch (action.type) {
     case GAME_WON:
-      for (let key in state.isSolved) {
-        if (state.isSolved[key] === 'false') {
+      for (let key in state.isSolved2) {
+        if (state.isSolved2[key] === 'false') {
           return {...state}
         }
-        return {...state, isWon: true}
+        return {...state, isWon2: true}
       }
     case SOLVED:
       let newState = {...state}
-      const newIsSolved = {...newState.isSolved}
+      const newIsSolved = {...newState.isSolved2}
       newIsSolved[action.problemId] = 'true'
-      const newItemIsUnlocked = {...newState.items}
+      const newItemIsUnlocked = {...newState.items2}
       if (+action.problemId < 7) {
         newItemIsUnlocked[+action.problemId + 1] = 'true'
-        return {...newState, isSolved: newIsSolved, items: newItemIsUnlocked}
+        return {...newState, isSolved2: newIsSolved, items2: newItemIsUnlocked}
       } else {
-        return {...newState, isSolved: newIsSolved}
+        return {...newState, isSolved2: newIsSolved}
       }
     case GET_ITEM:
       let newerState = {...state}
-      const newItemIsSolved = {...newerState.items}
+      const newItemIsSolved = {...newerState.items2}
       newItemIsSolved[action.problemId] = 'true'
-      return {...newerState, items: newItemIsSolved}
-      case RESET:
-      return defaultGuest;
+      return {...newerState, items2: newItemIsSolved}
+    case RESET:
+      return defaultGuest
     default:
       return state
   }

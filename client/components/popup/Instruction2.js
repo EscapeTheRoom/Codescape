@@ -4,7 +4,7 @@ import TestRes2 from './TestResult'
 import {RenderLoop} from 'brace'
 import {withRouter} from 'react-router-dom'
 import {connect} from 'react-redux'
-import {getItemSolved2} from '../../store/guest2.js'
+import {getItemSolved2} from '../../store/level2guest.js'
 import {clearSpec} from '../../store/problem'
 
 class Instruction extends Component {
@@ -13,10 +13,10 @@ class Instruction extends Component {
   }
 
   render() {
-    const {isSolved} = this.props.guest
-    const {items} = this.props.guest
+    const {isSolved2} = this.props.guest
+    const {items2} = this.props.guest
 
-    if (isSolved[this.props.problemId] === 'true') {
+    if (isSolved2[this.props.problemId] === 'true') {
       if (this.props.problemId < 7) {
         //this.props.clearSpec()
         //if (this.props.user.isSolved[this.props.problemId] === 'true') {
@@ -35,7 +35,7 @@ class Instruction extends Component {
       }
     }
 
-    if (items[this.props.problemId] === 'false') {
+    if (items2[this.props.problemId] === 'false') {
       return (
         <div className={this.props.solved}>
           <button
@@ -61,7 +61,7 @@ class Instruction extends Component {
 const mapStateToProps = state => ({
   spec: state.problemsReducer.spec,
   user: state.user,
-  guest: state.guest2
+  guest: state.level2guest
 })
 const mapDispatchToProps = dispatch => ({
   clearSpec: () => dispatch(clearSpec())

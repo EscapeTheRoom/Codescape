@@ -5,13 +5,13 @@ import {composeWithDevTools} from 'redux-devtools-extension'
 import user from './user'
 import problemsReducer from './problem'
 import guest from './guest.js'
-import guest2 from './guest2.js'
+import level2guest from './level2guest.js'
 
 const reducer = combineReducers({
   user,
   problemsReducer,
   guest,
-  guest2
+  level2guest
 })
 const middleware = composeWithDevTools(
   applyMiddleware(thunkMiddleware, createLogger({collapsed: true}))
@@ -21,4 +21,4 @@ const store = createStore(reducer, middleware)
 export default store
 export * from './user'
 export * from './guest.js'
-export * from './guest2.js'
+export * from './level2guest.js'
