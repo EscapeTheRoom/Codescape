@@ -6,21 +6,21 @@ import history from '../history'
  */
 const GET_USER = 'GET_USER'
 const REMOVE_USER = 'REMOVE_USER'
-const GAME_WON = "GAME_WON"
-const SOLVED = "SOLVED"
+// const GAME_WON = "GAME_WON"
+// const SOLVED = "SOLVED"
 /**
  * INITIAL STATE
  */
 const defaultUser = {
   user: {},
-  isWon: false, 
-  isSolved:{
-    1: "false",
-    2: "false",
-    3: "false"
-    //add keys if there were more problems
-    //keys correspond to problem ID
-  }
+  // isWon: false, 
+  // isSolved:{
+  //   1: "false",
+  //   2: "false",
+  //   3: "false"
+  //   //add keys if there were more problems
+  //   //keys correspond to problem ID
+  // }
 }
 
 /**
@@ -28,8 +28,8 @@ const defaultUser = {
  */
 const getUser = user => ({type: GET_USER, user})
 const removeUser = () => ({type: REMOVE_USER})
-const gameIsWon = () => ({type: GAME_WON})
-const problemSolved = problemId => ({ type: SOLVED, problemId})
+// const gameIsWon = () => ({type: GAME_WON})
+// const problemSolved = problemId => ({ type: SOLVED, problemId})
 
 /**
  * THUNK CREATORS
@@ -68,27 +68,27 @@ export const logout = () => async dispatch => {
     console.error(err)
   }
 }
-export const gameWon = () => dispatch => {
-  dispatch(gameIsWon())
-}
-export const isSolved = problemId => dispatch => {
+// export const gameWon = () => dispatch => {
+//   dispatch(gameIsWon())
+// }
+// export const isSolved = problemId => dispatch => {
 
-  dispatch(problemSolved(problemId))
-}
-export const updateIsSolved = isSolvedObj => async dispatch => {
-  try{
-    const { data }= await axios.get('/auth/me')
-    const updatedUser = await axios.put('/auth/update', {id: data.id, isSolved: isSolvedObj})
-    console.log("updatedUser!!!",updatedUser)
-    // console.log("USER DATA", data, "user id", data.id)
-    // console.log("isSolvedObj", isSolvedObj)
-    // console.log("isSolved Json stringify", JSON.stringify(isSolvedObj))
+//   dispatch(problemSolved(problemId))
+// }
+// export const updateIsSolved = isSolvedObj => async dispatch => {
+//   try{
+//     const { data }= await axios.get('/auth/me')
+//     const updatedUser = await axios.put('/auth/update', {id: data.id, isSolved: isSolvedObj})
+//     console.log("updatedUser!!!",updatedUser)
+//     // console.log("USER DATA", data, "user id", data.id)
+//     // console.log("isSolvedObj", isSolvedObj)
+//     // console.log("isSolved Json stringify", JSON.stringify(isSolvedObj))
 
-  }
-  catch (err) {
-    console.error(err)
-  }
-}
+//   }
+//   catch (err) {
+//     console.error(err)
+//   }
+// }
 /**
  * REDUCER
  */
@@ -98,18 +98,18 @@ export default function(state = defaultUser, action) {
       return {...state, user: action.user}
     case REMOVE_USER:
       return defaultUser
-    case GAME_WON: 
-      for(let key in state.isSolved ){
-        if(state.isSolved[key] === "false"){
-          return {...state}
-        }
-        return {...state, isWon: true}
-      }
-    case SOLVED:
-      let newState = {...state}
-      let newIsSolved = {...newState.isSolved}
-      newIsSolved[action.problemId] = "true"
-      return {...newState, isSolved:newIsSolved}
+    // case GAME_WON: 
+    //   for(let key in state.isSolved ){
+    //     if(state.isSolved[key] === "false"){
+    //       return {...state}
+    //     }
+    //     return {...state, isWon: true}
+    //   }
+    // case SOLVED:
+    //   let newState = {...state}
+    //   let newIsSolved = {...newState.isSolved}
+    //   newIsSolved[action.problemId] = "true"
+    //   return {...newState, isSolved:newIsSolved}
     default:
       return state
   }

@@ -1,6 +1,6 @@
 import React, {Component} from 'react'
 import Problem from './Problem'
-import TestRes2 from './TestResult'
+import TestRes2 from './TestRes2'
 import {RenderLoop} from 'brace'
 import {withRouter} from 'react-router-dom'
 import {connect} from 'react-redux'
@@ -13,8 +13,8 @@ class Instruction extends Component {
   }
 
   render() {
-    const {isSolved2} = this.props.guest
-    const {items2} = this.props.guest
+    const {isSolved2} = this.props.guest2
+    const {items2} = this.props.guest2
 
     if (isSolved2[this.props.problemId] === 'true') {
       if (this.props.problemId < 7) {
@@ -61,7 +61,7 @@ class Instruction extends Component {
 const mapStateToProps = state => ({
   spec: state.problemsReducer.spec,
   user: state.user,
-  guest: state.level2guest
+  guest2: state.level2guest
 })
 const mapDispatchToProps = dispatch => ({
   clearSpec: () => dispatch(clearSpec())
