@@ -2,7 +2,7 @@ import React, {Component} from 'react'
 import {Link, withRouter} from 'react-router-dom'
 import Instruction from '../popup/Instruction'
 import {connect} from 'react-redux'
-import {getItemSolved, guestGameWon, resetState} from '../../store/guest.js'
+import {guestGameWon, resetState} from '../../store/guest.js'
 import {fetchAProblem} from '../../store/problem'
 import ImageMapper from 'react-image-mapper'
 import Backpack from '../backpack'
@@ -174,7 +174,10 @@ class Level1 extends Component {
   }
 
   updateDimensions() {
-    this.setState({width: window.innerWidth, height: window.innerHeight})
+    this.setState({
+      width: window.innerWidth,
+      height: window.innerHeight
+    })
   }
 
   componentDidMount() {
@@ -183,7 +186,6 @@ class Level1 extends Component {
   }
 
   async handleClick(e) {
-    // e.preventDefault()
     const id = e.id
     const {items} = this.props.guest
     const {isSolved} = this.props.guest
@@ -254,12 +256,14 @@ class Level1 extends Component {
       winner: 'hidden'
     })
   }
+
   handleNotClue() {
     this.setState({
       notClue: 'solved'
     })
     this.anError.play()
   }
+
   handleReset() {
     this.setState({
       problemId: 0,
@@ -357,7 +361,6 @@ const mapStateToProps = state => ({
 })
 
 const mapDispatchToProps = dispatch => ({
-  getItemSolved: problemId => dispatch(getItemSolved(problemId)),
   fetchAProblem: problemId => dispatch(fetchAProblem(problemId)),
   guestGameWon: () => dispatch(guestGameWon()),
   resetState: () => dispatch(resetState())

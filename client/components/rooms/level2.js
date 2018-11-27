@@ -3,7 +3,6 @@ import {Link, withRouter} from 'react-router-dom'
 import Instruction2 from '../popup/Instruction2'
 import {connect} from 'react-redux'
 import {
-  getItemSolved2,
   guestGameWon2,
   resetState2
 } from '../../store/level2guest'
@@ -157,8 +156,12 @@ class Level2 extends Component {
     this.updateDimensions = this.updateDimensions.bind(this)
     this.handleReset = this.handleReset.bind(this)
   }
+
   updateDimensions() {
-    this.setState({width: window.innerWidth, height: window.innerHeight})
+    this.setState({
+      width: window.innerWidth,
+      height: window.innerHeight
+    })
   }
 
   componentDidMount() {
@@ -166,7 +169,6 @@ class Level2 extends Component {
     window.addEventListener('resize', this.updateDimensions)
   }
   async handleClick(e) {
-    // e.preventDefault()
     const id = e.id
     const {items2, isSolved2, isWon2} = this.props.guest2
 
@@ -244,6 +246,7 @@ class Level2 extends Component {
       winner: 'hidden'
     })
   }
+
   handleNotClue() {
     this.setState({
       notClue: 'solved'
@@ -261,6 +264,7 @@ class Level2 extends Component {
     })
     this.props.resetState2()
   }
+
   render() {
     return (
       <div>
@@ -348,7 +352,6 @@ const mapStateToProps = state => ({
 })
 
 const mapDispatchToProps = dispatch => ({
-  // getItemSolved: problemId => dispatch(getItemSolved2(problemId)),
   fetchAProblem: problemId => dispatch(fetchAProblem(problemId)),
   guestGameWon2: () => dispatch(guestGameWon2()),
   resetState2: () => dispatch(resetState2())

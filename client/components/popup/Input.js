@@ -1,10 +1,8 @@
 import React, {Component} from 'react'
-import axios from 'axios'
 import {connect} from 'react-redux'
-import {clearCode, setCode, sendInput, clearSpec} from '../../store/problem'
+import {sendInput, clearSpec} from '../../store/problem'
 
 // Import Brace and the AceEditor Component
-import brace from 'brace'
 import AceEditor from 'react-ace'
 
 // Import a Mode (language)
@@ -38,7 +36,6 @@ class Input extends Component {
   async handleSubmit(e) {
     e.preventDefault()
 
-    // this.props.setCode(this.state)
     await this.props.sendInput(this.state)
     const {spec} = this.props.problemState
     if (!spec.includes('failing')) {
@@ -55,7 +52,6 @@ class Input extends Component {
       id
     })
 
-    //await this.props.clearInput()
     await this.props.clearSpec()
     await this.props.handleExit()
   }
@@ -69,6 +65,7 @@ class Input extends Component {
           mode="javascript"
           theme="twilight"
           name="code"
+          height={350}
           onLoad={this.onLoad}
           onChange={this.onChange}
           fontSize={14}
