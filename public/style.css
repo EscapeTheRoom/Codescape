@@ -121,6 +121,10 @@ span {
 
 .problem-container {
   margin: 1em;
+  width: 500px;
+  margin-left: auto;
+  margin-right: auto;
+  text-align: center
 }
 
 .input-container {
@@ -327,7 +331,7 @@ span {
   text-transform: uppercase;
   font-size: 25px;
   margin-left: -29%;
-  margin-top: 45%;
+  margin-top: 47%;
 }
 
 .nextlevel:hover{

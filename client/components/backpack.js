@@ -12,7 +12,6 @@ class Backpack extends Component {
         // pass down the items state in props
     }
     render(){
-        console.log("backPack")
         const {items} = this.props.guest
        
         return (
