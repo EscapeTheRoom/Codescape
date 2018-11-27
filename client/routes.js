@@ -7,7 +7,6 @@ import {me} from './store'
 import Home from './components/home'
 
 import Instruction from './components/popup/Instruction.js'
-
 import Instruction2 from './components/popup/Instruction2'
 import Level1 from './components/rooms/level1'
 import Level2 from './components/rooms/level2'
@@ -28,9 +27,9 @@ class Routes extends Component {
         {/* Routes placed here are available to all visitors */}
         <Route exact path="/" component={Home} />
         <Route exact path="/login" component={Login} />
-        <Route path="/signup" component={Signup} />
+        {/* <Route path="/signup" component={Signup} /> */}
         <Route exact path="/easy" component={Level1} />
-        <Route path="/medium" component={Level2} />
+        <Route exact path="/medium" component={Level2} />
         {isLoggedIn && (
           <Switch>
             {/* Routes placed here are only available after logging in */}

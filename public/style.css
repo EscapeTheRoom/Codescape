@@ -1,7 +1,6 @@
 body {
   font-family: sans-serif;
   background: black;
-  /* position:fixed; */
   top:0;
   bottom:0;
   left:0;
@@ -56,6 +55,10 @@ p {
 span {
   padding-bottom: 15px;
   text-align: center;
+}
+
+#comingsoon .buttonstart{
+  display: inline-block
 }
 
 .buttonstart {
