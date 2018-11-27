@@ -23,14 +23,10 @@ class Home extends Component {
               </Link>
             </p>
           </div>
-          {/* <div>
-                    <img src="////" />
-                    <p><Link to ='/easy' id='button'>Start</Link></p>
-                </div>
-                <div>
-                    <img src="////" />
-                    <p><Link to ='/easy' id='button'>Start</Link></p>
-                </div> */}
+          <div>
+                <img src="hard-level.gif" />
+                <p><a className="buttonstart"> Coming Soon </a></p>
+        </div>
         </Carousel>
       </div>
     )
