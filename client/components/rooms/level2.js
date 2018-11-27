@@ -1,25 +1,135 @@
 import React, {Component} from 'react'
-import {Link} from 'react-router-dom'
+import {Link, withRouter} from 'react-router-dom'
 import Instruction2 from '../popup/Instruction2'
 import {connect} from 'react-redux'
-import {withRouter} from 'react-router-dom'
 import {getItemSolved2, guestGameWon2, resetState2} from '../../store/guest2'
 import {fetchAProblem} from '../../store/problem'
 import ImageMapper from 'react-image-mapper'
 import Level2backpack from '../level2backpack'
 const source = 'img/garage_capstone.png'
 const MAP = {
-  name:'garage',
+  name: 'garage',
   areas: [
-    {name: "toolbox", shape: "poly", id:5, coords:[5558,1516,5442,1511,5410,1766,5553,1787]},
-    {name: "broom", shape: "poly", id:4, coords:[1697,1554,1565,1850,1501,1909,1618,1935,1628,1787]},
-    {name: "key", shape: "poly", id:6, coords:[743,2762,636,2805,743,2895,992,2847,902,2789]},
-    {name: "fireExtinguisher", shape: "poly", className:"notClue", coords:[202,1564,90,1612,80,1850,143,1925,202,1904,191,1702]},
-    {name: "fireextinguisher2", shape: "poly", className:"notClue", coords:[350,1596,324,1660,334,1797,392,1797,387,1702]},
-    {name: "exit", shape: "poly", className:"notClue", coords:[4689,1331,4646,1384,4694,1426,4906,1410,4895,1336]},
-    {name: "cars", shape: "poly", className:"notClue", coords:[4004,1856,3676,1904,3479,1872,3050,1850,2933,1898,2774,1914,2376,1925,1989,1972,1904,2036,2084,2078,2270,2174,2541,2280,2822,2333,3182,2381,3527,2370,3665,2253,3851,2216,4095,2216,4174,2137,4291,2147,4429,2105,4312,2015]},
-    {name: "yellowCar", shape: "poly", id:7, coords:[180,2232,780,2036,1650,2052,2000,2190,2259,2296,2636,2413,2790,2603,2816,2768,2148,2821,1400,2863,780,2736,313,2667,143,2609]},
-    
+    {
+      name: 'toolbox',
+      shape: 'poly',
+      id: 5,
+      coords: [5558, 1516, 5442, 1511, 5410, 1766, 5553, 1787]
+    },
+    {
+      name: 'broom',
+      shape: 'poly',
+      id: 4,
+      coords: [1697, 1554, 1565, 1850, 1501, 1909, 1618, 1935, 1628, 1787]
+    },
+    {
+      name: 'key',
+      shape: 'poly',
+      id: 6,
+      coords: [743, 2762, 636, 2805, 743, 2895, 992, 2847, 902, 2789]
+    },
+    {
+      name: 'fireExtinguisher',
+      shape: 'poly',
+      className: 'notClue',
+      coords: [202, 1564, 90, 1612, 80, 1850, 143, 1925, 202, 1904, 191, 1702]
+    },
+    {
+      name: 'fireextinguisher2',
+      shape: 'poly',
+      className: 'notClue',
+      coords: [350, 1596, 324, 1660, 334, 1797, 392, 1797, 387, 1702]
+    },
+    {
+      name: 'exit',
+      shape: 'poly',
+      className: 'notClue',
+      coords: [4689, 1331, 4646, 1384, 4694, 1426, 4906, 1410, 4895, 1336]
+    },
+    {
+      name: 'cars',
+      shape: 'poly',
+      className: 'notClue',
+      coords: [
+        4004,
+        1856,
+        3676,
+        1904,
+        3479,
+        1872,
+        3050,
+        1850,
+        2933,
+        1898,
+        2774,
+        1914,
+        2376,
+        1925,
+        1989,
+        1972,
+        1904,
+        2036,
+        2084,
+        2078,
+        2270,
+        2174,
+        2541,
+        2280,
+        2822,
+        2333,
+        3182,
+        2381,
+        3527,
+        2370,
+        3665,
+        2253,
+        3851,
+        2216,
+        4095,
+        2216,
+        4174,
+        2137,
+        4291,
+        2147,
+        4429,
+        2105,
+        4312,
+        2015
+      ]
+    },
+    {
+      name: 'yellowCar',
+      shape: 'poly',
+      id: 7,
+      coords: [
+        180,
+        2232,
+        780,
+        2036,
+        1650,
+        2052,
+        2000,
+        2190,
+        2259,
+        2296,
+        2636,
+        2413,
+        2790,
+        2603,
+        2816,
+        2768,
+        2148,
+        2821,
+        1400,
+        2863,
+        780,
+        2736,
+        313,
+        2667,
+        143,
+        2609
+      ]
+    }
   ]
 }
 class Level2 extends Component {
@@ -32,7 +142,7 @@ class Level2 extends Component {
       width: window.innerWidth,
       height: window.innerHeight,
       solved: 'solved',
-      notClue:'hidden',
+      notClue: 'hidden',
       storyLine: 'storyline'
     }
 
@@ -82,8 +192,8 @@ class Level2 extends Component {
 
   handleClose() {
     this.setState({
-      solved: 'closeSolved',
-      notClue: "hidden",
+      solved: 'hidden',
+      notClue: 'hidden',
       storyLine: 'hidden'
     })
   }
@@ -119,19 +229,19 @@ class Level2 extends Component {
       winner: 'hidden'
     })
   }
-  handleNotClue(){
+  handleNotClue() {
     this.setState({
-      notClue:"solved"
+      notClue: 'solved'
     })
   }
 
-  handleReset(){
+  handleReset() {
     this.setState({
       problemId: 0,
       hidden: 'hidden',
       winner: 'hidden',
       solved: 'solved',
-      notClue:'hidden'
+      notClue: 'hidden'
     })
     this.props.resetState()
   }
@@ -140,8 +250,14 @@ class Level2 extends Component {
       <div>
         <div className="storyline-container">
           <div className={this.state.storyLine}>
-              <span>Now you have your resume, your dad offers you a ride to take you to the interview, but he misplaced his key. Can you help him find it?</span>
-              <button id="storybutton" type="button" onClick={this.handleClose}>Start</button>
+            <span>
+              Now you have your resume, your dad offers you a ride to take you
+              to the interview, but he misplaced his key. Can you help him find
+              it?
+            </span>
+            <button id="storybutton" type="button" onClick={this.handleClose}>
+              Start
+            </button>
           </div>
         </div>
 
@@ -161,7 +277,7 @@ class Level2 extends Component {
                 this.handleClick(area)
               } else if (area.id === 7) {
                 this.handleWin(area)
-              } else if (area.className==="notClue"){
+              } else if (area.className === 'notClue') {
                 this.handleNotClue(area)
               }
             }}
@@ -171,8 +287,10 @@ class Level2 extends Component {
             src="/img/aston.gif"
             onClick={this.handleExit}
           />
-             <div className={this.state.notClue}>
-            <button className="button" type="button" onClick={this.handleClose}>Close</button>
+          <div className={this.state.notClue}>
+            <button className="button" type="button" onClick={this.handleClose}>
+              Close
+            </button>
             <p>Clue locked, or this is not a clue!</p>
           </div>
           <Instruction2
@@ -184,10 +302,16 @@ class Level2 extends Component {
           />
 
           <Link to="/hard" className="nextlevel">
-                Next Level
+            Next Level
           </Link>
         </div>
-        <button type="button" className="buttonstart" onClick={this.handleReset}>Reset</button>
+        <button
+          type="button"
+          className="buttonstart"
+          onClick={this.handleReset}
+        >
+          Reset
+        </button>
       </div>
     )
   }
