@@ -168,8 +168,16 @@ class Level2 extends Component {
   async handleClick(e) {
     // e.preventDefault()
     const id = e.id
-    const {items2} = this.props.guest
-    const {isSolved2} = this.props.guest
+    const {items2, isSolved2, isWon2} = this.props.guest2
+
+    if (isWon2) {
+      this.setState({
+        problemId: 0,
+        hidden: 'hidden',
+        winner: 'notHidden'
+      })
+    }
+
     await this.props.fetchAProblem(id)
 
     if (items2[id] === 'true') {
@@ -203,8 +211,8 @@ class Level2 extends Component {
   }
 
   async handleWin(e) {
-    let {items2} = this.props.guest
-    let {isSolved2} = this.props.guest
+    let {items2} = this.props.guest2
+    let {isSolved2} = this.props.guest2
     let probId = e.id
     if (items2[7] === 'false') {
       this.setState({
@@ -215,10 +223,10 @@ class Level2 extends Component {
       })
     }
     if (isSolved2[6] === 'true') {
-      await this.props.guestGameWon()
-      if (this.props.guest.isWon2) {
+      await this.props.guestGameWon2()
+      if (this.props.guest2.isWon2) {
         this.setState({
-          problemId: probId,
+          problemId: 0,
           hidden: 'hidden',
           winner: 'notHidden'
         })
@@ -247,7 +255,7 @@ class Level2 extends Component {
       solved: 'solved',
       notClue: 'hidden'
     })
-    this.props.resetState()
+    this.props.resetState2()
   }
   render() {
     return (
@@ -266,7 +274,7 @@ class Level2 extends Component {
         </div>
 
         <div className="game">
-          <Level2backpack room="level1" />
+          <Level2backpack room="level2" />
           <ImageMapper
             id="garage"
             fillColor="transparent"
@@ -322,15 +330,15 @@ class Level2 extends Component {
 }
 
 const mapStateToProps = state => ({
-  guest: state.level2guest,
+  guest2: state.level2guest,
   problem: state.problemsReducer
 })
 
 const mapDispatchToProps = dispatch => ({
-  getItemSolved: problemId => dispatch(getItemSolved2(problemId)),
+  // getItemSolved: problemId => dispatch(getItemSolved2(problemId)),
   fetchAProblem: problemId => dispatch(fetchAProblem(problemId)),
-  guestGameWon: () => dispatch(guestGameWon2()),
-  resetState: () => dispatch(resetState2())
+  guestGameWon2: () => dispatch(guestGameWon2()),
+  resetState2: () => dispatch(resetState2())
 })
 
 export default withRouter(connect(mapStateToProps, mapDispatchToProps)(Level2))
