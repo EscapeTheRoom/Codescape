@@ -284,7 +284,8 @@ class Level2 extends Component {
           <audio ref={(yay) => { this.yay = yay; }}>
             <source src="/YaySound.mp3" type="audio/mpeg"/>
           </audio>
-          <Level2backpack room="level1" />
+
+          <Level2backpack room="level2" />
           <ImageMapper
             id="garage"
             fillColor="transparent"
