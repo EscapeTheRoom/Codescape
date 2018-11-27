@@ -211,7 +211,8 @@ background:#000
 .carousel .slide img{
 width:auto;
 vertical-align:top;
-border:0 
+border:0;
+margin-bottom: 26px; 
 }
 
 .carousel .slide iframe{

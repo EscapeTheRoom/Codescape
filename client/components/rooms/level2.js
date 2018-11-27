@@ -271,6 +271,7 @@ class Level2 extends Component {
               to the interview, but he misplaced his key. Can you help him find
               it?
             </span>
+            <li> start by clicking around to find your first challenge!</li>
             <button id="storybutton" type="button" onClick={this.handleClose}>
               Start
             </button>
@@ -331,6 +332,7 @@ class Level2 extends Component {
         <button
           type="button"
           className="buttonstart"
+          id='resetButton'
           onClick={this.handleReset}
         >
           Reset

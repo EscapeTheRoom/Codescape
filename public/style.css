@@ -55,6 +55,7 @@ p {
 
 span {
   padding-bottom: 15px;
+  text-align: center;
 }
 
 .buttonstart {
@@ -74,7 +75,8 @@ span {
   text-decoration: none;
   text-transform: uppercase;
   font-size: 33px;
-  margin-left: 39px;
+  margin-left: 2%;
+  width: 16%;
 }
 
 .buttonstart:hover {
@@ -320,9 +322,14 @@ span {
   cursor: pointer;
   text-decoration: none;
   text-transform: uppercase;
-  font-size: 33px;
-  margin-left: -40%;
+  font-size: 25px;
+  margin-left: -29%;
   margin-top: 45%;
+}
+
+.nextlevel:hover{
+  background-color: #008CBA;
+  color: white;
 }
 
 .backpack2 {
@@ -333,3 +340,24 @@ span {
   width:5%;
   background-color:rgba(128, 128, 128, 0.543);
 }
+
+.storyline li{
+    font-size: 11pt;
+    font-weight: 600;
+    letter-spacing: 0.08em;
+    font-family: 'Share Tech Mono', monospace;
+    list-style-type: none;
+    color: navy;
+    padding-bottom: 10px;
+    text-transform: uppercase;
+    text-align: center;
+    width: 300px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+#resetButton.buttonstart{
+  position: absolute;
+  left: 29%;
+  margin-top: -50px;
+} 

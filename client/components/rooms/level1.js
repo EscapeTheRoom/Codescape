@@ -280,6 +280,7 @@ class Level1 extends Component {
               Oh no! You have a job interview today, but you can't find your
               resume. Find it to escape the room.
             </span>
+            <li> start by clicking around to find your first challenge!</li>
             <button id="storybutton" type="button" onClick={this.handleClose}>
               Start
             </button>
@@ -340,6 +341,7 @@ class Level1 extends Component {
         <button
           type="button"
           className="buttonstart"
+          id='resetButton'
           onClick={this.handleReset}
         >
           Reset
