@@ -10,7 +10,7 @@ describe('greet', () => {
     expect(greeting).to.be.a('string')
   })
 
-  it('returns the name with hello beforehand', () => {
+  it('returns the name with Hello beforehand', () => {
     const stacyGreet = greet('Stacy')
     expect(stacyGreet).to.equal('Hello Stacy!')
     const stanGreet = greet(

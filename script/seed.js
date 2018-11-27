@@ -21,7 +21,7 @@ async function seed() {
     Problem.create({
       title: 'Hello World',
       prompt:
-        'Write a function that returns a greeting with an inputted name: Hello Anna!',
+        'Write a function that returns a greeting given a name as input: Hello Anna!',
       functionSetup:
         'function greet(name) {\n// YOUR CODE HERE\n}',
       spec: spec1File
@@ -45,7 +45,7 @@ async function seed() {
     Problem.create({
       title: 'Even or Odd',
       prompt:
-      'Create a function that takes an integer as an argument and returns “Even” for even numbers or “Odd” for odd numbers.',
+      'Create a function that takes an integer as an argument and returns “even” for even numbers or “odd” for odd numbers.',
       functionSetup:
         'function evenOrOdd(integer) {\n// YOUR CODE HERE\n}',
       spec: spec4File
@@ -61,7 +61,7 @@ async function seed() {
     Problem.create({
       title: 'Get Count',
       prompt:
-      'Return the number (count) of vowels (a, e, i, o, u) in the given string.The input string will only consist of lower case letters and or spaces.',
+      'Return the number (count) of vowels (a, e, i, o, u) in the given string. The input string will only consist of lowercase letters and spaces.',
       functionSetup:
         'function getCount(string) {\n// YOUR CODE HERE\n}',
       spec: spec6File
