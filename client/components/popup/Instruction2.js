@@ -1,10 +1,8 @@
 import React, {Component} from 'react'
 import Problem from './Problem'
 import TestRes2 from './TestRes2'
-import {RenderLoop} from 'brace'
 import {withRouter} from 'react-router-dom'
 import {connect} from 'react-redux'
-import {getItemSolved2} from '../../store/level2guest.js'
 import {clearSpec} from '../../store/problem'
 
 class Instruction extends Component {
@@ -29,7 +27,7 @@ class Instruction extends Component {
             >
               Close
             </button>
-            <p>Problem solved!</p>
+            <li>Problem solved!</li>
           </div>
         )
       }
@@ -45,7 +43,7 @@ class Instruction extends Component {
           >
             Close
           </button>
-          <p>Clue locked, or this is not a clue!</p>
+          <li>Clue locked, or this is not a clue!</li>
         </div>
       )
     }
