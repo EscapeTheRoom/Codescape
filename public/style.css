@@ -16,16 +16,19 @@ a {
   padding: 8px 17px;
   text-align: center;
   display: inline-block;
+  font-size: 1.5vw;
 }
 
 h1 {
+  top: 2vw;
   font-family: 'Gloria Hallelujah', cursive;
   color: white;
   letter-spacing: 0.309em;
   text-transform: uppercase;
   position: absolute;
-  font-size: 42px;
+  font-size: 3vw;
 }
+
 
 h2 {
   font-family: 'Gloria Hallelujah', cursive;
@@ -103,6 +106,7 @@ span {
   width: 581px;
   margin-left: auto;
   margin-right: auto;
+  opacity: unset;
 }
 
 /* Problem Component Styling */
@@ -242,10 +246,13 @@ span {
   margin-top: 3%;
 }
 
+
 .header {
   display: flex;
   justify-content: center;
+  height: 3vw;
 }
+
 
 .game {
   display: flex;
@@ -265,7 +272,7 @@ span {
 }
 
 .backpackImg {
-  height: 3em;
+  height: 3.5vw;
   margin: 16%;
 }
 
@@ -292,9 +299,8 @@ span {
   position: absolute;
   padding: 5px 0;
   opacity: 0.8;
-  width: 59%;
-
-  margin-left: 19%;
+  width: 57%;
+  margin-left: 21%;
   margin-right: auto;
   margin-top: 11%;
   z-index: 3;
@@ -313,7 +319,7 @@ span {
   -ms-flex-wrap: nowrap;
   flex-wrap: nowrap;
   z-index: 2;
-  font-size: 20pt;
+  font-size: 2vw;
   font-weight: 600;
   letter-spacing: 0.08em;
   font-family: 'Share Tech Mono', monospace;
@@ -329,16 +335,17 @@ span {
   margin-left: auto;
   margin-right: auto;
   padding: 15px;
-  font-size: 14pt;
+  font-size: 1vw;
   text-transform: uppercase;
   font-weight: bold;
+  width:7vw;
 }
 
 #storybutton:hover {
   color: #fff;
 }
 
-.nextlevel {
+ .nextlevel {
   font-family: 'Lato', sans-serif;
   font-style: normal;
   font-weight: 400;
@@ -354,9 +361,9 @@ span {
   cursor: pointer;
   text-decoration: none;
   text-transform: uppercase;
-  font-size: 25px;
-  margin-left: -31%;
-  margin-top: 47%;
+  font-size: 1.8vw;
+  margin-left: -18%;
+  margin-top: 44%;
 }
 
 .nextlevel:hover {
@@ -374,7 +381,7 @@ span {
 }
 
 .storyline li {
-  font-size: 11pt;
+  font-size: 1.5vw;
   font-weight: 600;
   letter-spacing: 0.08em;
   font-family: 'Share Tech Mono', monospace;
@@ -390,11 +397,11 @@ span {
 
 #resetButton.buttonstart {
   position: absolute;
-  left: 38%;
-  font-size: 21pt;
-  margin-top: -53px;
+  left: 21%;
+  font-size: 2vw;
+  margin-top: -4vw;
   padding-top: -8px;
-  height: 53px;
+  height: 1.8em;
   padding-left: 18px;
   padding-right: 18px;
 }
@@ -405,3 +412,8 @@ span {
 /* .code {
   margin-left:40px;
 } */
+#plain{
+  margin: auto;
+  width: 50%;
+  opacity: unset;
+}
