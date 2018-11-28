@@ -107,39 +107,43 @@ span {
 .notHidden {
   display: flex;
   position: absolute;
-  left: 30%;
+  left: 20%;
+  right:20%;
   top: 10em;
   z-index: 2;
   opacity: 0.9;
-  flex-direction: column;
+  flex-direction: row;
   background-color: #000000d9;
   color: #ffffff;
 }
 
 .outer {
-  flex-grow: 1;
+  flex-grow: 2;
+  width:40%;
 }
 
 .problem-container {
   margin: 1em;
-  width: 500px;
-  margin-left: auto;
+  width: 50%;
+  margin-left: 2em;
   margin-right: auto;
   text-align: center
 }
 
 .input-container {
   margin: 1em;
+  width: 50%;
 }
 
 .bottom-container {
+  flex-grow:2;
   margin-left: 1em;
   margin-right: 1em;
   margin-bottom: 1em;
   padding: 1em;
   background-color: #53535379;
   opacity: 0.7;
-  max-height: 100px;
+  max-height: 35em;
   overflow-y: scroll
 }
 
@@ -381,3 +385,10 @@ span {
   left: 29%;
   margin-top: -50px;
 } 
+
+.editor{
+  width:400px;
+}
+/* .code {
+  margin-left:40px;
+} */

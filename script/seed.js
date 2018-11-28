@@ -22,53 +22,48 @@ async function seed() {
       title: 'Hello World',
       prompt:
         'Write a function that returns a greeting given a name as input: Hello Anna!',
-      functionSetup:
-        'function greet(name) {\n// YOUR CODE HERE\n}',
+      functionSetup: 'function greet(name) {\n// YOUR CODE HERE\n}',
       spec: spec1File
     }),
     Problem.create({
       title: 'Reverse String',
       prompt:
         'Write a function that takes a string as input and returns the string reversed.',
-      functionSetup:
-        'function reverseStr(str){\n// YOUR CODE HERE\n}',
+      functionSetup: 'function reverseStr(str){\n// YOUR CODE HERE\n}',
       spec: spec2File
     }),
     Problem.create({
       title: 'All Caps',
       prompt:
         'Write a function that takes a string as input and returns the string it in all caps.',
-      functionSetup:
-        'function shout(string) {\n// YOUR CODE HERE\n}',
+      functionSetup: 'function shout(string) {\n// YOUR CODE HERE\n}',
       spec: spec3File
     }),
     Problem.create({
       title: 'Even or Odd',
       prompt:
-      'Create a function that takes an integer as an argument and returns “even” for even numbers or “odd” for odd numbers.',
-      functionSetup:
-        'function evenOrOdd(integer) {\n// YOUR CODE HERE\n}',
+        'Create a function that takes an integer as an argument and returns “even” for even numbers or “odd” for odd numbers.',
+      functionSetup: 'function evenOrOdd(integer) {\n// YOUR CODE HERE\n}',
       spec: spec4File
     }),
     Problem.create({
       title: 'Get Initials',
       prompt:
         'Write a function that takes a string and returns the initials in uppercase.',
-      functionSetup:
-        'function getInitials(str) {\n// YOUR CODE HERE\n}',
+      functionSetup: 'function getInitials(str) {\n// YOUR CODE HERE\n}',
       spec: spec5File
     }),
     Problem.create({
       title: 'Get Count',
       prompt:
-      'Return the number (count) of vowels (a, e, i, o, u) in the given string. The input string will only consist of lowercase letters and spaces.',
-      functionSetup:
-        'function getCount(string) {\n// YOUR CODE HERE\n}',
+        'Return the number (count) of vowels (a, e, i, o, u) in the given string. The input string will only consist of lowercase letters and spaces.',
+      functionSetup: 'function getCount(string) {\n// YOUR CODE HERE\n}',
       spec: spec6File
-    }),
+    })
   ])
 
   console.log(`seeded ${users.length} users`)
+  console.log(`seeded ${problems.length} users`)
   console.log(`seeded successfully`)
 }
 
