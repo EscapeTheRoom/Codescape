@@ -58,8 +58,14 @@ span {
   text-align: center;
 }
 
-#comingsoon .buttonstart{
-  display: inline-block
+#comingsoon.buttonstart{
+    position: absolute;
+    left: 44%;
+    font-size: 21pt;
+    margin-top: 49px;
+    height: 53px;
+    padding-left: 18px;
+    padding-right: 18px;
 }
 
 .buttonstart {
@@ -71,7 +77,6 @@ span {
   background: transparent;  
   border: 3px solid #0099CC;
   border-radius: 6px; 
-  padding: -1px 32px;
   text-align: center;
   display: inline-block;
   transition-duration: 0.4s;
@@ -80,7 +85,8 @@ span {
   text-transform: uppercase;
   font-size: 33px;
   margin-left: 2%;
-  width: 16%;
+  width: auto;
+  height: 62px;
 }
 
 .buttonstart:hover {
@@ -93,10 +99,10 @@ span {
 }
 
 #resume {
-  height: 400px;
-  width: 300px;
-  margin-left: 12%;
-  margin-top: 5%;
+  height: auto;
+  width: 581px;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 /* Problem Component Styling */
@@ -109,7 +115,7 @@ span {
   position: absolute;
   left: 20%;
   right:20%;
-  top: 10em;
+  top: 17em;
   z-index: 2;
   opacity: 0.9;
   flex-direction: row;
@@ -244,7 +250,7 @@ span {
 .game {
   display:flex;
   justify-content:flex-start;
-  padding-top:10%;
+  padding-top:8%;
   margin:auto;
   background-color: black;
 }
@@ -347,20 +353,13 @@ span {
   text-decoration: none;
   text-transform: uppercase;
   font-size: 25px;
-  margin-left: -29%;
+  margin-left: -31%;
   margin-top: 47%;
 }
 
 .nextlevel:hover{
   background-color: #008CBA;
   color: white;
-}
-
-#comingsoon.buttonstart{
-  position: absolute;
-  left: 29%;
-  margin-top: 22px;
-  margin-left: 12%;
 }
 
 .backpack2 {
@@ -389,8 +388,13 @@ span {
 
 #resetButton.buttonstart{
   position: absolute;
-  left: 29%;
-  margin-top: -50px;
+  left: 38%;
+  font-size: 21pt;
+  margin-top: -53px;
+  padding-top: -8px;
+  height: 53px;
+  padding-left: 18px;
+  padding-right: 18px;
 } 
 
 .editor{
