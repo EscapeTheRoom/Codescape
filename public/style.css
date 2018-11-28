@@ -119,13 +119,13 @@ span {
 
 .outer {
   flex-grow: 2;
-  width:40%;
+  width:60%;
 }
 
 .problem-container {
   margin: 1em;
-  width: 50%;
   margin-left: 2em;
+  width: 60%;
   margin-right: auto;
   text-align: center
 }

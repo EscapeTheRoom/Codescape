@@ -66,8 +66,7 @@ class Input extends Component {
           theme="twilight"
           name="code"
           height={"250px"}
-          width={"310px"}
-          
+          width={"400px"}
           onLoad={this.onLoad}
           onChange={this.onChange}
           fontSize={14}
