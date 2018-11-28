@@ -59,6 +59,7 @@ export const fetchAProblem = problemId => async dispatch => {
 export const sendInput = input => async dispatch => {
   try {
     const {data} = await axios.post(`/api/docker`, input) //this will be our test result
+    console.log("Data",data)
     dispatch(receiveInput(data))
   } catch (err) {
     console.error(err)
