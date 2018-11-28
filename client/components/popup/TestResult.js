@@ -38,7 +38,7 @@ class TestResult extends Component {
         <div>
           {this.props.spec
             .split('\n')
-            .map((line, idx) => <p key={idx}>{line}</p>)}
+            .map((line, idx) => (line !== "")?<p key={idx}>{line}</p>:null)}
         </div>
       </div>
     )
