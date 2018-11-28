@@ -4,27 +4,19 @@ const Sequelize = require('sequelize')
 const Problem = db.define('problem', {
   title: {
     type: Sequelize.STRING,
-    validate: {
-      notEmpty: true
-    }
+    allowNull: false
   },
   prompt: {
     type: Sequelize.TEXT,
-    validate: {
-      notEmpty: true
-    }
+    allowNull: false
   },
   functionSetup: {
     type: Sequelize.TEXT,
-    validate: {
-      notEmpty: true
-    }
+    allowNull: false
   },
   spec: {
     type: Sequelize.BLOB('long'),
-    validate: {
-      notEmpty: true
-    }
+    allowNull: false
   }
 })
 
