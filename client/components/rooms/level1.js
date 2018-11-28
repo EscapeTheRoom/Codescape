@@ -1,13 +1,11 @@
 import React, {Component} from 'react'
-import {Link, withRouter} from 'react-router-dom'
-import Instruction from '../popup/Instruction'
+import {withRouter} from 'react-router-dom'
+import Levels from './levels'
 import {connect} from 'react-redux'
-import {guestGameWon, resetState} from '../../store/guest.js'
-import {fetchAProblem} from '../../store/problem'
-import ImageMapper from 'react-image-mapper'
-import Backpack from '../backpack'
+import {resetState} from '../../store/guest.js'
+
 const source = 'img/unicornRoomCapstoneIMG.png'
-const MAP = {
+const mapping = {
   name: 'unicornMap',
   areas: [
     {name: 'poster', shape: 'rect', id: 2, coords: [1267, 1953, 1630, 1374]},
@@ -70,13 +68,13 @@ const MAP = {
     {
       name: 'lightSwitch',
       shape: 'poly',
-      className: 'notclue',
+      className: 'notClue',
       coords: [3282, 1762, 3369, 1771, 3359, 1895, 3282, 1913]
     },
     {
       name: 'lamp',
       shape: 'poly',
-      className: 'notclue',
+      className: 'notClue',
       coords: [
         1543,
         2315,
@@ -107,7 +105,7 @@ const MAP = {
     {
       name: 'backpack',
       shape: 'poly',
-      className: 'notclue',
+      className: 'notClue',
       coords: [
         4761,
         3072,
@@ -126,13 +124,13 @@ const MAP = {
     {
       name: 'rug',
       shape: 'poly',
-      className: 'notclue',
+      className: 'notClue',
       coords: [2971, 2963, 3688, 2945, 4049, 3520, 3017, 3552]
     },
     {
       name: 'bed',
       shape: 'poly',
-      className: 'notclue',
+      className: 'notClue',
       coords: [
         1157,
         2680,
@@ -150,129 +148,34 @@ const MAP = {
     }
   ]
 }
-
+let width = 0.6
+let height = 1 / 1.3 * 0.6
 class Level1 extends Component {
   constructor() {
     super()
     this.state = {
-      problemId: 0,
-      hidden: 'hidden',
-      winner: 'hidden',
-      width: window.innerWidth,
-      height: window.innerHeight,
-      solved: 'solved',
-      notClue: 'hidden',
-      storyLine: 'storyline'
+      level: 1,
+      name: 'unicorn',
+      backpack: 'level1',
+      map: mapping,
+      source: source,
+      wide: width,
+      tall: height,
+      imgWidth: 5167,
+      winningImg: '/img/myLittleResume.png',
+      storyLine: 'storyline',
+      backpackBg: 'backpack',
+      backpackImg: '/img/unicornBackPack.png',
+      idwinning: 'resume'
     }
-
-    this.handleClick = this.handleClick.bind(this)
-    this.handleExit = this.handleExit.bind(this)
-    this.handleClose = this.handleClose.bind(this)
-    this.handleWin = this.handleWin.bind(this)
-    this.updateDimensions = this.updateDimensions.bind(this)
-    this.handleReset = this.handleReset.bind(this)
+    this.handleStart = this.handleStart.bind(this)
   }
 
-  updateDimensions() {
+  handleStart() {
+    this.props.resetState()
     this.setState({
-      width: window.innerWidth,
-      height: window.innerHeight
-    })
-  }
-
-  componentDidMount() {
-    this.updateDimensions()
-    window.addEventListener('resize', this.updateDimensions)
-  }
-
-  async handleClick(e) {
-    const id = e.id
-    const {items} = this.props.guest
-    const {isSolved} = this.props.guest
-    await this.props.fetchAProblem(id)
-
-    if (items[id] === 'true') {
-      this.setState({
-        problemId: id,
-        hidden: 'notHidden'
-      })
-    }
-    if (isSolved[id] === 'true') {
-      this.setState({
-        problemId: id,
-        hidden: 'hidden',
-        solved: 'solved'
-      })
-      this.anError.play()
-    }
-    if (items[id] === 'false') {
-      this.setState({
-        problemId: id,
-        hidden: 'hidden',
-        solved: 'solved'
-      })
-      this.anError.play()
-    }
-  }
-
-  handleClose() {
-    this.setState({
-      solved: 'hidden',
-      notClue: 'hidden',
       storyLine: 'hidden'
     })
-  }
-
-  async handleWin(e) {
-    let {items} = this.props.guest
-    let {isSolved} = this.props.guest
-    let probId = e.id
-    if (items[4] === 'false') {
-      this.setState({
-        problemId: probId,
-        hidden: 'hidden',
-        solved: 'solved',
-        winner: 'hidden'
-      })
-      
-    }
-    if (isSolved[3] === 'true') {
-      await this.props.guestGameWon()
-      if (this.props.guest.isWon) {
-        this.setState({
-          problemId: probId,
-          hidden: 'hidden',
-          winner: 'notHidden'
-        })
-        this.yay.play()
-      }
-    }
-  }
-
-  handleExit() {
-    this.setState({
-      hidden: 'hidden',
-      solved: 'solved',
-      winner: 'hidden'
-    })
-  }
-
-  handleNotClue() {
-    this.setState({
-      notClue: 'solved'
-    })
-    this.anError.play()
-  }
-
-  handleReset() {
-    this.setState({
-      problemId: 0,
-      hidden: 'hidden',
-      winner: 'hidden',
-      solved: 'solved',
-      notClue: 'hidden'
-    })
-    this.props.resetState()
   }
 
   render() {
@@ -285,85 +188,20 @@ class Level1 extends Component {
               resume. Find it to escape the room.
             </span>
             <li> start by clicking around to find your first challenge!</li>
-            <button id="storybutton" type="button" onClick={this.handleClose}>
+            <button id="storybutton" type="button" onClick={this.handleStart}>
               Start
             </button>
           </div>
         </div>
 
-        <div className="game">
-          <audio ref={(anError) => { this.anError = anError; }}>
-            <source src="/ErrorSound.mp3" type="audio/mpeg"/>
-          </audio>
-          <audio ref={(yay) => { this.yay = yay; }}>
-            <source src="/YaySound.mp3" type="audio/mpeg"/>
-          </audio>
-          <Backpack room="level1" />
-          <ImageMapper
-            id="unicorn"
-            fillColor="transparent"
-            strokeColor="transparent"
-            src={source}
-            map={MAP}
-            width={this.state.width * 0.6}
-            height={this.state.width / 1.3 * 0.6}
-            imgWidth={5167}
-            onClick={area => {
-              if (area.id < 4) {
-                this.handleClick(area)
-              } else if (area.id === 4) {
-                this.handleWin(area)
-              } else if (area.className === 'notclue') {
-                this.handleNotClue(area)
-              }
-            }}
-          />
-          <img
-            id="resume"
-            className={this.state.winner}
-            src="/img/myLittleResume.png"
-            onClick={this.handleExit}
-          />
-          <div className={this.state.notClue}>
-            <button id="closebutton" className="button" type="button" onClick={this.handleClose}>
-              Close
-            </button>
-            <li>Clue locked, or this is not a clue!</li>
-          </div>
-          <Instruction
-            problemId={this.state.problemId}
-            hidden={this.state.hidden}
-            handleExit={this.handleExit}
-            solved={this.state.solved}
-            handleClose={this.handleClose}
-          />
-
-          <Link to="/medium" className="nextlevel">
-            Next Level
-          </Link>
-        </div>
-        <button
-          type="button"
-          className="buttonstart"
-          id='resetButton'
-          onClick={this.handleReset}
-        >
-          Reset
-        </button>
+        <Levels {...this.state} />
       </div>
     )
   }
 }
 
-const mapStateToProps = state => ({
-  guest: state.guest,
-  problem: state.problemsReducer
-})
-
 const mapDispatchToProps = dispatch => ({
-  fetchAProblem: problemId => dispatch(fetchAProblem(problemId)),
-  guestGameWon: () => dispatch(guestGameWon()),
   resetState: () => dispatch(resetState())
 })
 
-export default withRouter(connect(mapStateToProps, mapDispatchToProps)(Level1))
+export default withRouter(connect(null, mapDispatchToProps)(Level1))

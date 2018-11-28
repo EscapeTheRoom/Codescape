@@ -1,6 +1,6 @@
 import React, {Component} from 'react'
 import Problem from './Problem'
-import TestResult2 from './TestResult'
+import TestResult from './TestResult'
 import {withRouter} from 'react-router-dom'
 import {connect} from 'react-redux'
 import {clearSpec} from '../../store/problem'
@@ -13,18 +13,17 @@ class Instruction extends Component {
   render() {
     const {isSolved} = this.props.guest
     const {items} = this.props.guest
+    const itemState = this.props.itemState
 
-    if (isSolved[this.props.problemId] === 'true') {
-      if (this.props.problemId < 4) {
-        //this.props.clearSpec()
-        //if (this.props.user.isSolved[this.props.problemId] === 'true') {
+    if (isSolved[itemState] === 'true') {
+      if (this.props.itemState < 4) {
         return (
           <div className={this.props.solved}>
             <button
               id="closebutton2"
               className="button"
               type="button"
-              onClick={this.props.handleClose}
+              onClick={this.props.handleClosed}
             >
               Close
             </button>
@@ -34,14 +33,15 @@ class Instruction extends Component {
       }
     }
 
-    if (items[this.props.problemId] === 'false') {
+    if (items[this.props.itemState] === 'false') {
+      console.log('what is this', this.props.handleClosed)
       return (
         <div className={this.props.solved}>
           <button
             id="closebutton"
             className="button"
             type="button"
-            onClick={this.props.handleClose}
+            onClick={this.props.handleClosed}
           >
             Close
           </button>
@@ -52,8 +52,12 @@ class Instruction extends Component {
 
     return (
       <div className={this.props.hidden}>
-        <Problem id={this.props.problemId} handleExit={this.props.handleExit} />
-        <TestResult2 id={this.props.problemId} />
+        <Problem
+          id={this.props.problemId}
+          handleExit={this.props.handleExit}
+          itemId={this.props.itemState}
+        />
+        <TestResult id={this.props.problemId} itemId={this.props.itemState} />
       </div>
     )
   }

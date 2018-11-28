@@ -24,9 +24,11 @@ class Home extends Component {
             </p>
           </div>
           <div>
-                <img src="hard-level.gif" />
-                <p><a className="buttonstart"> Coming Soon </a></p>
-        </div>
+            <img src="hard-level.gif" />
+            <p>
+              <a className="buttonstart"> Coming Soon </a>
+            </p>
+          </div>
         </Carousel>
       </div>
     )

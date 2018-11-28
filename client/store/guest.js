@@ -19,8 +19,6 @@ const defaultGuest = {
     1: 'false',
     2: 'false',
     3: 'false'
-    //add keys if there were more problems
-    //keys correspond to problem ID
   },
   items: {
     1: 'true',
@@ -37,7 +35,7 @@ const defaultGuest = {
 const gameIsWonGuest = () => ({type: GAME_WON})
 const problemSolvedGuest = problemId => ({type: SOLVED, problemId})
 const getItemTruthy = problemId => ({type: GET_ITEM, problemId})
-const resetGame = () => ({type:RESET})
+const resetGame = () => ({type: RESET})
 
 /**
  * THUNK CREATORS
@@ -57,16 +55,6 @@ export const resetState = () => dispatch => {
   dispatch(resetGame())
 }
 
-// export const guestUpdateIsSolved = isSolvedObj => async dispatch => {
-//   try {
-//     // const updatedUser = await axios.put('/auth/update', {id: data.id, isSolved: isSolvedObj})
-//     // console.log("USER DATA", data, "user id", data.id)
-//     // console.log("isSolvedObj", isSolvedObj)
-//     // console.log("isSolved Json stringify", JSON.stringify(isSolvedObj))
-//   } catch (err) {
-//     console.error(err)
-//   }
-// }
 /**
  * REDUCER
  */
@@ -96,7 +84,7 @@ export default function(state = defaultGuest, action) {
       newItemIsSolved[action.problemId] = 'true'
       return {...newerState, items: newItemIsSolved}
     case RESET:
-      return defaultGuest;
+      return defaultGuest
     default:
       return state
   }

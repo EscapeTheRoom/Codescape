@@ -12,7 +12,10 @@ router.post('/', async (req, res, next) => {
       spec,
       code: req.body.code
     }
-    const {data} = await axios.post('https://codescape-api.herokuapp.com', outputData)
+    const {data} = await axios.post(
+      'https://codescape-api.herokuapp.com',
+      outputData
+    )
     console.log('data', data)
     res.json(data)
   } catch (err) {

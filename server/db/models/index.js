@@ -1,5 +1,5 @@
 const User = require('./user')
-const Problem= require('./problem')
+const Problem = require('./problem')
 
 /**
  * If we had any associations to make, this would be a great place to put them!
