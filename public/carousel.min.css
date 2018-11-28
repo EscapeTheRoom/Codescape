@@ -249,11 +249,11 @@ transition:opacity .35s ease-in-out
 }
 
 .carousel .control-dots{
-position:absolute;
-bottom:0;
-margin:103px -24px;
-text-align:center;
-width:100% 
+position: inherit;
+bottom: 0;
+margin: 0vw 1vw 10.2vw -3vw;
+text-align: center;
+width: 100%;
 }
 
 @media (min-width:960px){
