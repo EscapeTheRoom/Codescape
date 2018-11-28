@@ -5,29 +5,9 @@ import {isSolved, gameWon, updateIsSolved} from '../../store/user'
 import {guestIsSolved, guestGameWon} from '../../store/guest.js'
 
 class TestResult extends Component {
-  constructor(props) {
-    super(props)
-  }
-
   async componentDidUpdate(prevProps) {
-    const {user} = this.props.user
-
-    if (user.id && prevProps.spec !== this.props.spec) {
-      if (this.props.spec && !this.props.spec.includes('failing')) {
-        await this.props.isSolved(this.props.id)
-        if (this.props.user.id) {
-          this.props.updateIsSolved(this.props.user.isSolved)
-          //send the updated isSolved to the store
-          // which will update the db for the user
-        }
-      }
-    } else if (this.props.spec && !this.props.spec.includes('failing')) {
-      await this.props.guestIsSolved(this.props.id)
-
-      //if not logged in
-      // send new isSolved to sessionStorage
-
-      // this.props.gameWon()
+    if (this.props.spec && !this.props.spec.includes('failing')) {
+      await this.props.guestIsSolved(this.props.itemId)
     }
   }
 
@@ -38,7 +18,7 @@ class TestResult extends Component {
         <div>
           {this.props.spec
             .split('\n')
-            .map((line, idx) => (line !== '') ? <p key={idx}>{line}</p> : null)}
+            .map((line, idx) => (line !== '' ? <p key={idx}>{line}</p> : null))}
         </div>
       </div>
     )
@@ -46,8 +26,7 @@ class TestResult extends Component {
 }
 
 const mapStateToProps = state => ({
-  spec: state.problemsReducer.spec,
-  user: state.user
+  spec: state.problemsReducer.spec
 })
 const mapDispatchToProps = dispatch => {
   return {

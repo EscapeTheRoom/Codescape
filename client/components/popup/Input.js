@@ -65,8 +65,8 @@ class Input extends Component {
           mode="javascript"
           theme="twilight"
           name="code"
-          height={"250px"}
-          width={"400px"}
+          height={'250px'}
+          width={'400px'}
           onLoad={this.onLoad}
           onChange={this.onChange}
           fontSize={14}
@@ -100,8 +100,6 @@ const mapStateToProps = state => ({
 const mapDispatchToProps = dispatch => ({
   sendInput: input => dispatch(sendInput(input)),
   clearSpec: () => dispatch(clearSpec())
-  //clearInput: code => dispatch(clearCode(code)),
-  // setCode: code => dispatch(setCode(code))
 })
 
 export default connect(mapStateToProps, mapDispatchToProps)(Input)

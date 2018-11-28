@@ -1,34 +1,29 @@
 import React, {Component} from 'react'
-import {Link, withRouter} from 'react-router-dom'
-import Instruction2 from '../popup/Instruction2'
+import {withRouter} from 'react-router-dom'
+import Levels from './levels'
 import {connect} from 'react-redux'
-import {
-  guestGameWon2,
-  resetState2
-} from '../../store/level2guest'
-import {fetchAProblem} from '../../store/problem'
-import ImageMapper from 'react-image-mapper'
-import Level2backpack from '../level2backpack'
+import {resetState} from '../../store/guest.js'
+
 const source = 'img/garage_capstone.png'
-const MAP = {
+const mapping = {
   name: 'garage',
   areas: [
     {
       name: 'toolbox',
       shape: 'poly',
-      id: 5,
+      id: 2,
       coords: [5558, 1516, 5442, 1511, 5410, 1766, 5553, 1787]
     },
     {
       name: 'broom',
       shape: 'poly',
-      id: 4,
+      id: 1,
       coords: [1697, 1554, 1565, 1850, 1501, 1909, 1618, 1935, 1628, 1787]
     },
     {
       name: 'key',
       shape: 'poly',
-      id: 6,
+      id: 3,
       coords: [743, 2762, 636, 2805, 743, 2895, 992, 2847, 902, 2789]
     },
     {
@@ -103,7 +98,7 @@ const MAP = {
     {
       name: 'yellowCar',
       shape: 'poly',
-      id: 7,
+      id: 4,
       coords: [
         180,
         2232,
@@ -135,134 +130,33 @@ const MAP = {
     }
   ]
 }
+let width = 0.6
+let height = 1 / 1.59 * 0.6
 class Level2 extends Component {
   constructor() {
     super()
     this.state = {
-      problemId: 0,
-      hidden: 'hidden',
-      winner: 'hidden',
-      width: window.innerWidth,
-      height: window.innerHeight,
-      solved: 'solved',
-      notClue: 'hidden',
-      storyLine: 'storyline'
+      level: 2,
+      name: 'garage',
+      backpack: 'level2',
+      map: mapping,
+      source: source,
+      wide: width,
+      tall: height,
+      imgWidth: 6004,
+      winningImg: '/img/aston.gif',
+      storyLine: 'storyline',
+      backpackBg: 'backpack2',
+      backpackImg: '/img/carImg.png',
+      idwinning: 'plain'
     }
-
-    this.handleClick = this.handleClick.bind(this)
-    this.handleExit = this.handleExit.bind(this)
     this.handleClose = this.handleClose.bind(this)
-    this.handleWin = this.handleWin.bind(this)
-    this.updateDimensions = this.updateDimensions.bind(this)
-    this.handleReset = this.handleReset.bind(this)
   }
-
-  updateDimensions() {
-    this.setState({
-      width: window.innerWidth,
-      height: window.innerHeight
-    })
-  }
-
-  componentDidMount() {
-    this.updateDimensions()
-    window.addEventListener('resize', this.updateDimensions)
-  }
-  async handleClick(e) {
-    const id = e.id
-    const {items2, isSolved2, isWon2} = this.props.guest2
-
-    if (isWon2) {
-      this.setState({
-        problemId: 0,
-        hidden: 'hidden',
-        winner: 'notHidden'
-      })
-    }
-
-    await this.props.fetchAProblem(id)
-
-    if (items2[id] === 'true') {
-      this.setState({
-        problemId: id,
-        hidden: 'notHidden'
-      })
-    }
-    if (isSolved2[id] === 'true') {
-      this.setState({
-        problemId: id,
-        hidden: 'hidden',
-        solved: 'solved'
-      })
-      this.anError.play()
-    }
-    if (items2[id] === 'false') {
-      this.setState({
-        problemId: id,
-        hidden: 'hidden',
-        solved: 'solved'
-      })
-      this.anError.play()
-    }
-  }
-
   handleClose() {
+    this.props.resetState()
     this.setState({
-      solved: 'hidden',
-      notClue: 'hidden',
       storyLine: 'hidden'
     })
-  }
-
-  async handleWin(e) {
-    let {items2} = this.props.guest2
-    let {isSolved2} = this.props.guest2
-    let probId = e.id
-    if (items2[7] === 'false') {
-      this.setState({
-        problemId: probId,
-        hidden: 'hidden',
-        solved: 'solved',
-        winner: 'hidden'
-      })
-    }
-    if (isSolved2[6] === 'true') {
-      await this.props.guestGameWon2()
-      if (this.props.guest2.isWon2) {
-        this.setState({
-          problemId: 0,
-          hidden: 'hidden',
-          winner: 'notHidden'
-        })
-        this.yay.play()
-      }
-    }
-  }
-
-  handleExit() {
-    this.setState({
-      hidden: 'hidden',
-      solved: 'solved',
-      winner: 'hidden'
-    })
-  }
-
-  handleNotClue() {
-    this.setState({
-      notClue: 'solved'
-    })
-    this.anError.play()
-  }
-
-  handleReset() {
-    this.setState({
-      problemId: 0,
-      hidden: 'hidden',
-      winner: 'hidden',
-      solved: 'solved',
-      notClue: 'hidden'
-    })
-    this.props.resetState2()
   }
 
   render() {
@@ -282,79 +176,14 @@ class Level2 extends Component {
           </div>
         </div>
 
-        <div className="game">
-          <audio ref={(anError) => { this.anError = anError; }}>
-            <source src="/ErrorSound.mp3" type="audio/mpeg"/>
-          </audio>
-          <audio ref={(yay) => { this.yay = yay; }}>
-            <source src="/YaySound.mp3" type="audio/mpeg"/>
-          </audio>
-
-          <Level2backpack room="level2" />
-          <ImageMapper
-            id="garage"
-            fillColor="transparent"
-            strokeColor="transparent"
-            src={source}
-            map={MAP}
-            width={this.state.width * 0.6}
-            height={this.state.width / 1.59 * 0.6}
-            imgWidth={6004}
-            onClick={area => {
-              if (area.id < 7) {
-                this.handleClick(area)
-              } else if (area.id === 7) {
-                this.handleWin(area)
-              } else if (area.className === 'notClue') {
-                this.handleNotClue(area)
-              }
-            }}
-          />
-          <img
-            className={this.state.winner}
-            src="/img/aston.gif"
-            onClick={this.handleExit}
-          />
-          <div className={this.state.notClue}>
-            <button id="closebutton" className="button" type="button" onClick={this.handleClose}>
-              Close
-            </button>
-            <li>Clue locked, or this is not a clue!</li>
-          </div>
-          <Instruction2
-            problemId={this.state.problemId}
-            hidden={this.state.hidden}
-            handleExit={this.handleExit}
-            solved={this.state.solved}
-            handleClose={this.handleClose}
-          />
-
-          <Link to="/hard" className="nextlevel">
-            Next Level
-          </Link>
-        </div>
-        <button
-          type="button"
-          className="buttonstart"
-          id='resetButton'
-          onClick={this.handleReset}
-        >
-          Reset
-        </button>
+        <Levels {...this.state} />
       </div>
     )
   }
 }
 
-const mapStateToProps = state => ({
-  guest2: state.level2guest,
-  problem: state.problemsReducer
-})
-
 const mapDispatchToProps = dispatch => ({
-  fetchAProblem: problemId => dispatch(fetchAProblem(problemId)),
-  guestGameWon2: () => dispatch(guestGameWon2()),
-  resetState2: () => dispatch(resetState2())
+  resetState: () => dispatch(resetState())
 })
 
-export default withRouter(connect(mapStateToProps, mapDispatchToProps)(Level2))
+export default withRouter(connect(null, mapDispatchToProps)(Level2))

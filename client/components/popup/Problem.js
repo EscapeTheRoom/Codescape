@@ -16,7 +16,7 @@ class Problem extends Component {
       return (
         <div className="outer">
           <div className="problem-container">
-              <h2>{this.props.problem.title}</h2>
+            <h2>{this.props.problem.title}</h2>
 
             <div>
               <p>{this.props.problem.prompt}</p>
@@ -26,6 +26,7 @@ class Problem extends Component {
           <div className="input-container">
             <Input
               problem={this.props.problem}
+              itemId={this.props.itemId}
               hidden={this.props.hidden}
               handleExit={this.props.handleExit}
             />

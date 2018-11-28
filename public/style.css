@@ -1,10 +1,10 @@
 body {
   font-family: sans-serif;
   background: black;
-  top:0;
-  bottom:0;
-  left:0;
-  right:0;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
 }
 
 a {
@@ -12,7 +12,7 @@ a {
   color: white;
   background: transparent;
   border: 3px solid white;
-  border-radius: 6px; 
+  border-radius: 6px;
   padding: 8px 17px;
   text-align: center;
   display: inline-block;
@@ -46,7 +46,7 @@ form div {
   display: inline-block;
   margin-top: 200px;
   margin-left: 100px;
-  color:white;
+  color: white;
 }
 
 p {
@@ -58,8 +58,8 @@ span {
   text-align: center;
 }
 
-#comingsoon .buttonstart{
-  display: inline-block
+#comingsoon .buttonstart {
+  display: inline-block;
 }
 
 .buttonstart {
@@ -67,10 +67,10 @@ span {
   font-style: normal;
   font-weight: 400;
   letter-spacing: 0.083em;
-  color: #0099CC;
-  background: transparent;  
-  border: 3px solid #0099CC;
-  border-radius: 6px; 
+  color: #0099cc;
+  background: transparent;
+  border: 3px solid #0099cc;
+  border-radius: 6px;
   padding: -1px 32px;
   text-align: center;
   display: inline-block;
@@ -84,7 +84,7 @@ span {
 }
 
 .buttonstart:hover {
-  background-color: #008CBA;
+  background-color: #008cba;
   color: white;
 }
 
@@ -108,7 +108,7 @@ span {
   display: flex;
   position: absolute;
   left: 20%;
-  right:20%;
+  right: 20%;
   top: 10em;
   z-index: 2;
   opacity: 0.9;
@@ -119,7 +119,7 @@ span {
 
 .outer {
   flex-grow: 2;
-  width:60%;
+  width: 60%;
 }
 
 .problem-container {
@@ -127,7 +127,7 @@ span {
   margin-left: 2em;
   width: 60%;
   margin-right: auto;
-  text-align: center
+  text-align: center;
 }
 
 .input-container {
@@ -136,7 +136,7 @@ span {
 }
 
 .bottom-container {
-  flex-grow:2;
+  flex-grow: 2;
   margin-left: 1em;
   margin-right: 1em;
   margin-bottom: 1em;
@@ -144,7 +144,7 @@ span {
   background-color: #53535379;
   opacity: 0.7;
   max-height: 35em;
-  overflow-y: scroll
+  overflow-y: scroll;
 }
 
 .carousel-container {
@@ -214,11 +214,11 @@ span {
 }
 
 #closebutton.button {
-  margin-left: 65%
+  margin-left: 65%;
 }
 
 #closebutton2.button {
-  margin-left: 44%
+  margin-left: 44%;
 }
 
 .header img {
@@ -242,24 +242,24 @@ span {
 }
 
 .game {
-  display:flex;
-  justify-content:flex-start;
-  padding-top:10%;
-  margin:auto;
+  display: flex;
+  justify-content: flex-start;
+  padding-top: 10%;
+  margin: auto;
   background-color: black;
 }
 
 .backpack {
-  margin-top:10%;
-  margin-left:7%;
-  margin-right:7%;
-  height:20%;
-  width:5%;
+  margin-top: 10%;
+  margin-left: 7%;
+  margin-right: 7%;
+  height: 20%;
+  width: 5%;
   background-color: lightpink;
 }
 
 .backpackImg {
-  height:2em;
+  height: 2em;
   margin: 20%;
 }
 
@@ -277,7 +277,7 @@ span {
 
 .solved li {
   list-style-type: none;
-  padding: 1em
+  padding: 1em;
 }
 
 /* StoryLine Component */
@@ -286,8 +286,9 @@ span {
   position: absolute;
   padding: 5px 0;
   opacity: 0.8;
-  width: 40%;
-  margin-left: 29%;
+  width: 59%;
+
+  margin-left: 19%;
   margin-right: auto;
   margin-top: 11%;
   z-index: 3;
@@ -301,6 +302,7 @@ span {
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
+  /* height: 1%; */
   -webkit-flex-wrap: nowrap;
   -ms-flex-wrap: nowrap;
   flex-wrap: nowrap;
@@ -312,7 +314,7 @@ span {
 }
 
 .nostoryline {
-  display: none
+  display: none;
 }
 
 #storybutton {
@@ -323,7 +325,7 @@ span {
   padding: 15px;
   font-size: 14pt;
   text-transform: uppercase;
-  font-weight: bold
+  font-weight: bold;
 }
 
 #storybutton:hover {
@@ -335,9 +337,9 @@ span {
   font-style: normal;
   font-weight: 400;
   letter-spacing: 0.083em;
-  color: #0099CC;
+  color: #0099cc;
   background: transparent;
-  border: 3px solid #0099CC;
+  border: 3px solid #0099cc;
   border-radius: 6px;
   padding: -1px 32px;
   text-align: center;
@@ -351,43 +353,43 @@ span {
   margin-top: 47%;
 }
 
-.nextlevel:hover{
-  background-color: #008CBA;
+.nextlevel:hover {
+  background-color: #008cba;
   color: white;
 }
 
 .backpack2 {
-  margin-top:10%;
-  margin-left:7%;
-  margin-right:7%;
-  height:20%;
-  width:5%;
-  background-color:rgba(128, 128, 128, 0.543);
+  margin-top: 10%;
+  margin-left: 7%;
+  margin-right: 7%;
+  height: 20%;
+  width: 5%;
+  background-color: rgba(128, 128, 128, 0.543);
 }
 
-.storyline li{
-    font-size: 11pt;
-    font-weight: 600;
-    letter-spacing: 0.08em;
-    font-family: 'Share Tech Mono', monospace;
-    list-style-type: none;
-    color: navy;
-    padding-bottom: 10px;
-    text-transform: uppercase;
-    text-align: center;
-    width: 300px;
-    margin-left: auto;
-    margin-right: auto;
+.storyline li {
+  font-size: 11pt;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  font-family: 'Share Tech Mono', monospace;
+  list-style-type: none;
+  color: navy;
+  padding-bottom: 10px;
+  text-transform: uppercase;
+  text-align: center;
+  width: 300px;
+  margin-left: auto;
+  margin-right: auto;
 }
 
-#resetButton.buttonstart{
+#resetButton.buttonstart {
   position: absolute;
   left: 29%;
   margin-top: -50px;
-} 
+}
 
-.editor{
-  width:400px;
+.editor {
+  width: 400px;
 }
 /* .code {
   margin-left:40px;
