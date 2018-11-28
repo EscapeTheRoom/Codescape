@@ -51,7 +51,7 @@ class Instruction extends Component {
     }
 
     return (
-      <div className={this.props.hidden}>
+      <div className={this.props.hidden} id="editorContainer">
         <Problem
           id={this.props.problemId}
           handleExit={this.props.handleExit}

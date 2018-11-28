@@ -65,11 +65,11 @@ class Input extends Component {
           mode="javascript"
           theme="twilight"
           name="code"
-          height={'250px'}
-          width={'400px'}
+          height={'20vw'}
+          width={'28vw'}
           onLoad={this.onLoad}
           onChange={this.onChange}
-          fontSize={14}
+          fontSize={'1vw'}
           showPrintMargin={true}
           showGutter={true}
           highlightActiveLine={true}
