@@ -325,10 +325,10 @@ class Level1 extends Component {
             onClick={this.handleExit}
           />
           <div className={this.state.notClue}>
-            <button className="button" type="button" onClick={this.handleClose}>
+            <button id="closebutton" className="button" type="button" onClick={this.handleClose}>
               Close
             </button>
-            <p>Clue locked, or this is not a clue!</p>
+            <li>Clue locked, or this is not a clue!</li>
           </div>
           <Instruction
             problemId={this.state.problemId}

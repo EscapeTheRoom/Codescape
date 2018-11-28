@@ -209,6 +209,14 @@ span {
     inset 0px 0px 2px rgba(0, 0, 0, 0.5);
 }
 
+#closebutton.button {
+  margin-left: 65%
+}
+
+#closebutton2.button {
+  margin-left: 44%
+}
+
 .header img {
   width: auto;
 }
@@ -265,6 +273,7 @@ span {
 
 .solved li {
   list-style-type: none;
+  padding: 1em
 }
 
 /* StoryLine Component */
@@ -315,7 +324,6 @@ span {
 
 #storybutton:hover {
   color: #fff;
-  background-color: #779ECB;
 }
 
 .nextlevel {
