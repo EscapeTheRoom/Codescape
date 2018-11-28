@@ -209,7 +209,8 @@ background:#000
 }
 
 .carousel .slide img{
-width:auto;
+width: 900px;
+height: 500px;
 vertical-align:top;
 border:0;
 margin-bottom: 26px; 
@@ -250,7 +251,7 @@ transition:opacity .35s ease-in-out
 .carousel .control-dots{
 position:absolute;
 bottom:0;
-margin:10px 0;
+margin:103px 0;
 text-align:center;
 width:100% 
 }
