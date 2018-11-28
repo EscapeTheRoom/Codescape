@@ -46,14 +46,14 @@ describe('Problem model', () => {
       expect(newProblem.functionSetup).to.equal(problemFunctionSetup)
     })
 
-    it('should require prompt', async () => {
+    it('should require spec', async () => {
       try {
         await newProblem.validate()
         throw new Error(
-          'validation was successful but should have failed without `prompt`'
+          'validation was successful but should have failed without `spec`'
         )
       } catch (error) {
-        expect(error.message).to.contain('prompt cannot be null')
+        expect(error.message).to.contain('spec cannot be null')
       }
     })
   })
