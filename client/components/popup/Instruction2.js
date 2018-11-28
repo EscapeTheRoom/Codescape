@@ -21,6 +21,7 @@ class Instruction extends Component {
         return (
           <div className={this.props.solved}>
             <button
+              id="closebutton2"
               className="button"
               type="button"
               onClick={this.props.handleClose}
@@ -37,6 +38,7 @@ class Instruction extends Component {
       return (
         <div className={this.props.solved}>
           <button
+            id="closebutton"
             className="button"
             type="button"
             onClick={this.props.handleClose}
