@@ -329,14 +329,14 @@ class Level2 extends Component {
             handleClose={this.handleClose}
           />
 
-          <Link to="/hard" className="nextlevel">
+          {/* <button id="comingsoon" className='nextlevel'>
             Next Level
-          </Link>
+          </button> */}
         </div>
         <button
           type="button"
           className="buttonstart"
-          id='resetButton'
+          id='comingsoon'
           onClick={this.handleReset}
         >
           Reset
