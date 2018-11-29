@@ -1,17 +1,17 @@
-'use strict';
+'use strict'
 
-const chai = require('chai');
-const expect = chai.expect;
-const chaiThings = require('chai-things');
+const chai = require('chai')
+const expect = chai.expect
+const chaiThings = require('chai-things')
 
 describe('getCount', function() {
-    it('receives a string and returns an integer', function() {
-      expect(getCount('hello')).to.be.a('number');
-    })
-    it('returns correct number of vowels in a string ', function() {
-        expect(getCount('hey world')).to.equal(2);
-        expect(getCount('i love cats')).to.equal(4);
-      }) 
+  it('receives a string and returns an integer', function() {
+    expect(getCount('hello')).to.be.a('number')
+  })
+  it('returns correct number of vowels in a string ', function() {
+    expect(getCount('hey world')).to.equal(2)
+    expect(getCount('i love cats')).to.equal(4)
+  })
 })
 
 /*
@@ -25,7 +25,7 @@ function getCount(str) {
       }
     }
   }
-  
+
   return vowelsCount;
 }
 */

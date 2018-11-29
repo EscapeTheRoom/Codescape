@@ -223,7 +223,11 @@ class Levels extends Component {
             handleClosed={this.handleClosed}
           />
 
-          <Link to="/medium" className="nextlevel">
+          <Link
+            to={this.props.nextLevel}
+            className="nextlevel"
+            onClick={this.handleReset}
+          >
             Next Level
           </Link>
         </div>

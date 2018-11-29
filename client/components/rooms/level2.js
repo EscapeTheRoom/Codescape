@@ -148,7 +148,8 @@ class Level2 extends Component {
       storyLine: 'storyline',
       backpackBg: 'backpack2',
       backpackImg: '/img/carImg.png',
-      idwinning: 'plain'
+      idwinning: 'plain',
+      nextLevel: '/easy'
     }
     this.handleClose = this.handleClose.bind(this)
   }

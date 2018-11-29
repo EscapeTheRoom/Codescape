@@ -20,7 +20,7 @@ a {
 }
 
 h1 {
-  top: 2vw;
+  top: -1vw;
   font-family: 'Gloria Hallelujah', cursive;
   color: white;
   letter-spacing: 0.309em;
@@ -28,7 +28,6 @@ h1 {
   position: absolute;
   font-size: 3vw;
 }
-
 
 h2 {
   font-family: 'Gloria Hallelujah', cursive;
@@ -87,7 +86,7 @@ span {
   text-decoration: none;
   text-transform: uppercase;
   font-size: 2vw;
-  margin-top:-1vw;
+  margin-top: -1vw;
   margin-left: -3%;
   width: auto;
   height: 3.5vw;
@@ -108,6 +107,7 @@ span {
   margin-left: auto;
   margin-right: auto;
   opacity: unset;
+  top: 9vw;
 }
 
 /* Problem Component Styling */
@@ -247,13 +247,11 @@ span {
   margin-top: 3%;
 }
 
-
 .header {
   display: flex;
   justify-content: center;
-  height: 3vw;
+  height: 0.2vw;
 }
-
 
 .game {
   display: flex;
@@ -339,14 +337,14 @@ span {
   font-size: 1vw;
   text-transform: uppercase;
   font-weight: bold;
-  width:7vw;
+  width: 7vw;
 }
 
 #storybutton:hover {
   color: #fff;
 }
 
- .nextlevel {
+.nextlevel {
   font-family: 'Lato', sans-serif;
   font-style: normal;
   font-weight: 400;
@@ -364,7 +362,7 @@ span {
   text-transform: uppercase;
   font-size: 1.8vw;
   margin-left: -18%;
-  margin-top: 44%;
+  margin-top: 47%;
 }
 
 .nextlevel:hover {
@@ -412,28 +410,29 @@ span {
 /* .code {
   margin-left:40px;
 } */
-#plain{
+#plain {
   margin: auto;
   width: 50%;
   opacity: unset;
+  top: 9em;
 }
 
 .problem-container li {
   list-style-type: none;
-  font-size:1.2vw;
+  font-size: 1.2vw;
 }
-h3{
-  font-size:1.17vw;
-}
-
-#editorContainer{
-  top: 13vw;
+h3 {
+  font-size: 1.17vw;
 }
 
-.editor button{
+#editorContainer {
+  top: 9vw;
+}
+
+.editor button {
   margin: 2vw;
   height: 3vw;
   width: auto;
   font-size: 1vw;
-  letter-spacing: .05vw;
+  letter-spacing: 0.05vw;
 }

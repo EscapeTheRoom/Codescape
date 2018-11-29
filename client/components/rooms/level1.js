@@ -166,7 +166,8 @@ class Level1 extends Component {
       storyLine: 'storyline',
       backpackBg: 'backpack',
       backpackImg: '/img/unicornBackPack.png',
-      idwinning: 'resume'
+      idwinning: 'resume',
+      nextLevel: '/medium'
     }
     this.handleStart = this.handleStart.bind(this)
   }
