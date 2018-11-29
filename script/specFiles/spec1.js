@@ -5,6 +5,10 @@ const expect = chai.expect
 const chaiThings = require('chai-things')
 
 describe('greet', () => {
+  it('is a function', () => {
+    expect(typeof greet).to.equal('function');
+  })
+  
   it('takes a string and returns a string', () => {
     const greeting = greet('Corey')
     expect(greeting).to.be.a('string')
@@ -17,3 +21,11 @@ describe('greet', () => {
     expect(stanGreet).to.equal('Hello Stan!')
   })
 })
+
+/*
+
+function greet(name) {
+	return `Hello ${name}!`;
+}
+
+*/

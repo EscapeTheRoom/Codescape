@@ -30,9 +30,12 @@ class Instruction extends Component {
     }
 
     if (items[this.props.itemState] === 'false') {
-      console.log('what is this', this.props.handleClosed)
       return (
         <div className={this.props.solved}>
+          <li>Clue locked, or this is not a clue!</li>
+          <li>Keep clicking on the objects to collect all three clues!</li>
+          <li>Once you got the third clue find your escape!</li>
+
           <button
             id="closebutton"
             className="button"
@@ -41,7 +44,6 @@ class Instruction extends Component {
           >
             Close
           </button>
-          <li>Clue locked, or this is not a clue!</li>
         </div>
       )
     }
