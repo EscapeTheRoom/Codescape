@@ -5,7 +5,11 @@ const expect = chai.expect
 const chaiThings = require('chai-things')
 
 describe('getInitials', () => {
-  it('takes a string and returns a string', () => {
+  it('is a function', () => {
+    expect(typeof getInitials).to.equal('function');
+  })
+
+  it('receives a string and returns a string', () => {
     const initials = getInitials('Corey Greenwald')
     expect(initials).to.be.a('string')
   })
