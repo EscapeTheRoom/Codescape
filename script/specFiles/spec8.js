@@ -29,10 +29,10 @@ describe('arraySum', function (){
 
 /*
 
-function arraySum(array) {
+function arraySum(arr) {
   let sum = 0;
-  for(let i = 0; i < array.length; i++) {
-    let element = array[i];
+  for(let i = 0; i < arr.length; i++) {
+    let element = arr[i];
     if(Array.isArray(element)) {
 
       sum += arraySum(element);

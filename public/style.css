@@ -440,7 +440,8 @@ h3 {
 
 #pony {
   margin: auto;
+  margin-left: 0.3vw;
   width: 60%;
   opacity: unset;
-  top: 11em;
+  top: 8.5vw;
 }
