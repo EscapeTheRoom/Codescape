@@ -1,8 +1,8 @@
-'use strict';
+'use strict'
 
-const chai = require('chai');
-const expect = chai.expect;
-const chaiThings = require('chai-things');
+const chai = require('chai')
+const expect = chai.expect
+const chaiThings = require('chai-things')
 
 describe('shout', function() {
     it('is a function', () => {
@@ -14,7 +14,7 @@ describe('shout', function() {
     })
 })
 
-/* 
+/*
 function shout(string) {
     return string.toUpperCase()
 }

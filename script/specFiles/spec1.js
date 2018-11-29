@@ -17,9 +17,7 @@ describe('greet', () => {
   it('returns the name with Hello beforehand', () => {
     const stacyGreet = greet('Stacy')
     expect(stacyGreet).to.equal('Hello Stacy!')
-    const stanGreet = greet(
-      'Stan'
-    )
+    const stanGreet = greet('Stan')
     expect(stanGreet).to.equal('Hello Stan!')
   })
 })

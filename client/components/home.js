@@ -1,8 +1,18 @@
 import React, {Component} from 'react'
-import {Link} from 'react-router-dom'
+import {Link, withRouter} from 'react-router-dom'
 import {Carousel} from 'react-responsive-carousel'
+import {connect} from 'react-redux'
+import {resetState} from '../store/guest.js'
 
 class Home extends Component {
+  constructor() {
+    super()
+    this.handleClick = this.handleClick.bind(this)
+  }
+  handleClick() {
+    this.props.resetState()
+  }
+
   render() {
     return (
       <div className="carousel-container">
@@ -10,7 +20,11 @@ class Home extends Component {
           <div>
             <img src="unicornRoom.png" />
             <p>
-              <Link to="/easy" className="buttonstart">
+              <Link
+                to="/easy"
+                className="buttonstart"
+                onClick={this.handleClick}
+              >
                 Easy
               </Link>
             </p>
@@ -18,15 +32,25 @@ class Home extends Component {
           <div>
             <img src="garage.png" />
             <p>
-              <Link to="/medium" className="buttonstart">
+              <Link
+                to="/medium"
+                className="buttonstart"
+                onClick={this.handleClick}
+              >
                 Medium
               </Link>
             </p>
           </div>
           <div>
-            <img src="hard-level.gif" />
+            <img src="level3Image.png" />
             <p>
-              <a className="buttonstart"> Coming Soon </a>
+              <Link
+                to="/hard"
+                className="buttonstart"
+                onClick={this.handleClick}
+              >
+                Hard
+              </Link>
             </p>
           </div>
         </Carousel>
@@ -34,5 +58,9 @@ class Home extends Component {
     )
   }
 }
+const mapDispatchToProps = dispatch => ({
+  resetState: () => dispatch(resetState())
+})
 
-export default Home
+export default withRouter(connect(null, mapDispatchToProps)(Home))
+//export default Home

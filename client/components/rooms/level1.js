@@ -166,7 +166,8 @@ class Level1 extends Component {
       storyLine: 'storyline',
       backpackBg: 'backpack',
       backpackImg: '/img/unicornBackPack.png',
-      idwinning: 'resume'
+      idwinning: 'resume',
+      nextLevel: '/medium'
     }
     this.handleStart = this.handleStart.bind(this)
   }
@@ -188,6 +189,8 @@ class Level1 extends Component {
               resume. Find it to escape the room.
             </span>
             <li> start by clicking around to find your first challenge!</li>
+            <li>Keep clicking on the objects to collect all three clues!</li>
+            <li>Once you got the third clue find your escape!</li>
             <button id="storybutton" type="button" onClick={this.handleStart}>
               Start
             </button>
