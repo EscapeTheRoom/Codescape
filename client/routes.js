@@ -8,7 +8,7 @@ import Home from './components/home'
 
 import Level1 from './components/rooms/level1'
 import Level2 from './components/rooms/level2'
-
+import Level3 from './components/rooms/level3'
 /**
  * COMPONENT
  */
@@ -27,6 +27,7 @@ class Routes extends Component {
         <Route exact path="/login" component={Login} />
         <Route exact path="/easy" component={Level1} />
         <Route exact path="/medium" component={Level2} />
+        <Route exact path="/hard" component={Level3} />
         {isLoggedIn && (
           <Switch>
             {/* Routes placed here are only available after logging in */}

@@ -42,9 +42,15 @@ class Home extends Component {
             </p>
           </div>
           <div>
-            <img src="hard-level.gif" />
+            <img src="level3Image.png" />
             <p>
-              <a className="buttonstart"> Coming Soon </a>
+              <Link
+                to="/hard"
+                className="buttonstart"
+                onClick={this.handleClick}
+              >
+                Hard
+              </Link>
             </p>
           </div>
         </Carousel>

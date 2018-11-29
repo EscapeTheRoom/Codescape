@@ -40,7 +40,7 @@ label {
 
 nav a {
   display: inline-block;
-  margin: 1em;
+  margin: 0.5em;
 }
 
 form div {
@@ -389,7 +389,7 @@ span {
   padding-bottom: 10px;
   text-transform: uppercase;
   text-align: center;
-  width: 300px;
+  width: 52vw;
   margin-left: auto;
   margin-right: auto;
 }
@@ -435,4 +435,11 @@ h3 {
   width: auto;
   font-size: 1vw;
   letter-spacing: 0.05vw;
+}
+
+#pony {
+  margin: auto;
+  width: 60%;
+  opacity: unset;
+  top: 11em;
 }
