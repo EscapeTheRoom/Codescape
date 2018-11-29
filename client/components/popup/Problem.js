@@ -18,14 +18,11 @@ class Problem extends Component {
           <div className="problem-container">
             <h2>{this.props.problem.title}</h2>
 
-            
-              <li>{this.props.problem.prompt}</li>
-            
+            <li>{this.props.problem.prompt}</li>
           </div>
 
           <div className="input-container">
             <Input
-            
               problem={this.props.problem}
               itemId={this.props.itemId}
               hidden={this.props.hidden}

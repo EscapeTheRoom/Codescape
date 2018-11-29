@@ -6,10 +6,6 @@ import {connect} from 'react-redux'
 import {clearSpec} from '../../store/problem'
 
 class Instruction extends Component {
-  constructor(props) {
-    super(props) // props will be passed down including id for problem
-  }
-
   render() {
     const {isSolved} = this.props.guest
     const {items} = this.props.guest
