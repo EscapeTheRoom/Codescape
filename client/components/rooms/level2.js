@@ -149,7 +149,7 @@ class Level2 extends Component {
       backpackBg: 'backpack2',
       backpackImg: '/img/carImg.png',
       idwinning: 'plain',
-      nextLevel: '/easy'
+      nextLevel: '/hard'
     }
     this.handleClose = this.handleClose.bind(this)
   }
@@ -171,6 +171,8 @@ class Level2 extends Component {
               it?
             </span>
             <li> start by clicking around to find your first challenge!</li>
+            <li>Keep clicking on the objects to collect all three clues!</li>
+            <li>Once you got the third clue find your escape!</li>
             <button id="storybutton" type="button" onClick={this.handleClose}>
               Start
             </button>
