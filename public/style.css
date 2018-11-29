@@ -148,6 +148,7 @@ span {
 
 .bottom-container {
   flex-grow: 2;
+  max-width: 24em;
   margin-left: 1em;
   margin-right: 1em;
   margin-bottom: 1em;
@@ -419,7 +420,7 @@ span {
 
 .problem-container li {
   list-style-type: none;
-  font-size: 1.2vw;
+  font-size: 1.2vw
 }
 h3 {
   font-size: 1.17vw;

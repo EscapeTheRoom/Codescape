@@ -40,7 +40,7 @@ class Instruction extends Component {
             id="closebutton"
             className="button"
             type="button"
-            onClick={this.handleClosed}
+            onClick={this.props.handleClosed}
           >
             Close
           </button>

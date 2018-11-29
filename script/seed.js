@@ -67,7 +67,7 @@ async function seed() {
     Problem.create({
       title: 'Biller Builder',
       prompt:
-        'Write a function billerBuilder that takes the name of a state as a parameter. billerBuilder should return a new function that takes the price of an item and returns the correct final price of the item, given the following: \n - if NY, charge 3% for shipping and 4% for sales tax \n - if NJ, charge 5% for shipping and 6.625% for sales tax',
+        'Write a function billerBuilder that takes the name of a state as a parameter. billerBuilder should return a new function that takes the price of an item and returns the correct final price of the item, given the following: if the state is NY, charge 3% for shipping and 4% for sales tax and if the state is NJ, charge 5% for shipping and 6.625% for sales tax',
       functionSetup: 'function billerBuilder(state) {\n// YOUR CODE HERE\n}',
       spec: spec7File
     }),
