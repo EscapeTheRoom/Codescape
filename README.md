@@ -6,6 +6,8 @@ Codescape is an educational game modeled after Codewars and Escape the Room. You
 
 ## Instructions
 
+To play Codescape on the web check out our app at codescape.herokuapp.com
+
 To run Codescape locally, follow these steps:
 
 * Run 'npm install' to install required packages
